@@ -1,0 +1,39 @@
+<section class="auibar-document-types"
+         aria-labelledby="auibar-document-types-title">
+  <div class="auibar-document-types-container">
+
+    <div class="auibar-document-types-heading">
+
+      <h2 id="auibar-document-types-title">
+        Explore by Resource Type
+      </h2>
+
+      <p>
+        Find the evidence, guidance and learning materials
+        relevant to your work.
+      </p>
+    </div>
+
+    <div class="auibar-document-types-grid">
+      <a *ngFor="let type of types"
+         class="auibar-document-type"
+         routerLink="/search"
+         [queryParams]="{ query: type.query }">
+
+        <span class="auibar-document-type-icon">
+          <i class="fa-solid" [class]="type.icon"
+             aria-hidden="true"></i>
+        </span>
+
+        <span class="auibar-document-type-content">
+          <strong>{{ type.title }}</strong>
+          <small>{{ type.description }}</small>
+        </span>
+
+        <span class="auibar-document-type-arrow"
+              aria-hidden="true">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,110 @@
+<section class="ppow-card">
+
+  <div class="ppow-heading">
+    <div>
+      <span class="ppow-kicker">AUPSC</span>
+      <h2>Programme of Work</h2>
+      <div class="heading-line"></div>
+    </div>
+
+    <div class="ppow-icon">
+      <i class="fa-regular fa-file-pdf"></i>
+    </div>
+  </div>
+
+  <div *ngIf="ppowLoading" class="ppow-status">
+    Loading latest programme...
+  </div>
+
+  <div *ngIf="ppowFailed" class="ppow-status">
+    Programme of Work temporarily unavailable.
+  </div>
+
+  <ng-container *ngIf="!ppowLoading && latestPPoW">
+
+    <div class="ppow-feature">
+
+      <div class="ppow-date">
+        <strong>{{ getMonth(latestPPoW) }}</strong>
+        <span>{{ getYear(latestPPoW) }}</span>
+      </div>
+
+      <div class="ppow-copy">
+
+        <span class="ppow-period">
+          {{ getDate(latestPPoW) }}
+        </span>
+
+        <a
+          class="ppow-title"
+          [href]="getItemUrl(latestPPoW)">
+          {{ getTitle(latestPPoW) }}
+        </a>
+
+        <span
+          *ngIf="getReference(latestPPoW)"
+          class="ppow-reference">
+          {{ getReference(latestPPoW) }}
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="ppow-actions">
+
+      <a [href]="getItemUrl(latestPPoW)">
+        <span>
+          <i class="fa-regular fa-file-pdf"></i>
+          Open Programme of Work
+        </span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+      <a href="/search?f.subject=PPoW,equals&spc.page=1&spc.sf=dc.date.issued&spc.sd=DESC">
+        <span>
+          <i class="fa-solid fa-box-archive"></i>
+          View past PPoW
+        </span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+    </div>
+
+    <!-- Monthly thematic snapshot -->
+    <div
+      *ngIf="focusAreas.length"
+      class="ppow-focus">
+
+      <div class="ppow-focus-heading">
+        <span>{{ focusHeading }}</span>
+
+        <i
+          class="fa-solid fa-compass"
+          aria-hidden="true">
+        </i>
+      </div>
+
+      <div class="ppow-focus-tags">
+
+        <a
+          *ngFor="let area of focusAreas"
+          class="ppow-focus-tag"
+          [href]="getFocusAreaUrl(area)"
+          [attr.title]="'Browse ' + area.label">
+
+          <span class="ppow-focus-hash">#</span>
+
+          <span class="ppow-focus-label">
+            {{ area.label }}
+          </span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </ng-container>
+
+</section>

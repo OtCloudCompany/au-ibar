@@ -1,0 +1,276 @@
+:host { display: block; }
+
+.fishgov-spotlight {
+  padding: 42px 0 36px;
+  background: #f5f2eb;
+  border-bottom: 1px solid rgba(24,72,45,.09);
+}
+
+.fishgov-container {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 clamp(22px,5vw,90px);
+}
+
+.fishgov-heading-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.fishgov-kicker {
+  display: block;
+  margin-bottom: 12px;
+  color: #9f2450;
+  font-size: .7rem;
+  letter-spacing: .13em;
+  font-weight: 800;
+}
+
+.fishgov-heading-copy h2 {
+  margin: 0 0 11px;
+  color: #164a33;
+  font-size: clamp(1.65rem,2.5vw,2.65rem);
+  line-height: 1.15;
+  font-weight: 750;
+  letter-spacing: -.035em;
+}
+
+.fishgov-heading-copy h2 span {
+  color: #a32250;
+}
+
+.fishgov-heading-copy p {
+  max-width: 800px;
+  margin: 0;
+  color: #66736a;
+  font-size: .96rem;
+  line-height: 1.55;
+}
+
+.fishgov-explore {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #a32250;
+  color: #164a33;
+  font-size: .88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.fishgov-explore:hover {
+  color: #a32250;
+  text-decoration: none;
+}
+
+.fishgov-resources {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: clamp(16px,1.65vw,28px);
+}
+
+.fishgov-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: #fffefb;
+  border: 1px solid rgba(25,69,46,.12);
+  border-radius: 27px;
+  color: #184a34;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(19,50,32,.045);
+  transition: transform .2s ease,box-shadow .2s ease;
+}
+
+.fishgov-card:hover,
+.fishgov-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(19,50,32,.12);
+  color: #184a34;
+  text-decoration: none;
+}
+
+.fishgov-card:focus-visible {
+  outline: 2px solid #a32250;
+  outline-offset: 3px;
+}
+
+.fishgov-card-image {
+  height: clamp(175px,15vw,225px);
+  overflow: hidden;
+  margin: 9px 9px 0;
+  border-radius: 20px 20px 12px 12px;
+  background: #dce9df;
+}
+
+.fishgov-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.fishgov-card:hover .fishgov-card-image img {
+  transform: scale(1.035);
+}
+
+.fishgov-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 21px 24px 25px;
+}
+
+.fishgov-card-category {
+  color: #a32250;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+}
+
+.fishgov-card h3 {
+  margin: 12px 0 10px;
+  color: #164a33;
+  font-size: clamp(1.05rem,1.23vw,1.32rem);
+  font-weight: 700;
+  line-height: 1.34;
+}
+
+.fishgov-card-body p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  margin: 0 0 20px;
+  color: #737d75;
+  font-size: .84rem;
+  line-height: 1.55;
+}
+
+.fishgov-card-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: flex-start;
+  gap: 24px;
+  margin-top: auto;
+  padding: 11px 19px;
+  background: #f1f2eb;
+  border-radius: 50px;
+  color: #164a33;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.fishgov-card-action span {
+  font-size: 1.1rem;
+}
+
+.fishgov-attribution {
+  margin: 19px 0 0;
+  color: #757e75;
+  text-align: right;
+  font-size: .75rem;
+}
+
+@media (max-width: 1000px) {
+  .fishgov-resources {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .fishgov-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 650px) {
+  .fishgov-spotlight {
+    padding: 32px 0;
+  }
+  .fishgov-heading-row {
+    display: block;
+  }
+  .fishgov-explore {
+    margin-top: 18px;
+  }
+  .fishgov-resources {
+    grid-template-columns: 1fr;
+  }
+  .fishgov-card:last-child {
+    grid-column: auto;
+  }
+  .fishgov-card-image {
+    height: 200px;
+  }
+  .fishgov-attribution {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fishgov-card,
+  .fishgov-card-image img {
+    transition: none;
+  }
+}
+
+
+/* FishGov2 compact editorial cards */
+.fishgov-spotlight {
+  padding-top: 34px;
+  padding-bottom: 29px;
+}
+
+.fishgov-heading-row {
+  margin-bottom: 21px;
+}
+
+.fishgov-card-image {
+  height: clamp(175px, 13vw, 235px);
+}
+
+.fishgov-card-body {
+  padding: 17px 22px 20px;
+}
+
+.fishgov-card h3 {
+  margin-top: 9px;
+  margin-bottom: 8px;
+}
+
+.fishgov-card-body p {
+  margin-bottom: 13px;
+}
+
+.fishgov-card-action {
+  padding: 9px 17px;
+}
+
+@media (max-width: 650px) {
+  .fishgov-card-image {
+    height: 195px;
+  }
+}
+
+/* AU-IBAR FISHGOV2 — COMPACT TITLE TYPOGRAPHY */
+
+.fishgov-card h3 {
+  font-size: clamp(0.96rem, 1.05vw, 1.12rem) !important;
+  line-height: 1.35 !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 650px) {
+  .fishgov-card h3 {
+    font-size: 1rem !important;
+  }
+}
+

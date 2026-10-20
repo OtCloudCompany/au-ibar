@@ -1,0 +1,15 @@
+<ng-container *ngIf="haveCommunities">
+  <h5 class="px-4 text-center mb-2 font-weight-bold">PAPS Knowledge Wheel</h5>
+  <div class="text-center">
+    <figure class="highcharts-figure">
+      <highcharts-chart
+        [options]="chartOptions" [title]="'my title'"
+        [(update)]="updateFlag" *ngIf="isHighcharts" (chartInstance)="chartCallback($event)"
+        style="width: 100%; height: 400px; display: block;"
+      ></highcharts-chart>
+    </figure>
+  </div>
+</ng-container>
+<ng-container *ngIf="!haveCommunities">
+  Loading PAPS Knowledge Wheel ...
+</ng-container>

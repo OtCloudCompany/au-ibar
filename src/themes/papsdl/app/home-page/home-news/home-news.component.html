@@ -1,0 +1,26 @@
+<div [ngClass]="randomClass">
+  <div class="overlay">
+    <div class="container">
+      <div class="d-flex flex-wrap">
+        <div class="news-spacer"></div>
+        <div>
+          <div class="container pt-2" style="max-width: 850px;">
+            <h1 class="mb-3 text-center" style="font-weight: 700;">
+              <span class="text-uppercase">Search</span>
+              <span class="text-au-light-green"> PAPS</span>
+              <span class="text-uppercase"> Digital Repository</span>
+            </h1>
+              <ds-search-form [inPlaceSearch]="false" [showScopeSelector]="true"
+                              [searchPlaceholder]="'home.search-form.placeholder' | translate">
+              </ds-search-form>
+          </div>
+          <p class="lead text-center sm-mobile">
+            The PAPS Digital Repository collates, organizes, and shares outcomes related to Political
+            Affairs, Peace and Security, produced by the African Union Commission and its affiliated
+            organs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

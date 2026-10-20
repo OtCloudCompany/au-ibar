@@ -1,0 +1,16 @@
+/* AU-IBAR homepage layout */
+
+/* Remove the default DSpace main margin on the homepage only */
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* The main element is an ancestor of this component.
+   :has() scopes the correction to the homepage. */
+ds-paps-hero-slider {
+  display: block;
+  margin: 0;
+  padding: 0;
+}

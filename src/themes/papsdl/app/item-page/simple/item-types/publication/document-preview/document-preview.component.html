@@ -1,0 +1,135 @@
+<ng-container *ngIf="(bitstreams$ | async) as bitstreams">
+
+  <ng-container *ngIf="getAvailablePdfs(bitstreams) as pdfs">
+
+    <ng-container *ngIf="getSelectedPdf(bitstreams) as selectedPdf">
+
+      <section class="paps-preview is-expanded">
+
+        <!-- DOCUMENT SELECTION TOOLBAR -->
+        <div class="paps-preview-bar">
+
+          <div class="paps-preview-symbol">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+
+          <div class="paps-preview-info">
+
+            <span class="paps-preview-kicker">
+              Document reader
+            </span>
+
+            <div class="paps-preview-title">
+              {{ getFileDescription(selectedPdf) }}
+            </div>
+
+            <div class="paps-preview-meta">
+              <span>
+                <i class="far fa-file-pdf"></i>
+                PDF
+              </span>
+
+              <span *ngIf="pdfs.length > 1"
+                    class="paps-preview-count">
+                {{ pdfs.length }} PDFs available
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- SELECT DOCUMENT -->
+          <div class="paps-preview-actions">
+
+            <div
+              class="paps-document-selector"
+              *ngIf="pdfs.length > 1">
+
+              <label for="paps-pdf-select">
+                Choose document
+              </label>
+
+              <select
+                id="paps-pdf-select"
+                class="paps-document-select"
+                [value]="selectedPdf.uuid"
+                (change)="selectPdf($any($event.target).value)">
+
+                <option
+                  *ngFor="let pdf of pdfs; trackBy: trackByPdfUuid"
+                  [value]="pdf.uuid">
+
+                  {{ getPdfDisplayLabel(pdf) }}
+
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <!-- DOWNLOAD CURRENTLY SELECTED PDF -->
+            <ds-file-download-link
+              *ngIf="!isViewOnlyItem()"
+              [bitstream]="selectedPdf"
+              [item]="item">
+
+              <span class="paps-preview-button paps-preview-download">
+                <i class="fas fa-download"></i>
+                <span>Download</span>
+              </span>
+
+            </ds-file-download-link>
+
+          </div>
+
+        </div>
+
+
+        <!-- READER -->
+        <div class="paps-preview-reader">
+
+          <div class="paps-preview-reader-heading">
+
+            <div>
+              <span class="paps-preview-reader-kicker">
+                Now reading
+              </span>
+
+              <strong>
+                {{ getFileDescription(selectedPdf) }}
+              </strong>
+            </div>
+
+            <span class="paps-preview-notice">
+              <i class="fas fa-book-open"></i>
+              Online document preview
+            </span>
+
+          </div>
+
+
+          <!--
+            Using ngFor with UUID tracking intentionally recreates
+            the PDF.js component whenever the selected PDF changes.
+            Only one reader exists at any given time.
+          -->
+          <ng-container
+            *ngFor="let pdf of [selectedPdf]; trackBy: trackByPdfUuid">
+
+            <ds-view-only-pdf
+              [bitstream]="pdf"
+              watermarkText="">
+            </ds-view-only-pdf>
+
+          </ng-container>
+
+        </div>
+
+      </section>
+
+    </ng-container>
+
+  </ng-container>
+
+</ng-container>

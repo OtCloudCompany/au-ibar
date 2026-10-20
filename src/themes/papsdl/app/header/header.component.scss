@@ -1,0 +1,375 @@
+:host {
+  display: block;
+}
+
+.paps-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.035);
+}
+
+.paps-header-inner {
+  min-height: 94px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 14px 4%;
+}
+
+.paps-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.paps-brand img {
+  display: block;
+  width: auto;
+  height: 62px;
+  max-width: 235px;
+  object-fit: contain;
+}
+
+.paps-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.paps-brand-primary {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #8f1d2c;
+}
+
+.paps-brand-secondary {
+  margin-top: 5px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #555;
+}
+
+.paps-search-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+}
+
+.paps-search-wrapper ds-search-navbar {
+  flex: 1;
+  min-width: 280px;
+}
+
+.paps-advanced-search {
+  white-space: nowrap;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.035em;
+  color: #555;
+  text-decoration: none;
+}
+
+.paps-advanced-search:hover {
+  color: #8f1d2c;
+}
+
+.paps-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.paps-menu-button {
+  border: 0;
+  background: transparent;
+  padding: 8px 10px;
+  font-size: 1.65rem;
+  line-height: 1;
+  color: #333;
+}
+
+@media (max-width: 1199.98px) {
+  .paps-header-inner {
+    gap: 20px;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .paps-brand img {
+    height: 54px;
+    max-width: 205px;
+  }
+
+  .paps-advanced-search {
+    display: none;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .paps-header-inner {
+    min-height: 78px;
+  }
+
+  .paps-search-wrapper {
+    display: none;
+  }
+
+  .paps-brand {
+    margin-right: auto;
+  }
+
+  .paps-brand img {
+    height: 48px;
+    max-width: 185px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .paps-header-inner {
+    min-height: 70px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .paps-brand {
+    gap: 9px;
+  }
+
+  .paps-brand img {
+    height: 42px;
+    max-width: 155px;
+  }
+
+  .paps-brand-primary {
+    display: none;
+  }
+
+  .paps-brand-secondary {
+    margin-top: 0;
+    font-size: 0.58rem;
+  }
+}
+
+/* PAPS Digital Library header search */
+.paps-search-wrapper {
+  flex: 1 1 600px;
+  max-width: 880px;
+}
+
+.paps-search-wrapper ds-search-form {
+  display: block;
+  width: 100%;
+}
+
+.paps-search-wrapper ::ng-deep form {
+  margin: 0;
+}
+
+.paps-search-wrapper ::ng-deep .mb-3 {
+  margin-bottom: 0 !important;
+}
+
+.paps-search-wrapper ::ng-deep .input-group {
+  width: 100%;
+}
+
+.paps-search-wrapper ::ng-deep .form-control {
+  height: 48px;
+  border-color: #d5d9dd;
+  font-size: 1rem;
+  box-shadow: none;
+}
+
+.paps-search-wrapper ::ng-deep .search-button {
+  min-width: 118px;
+  height: 48px;
+  border-radius: 0 4px 4px 0;
+  font-weight: 500;
+}
+
+.paps-advanced-search {
+  margin-left: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* AU search palette */
+:host ::ng-deep ds-search-form button[type="submit"],
+:host ::ng-deep ds-search-form .btn-primary {
+  background-color: #0E591A !important;
+  border-color: #0E591A !important;
+  color: #fff !important;
+}
+
+:host ::ng-deep ds-search-form button[type="submit"]:hover,
+:host ::ng-deep ds-search-form button[type="submit"]:focus,
+:host ::ng-deep ds-search-form .btn-primary:hover,
+:host ::ng-deep ds-search-form .btn-primary:focus {
+  background-color: #083D11 !important;
+  border-color: #083D11 !important;
+}
+
+:host ::ng-deep .advanced-search-link,
+:host ::ng-deep a[href*="/search"] {
+  color: #0E591A;
+}
+
+:host ::ng-deep .advanced-search-link:hover,
+:host ::ng-deep a[href*="/search"]:hover {
+  color: #083D11;
+}
+
+
+/* AU-IBAR institutional branding overrides */
+
+.paps-brand img {
+  width: auto;
+  height: 72px;
+  max-width: 245px;
+  object-fit: contain;
+}
+
+.paps-brand-primary {
+  color: #1A5632;
+}
+
+.paps-brand-secondary {
+  color: #58595B;
+}
+
+.paps-advanced-search:hover {
+  color: #348F41;
+}
+
+:host ::ng-deep ds-search-form button[type="submit"],
+:host ::ng-deep ds-search-form .btn-primary {
+  background-color: #1A5632 !important;
+  border-color: #1A5632 !important;
+}
+
+:host ::ng-deep ds-search-form button[type="submit"]:hover,
+:host ::ng-deep ds-search-form .btn-primary:hover {
+  background-color: #348F41 !important;
+  border-color: #348F41 !important;
+}
+
+@media (max-width: 991.98px) {
+  .paps-brand img {
+    height: 52px;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .paps-brand img {
+    height: 42px;
+    max-width: 145px;
+  }
+}
+
+
+/* AU-IBAR — FINAL HEADER WORDMARK */
+
+.paps-brand-secondary {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 0;
+  color: #174831;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0.065em;
+}
+
+.paps-brand-secondary span {
+  display: block;
+}
+
+@media (max-width: 650px) {
+  .paps-brand-secondary {
+    font-size: 0.7rem;
+    gap: 2px;
+  }
+}
+
+/* ========================================================
+   AU-IBAR HEADER BRANDING REFINEMENT
+   Larger proportional logo and compact wordmark spacing
+   ======================================================== */
+
+@media (min-width: 1200px) {
+  .paps-brand {
+    gap: 4px;
+  }
+
+  .paps-brand img {
+    height: 84px;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+  }
+
+  .paps-brand-text {
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .paps-brand {
+    gap: 6px;
+  }
+
+  .paps-brand img {
+    height: 68px;
+    width: auto;
+    max-width: none;
+  }
+}
+
+
+/* AU-IBAR — TRIMMED LOGO FINAL ALIGNMENT */
+@media (min-width: 1200px) {
+  .paps-brand {
+    gap: 6px;
+  }
+
+  .paps-brand img {
+    height: 84px;
+    width: auto;
+    max-width: none;
+  }
+}
+
+
+
+/* AU-IBAR REFINEMENT V2 — HEADER LOGO */
+
+@media (min-width: 1200px) {
+  .paps-brand img {
+    height: 72px;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .paps-brand img {
+    height: 62px;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* END AU-IBAR REFINEMENT V2 — HEADER */

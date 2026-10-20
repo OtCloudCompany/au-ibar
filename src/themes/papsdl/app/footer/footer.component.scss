@@ -1,0 +1,634 @@
+:host {
+  display: block;
+}
+
+.auibar-footer {
+  background: #f4f1eb;
+  color: #555e59;
+  font-family: inherit;
+}
+
+.auibar-footer-container {
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+  padding-left: clamp(25px, 5vw, 90px);
+  padding-right: clamp(25px, 5vw, 90px);
+}
+
+.auibar-footer-main {
+  padding: clamp(50px, 5vw, 82px) 0 65px;
+  border-top: 1px solid rgba(25, 70, 47, 0.08);
+}
+
+.auibar-footer-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 0.85fr 1.08fr;
+  gap: clamp(30px, 3.2vw, 65px);
+  align-items: start;
+}
+
+.auibar-footer-column {
+  min-width: 0;
+}
+
+.auibar-footer-brand {
+  display: inline-block;
+  margin-bottom: 22px;
+  text-decoration: none;
+}
+
+.auibar-footer-brand img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 170px;
+  max-height: 120px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.auibar-footer-identity p {
+  max-width: 365px;
+  margin: 0 0 15px;
+  color: #66716b;
+  font-size: 0.91rem;
+  line-height: 1.78;
+}
+
+.auibar-footer-heading {
+  position: relative;
+  margin: 10px 0 32px;
+  padding-bottom: 17px;
+  color: #175537;
+  font-size: clamp(1.06rem, 1.3vw, 1.32rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.auibar-footer-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 62px;
+  height: 2px;
+  background: #a3214a;
+}
+
+.auibar-footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 0;
+  font-style: normal;
+}
+
+.auibar-footer-contact-item {
+  display: grid;
+  grid-template-columns: 19px minmax(0, 1fr);
+  gap: 11px;
+  align-items: start;
+  color: #657069;
+  font-size: 0.91rem;
+  line-height: 1.65;
+}
+
+.auibar-footer-contact-item > i {
+  margin-top: 5px;
+  color: #a3214a;
+  font-size: 0.95rem;
+}
+
+.auibar-footer-contact a,
+.auibar-footer-links a,
+.auibar-cookie-button {
+  color: #657069;
+  text-decoration: none;
+}
+
+.auibar-footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.auibar-footer-links a,
+.auibar-cookie-button {
+  font-size: 0.91rem;
+  line-height: 1.55;
+  transition: color 180ms ease;
+}
+
+.auibar-footer-links a i,
+.auibar-footer-bottom-links a i {
+  margin-left: 5px;
+  font-size: 0.67rem;
+}
+
+.auibar-footer-contact a:hover,
+.auibar-footer-links a:hover,
+.auibar-cookie-button:hover,
+.auibar-footer-bottom a:hover {
+  color: #a3214a;
+  text-decoration: none;
+}
+
+.auibar-cookie-button {
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+
+.auibar-footer a:focus-visible,
+.auibar-cookie-button:focus-visible {
+  outline: 2px solid #a3214a;
+  outline-offset: 4px;
+}
+
+.auibar-footer-bottom {
+  background: #eae6de;
+  border-top: 1px solid rgba(25, 70, 47, 0.10);
+}
+
+.auibar-footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #647068;
+  font-size: 0.81rem;
+  line-height: 1.6;
+}
+
+.auibar-footer-bottom-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.auibar-footer-bottom a {
+  color: #285940;
+  text-decoration: none;
+}
+
+@media (max-width: 1199.98px) {
+  .auibar-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 45px;
+  }
+}
+
+@media (max-width: 650px) {
+  .auibar-footer-main {
+    padding: 42px 0;
+  }
+
+  .auibar-footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .auibar-footer-heading {
+    margin-top: 0;
+    margin-bottom: 23px;
+  }
+
+  .auibar-footer-brand img {
+    max-width: 155px;
+  }
+
+  .auibar-footer-bottom-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auibar-footer-links a,
+  .auibar-cookie-button {
+    transition: none;
+  }
+}
+
+
+
+/* AU-IBAR FOOTER — COMPACT GREEN BOTTOM OVERRIDES */
+
+.auibar-footer-main {
+  padding: 52px 0 34px !important;
+}
+
+.auibar-footer-container {
+  padding-left: clamp(20px, 3vw, 48px) !important;
+  padding-right: clamp(20px, 3vw, 48px) !important;
+}
+
+.auibar-footer-grid {
+  gap: 24px 46px !important;
+  align-items: start !important;
+}
+
+.auibar-footer-column {
+  margin-bottom: 0 !important;
+}
+
+.auibar-footer-brand {
+  margin-bottom: 14px !important;
+}
+
+.auibar-footer-brand img {
+  max-width: 165px !important;
+  height: auto !important;
+}
+
+.auibar-footer-heading {
+  margin-bottom: 12px !important;
+}
+
+.auibar-footer-heading::after,
+.auibar-footer-title-line,
+.auibar-footer-line {
+  margin-top: 8px !important;
+  margin-bottom: 14px !important;
+}
+
+.auibar-footer-identity p,
+.auibar-footer-about,
+.auibar-footer-description {
+  margin: 0 0 14px !important;
+  line-height: 1.55 !important;
+}
+
+.auibar-footer-info li,
+.auibar-footer-links li,
+.auibar-footer-policies li {
+  margin-bottom: 10px !important;
+}
+
+.auibar-footer-info,
+.auibar-footer-links,
+.auibar-footer-policies {
+  gap: 0 !important;
+}
+
+.auibar-footer-main a,
+.auibar-footer-main li,
+.auibar-footer-main p,
+.auibar-footer-main address {
+  line-height: 1.55 !important;
+}
+
+/* Bottom strip in AU-IBAR green */
+.auibar-footer-bottom {
+  background: #0f6a43 !important;
+  border-top: 0 !important;
+  padding: 13px 0 !important;
+  min-height: auto !important;
+}
+
+.auibar-footer-bottom .container,
+.auibar-footer-bottom .container-fluid {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.auibar-footer-bottom,
+.auibar-footer-bottom p,
+.auibar-footer-bottom span,
+.auibar-footer-bottom a,
+.auibar-footer-bottom .nav-link {
+  color: #f7f2e8 !important;
+}
+
+.auibar-footer-bottom a:hover,
+.auibar-footer-bottom a:focus {
+  color: #ffffff !important;
+}
+
+@media (max-width: 991.98px) {
+  .auibar-footer-main {
+    padding: 40px 0 26px !important;
+  }
+
+  .auibar-footer-grid {
+    gap: 22px 28px !important;
+  }
+
+  .auibar-footer-brand img {
+    max-width: 150px !important;
+  }
+
+  .auibar-footer-bottom {
+    padding: 12px 0 !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .auibar-footer-main {
+    padding: 34px 0 22px !important;
+  }
+
+  .auibar-footer-heading {
+    margin-bottom: 10px !important;
+  }
+
+  .auibar-footer-identity p,
+  .auibar-footer-about,
+  .auibar-footer-description {
+    margin-bottom: 12px !important;
+  }
+
+  .auibar-footer-bottom {
+    padding: 10px 0 !important;
+  }
+}
+
+
+/* AU-IBAR FOOTER — FINAL HEIGHT REDUCTION */
+
+.auibar-footer-main {
+  padding-top: 24px !important;
+  padding-bottom: 18px !important;
+  min-height: 0 !important;
+}
+
+.auibar-footer-grid {
+  align-items: start !important;
+  row-gap: 18px !important;
+}
+
+.auibar-footer-column,
+.auibar-footer-identity {
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.auibar-footer-brand {
+  margin-bottom: 10px !important;
+}
+
+.auibar-footer-identity p {
+  margin-bottom: 9px !important;
+  line-height: 1.45 !important;
+}
+
+.auibar-footer-identity p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.auibar-footer-heading {
+  margin-top: 0 !important;
+  margin-bottom: 14px !important;
+  padding-bottom: 11px !important;
+}
+
+.auibar-footer-links {
+  gap: 5px !important;
+}
+
+.auibar-footer-contact {
+  gap: 15px !important;
+}
+
+.auibar-footer-bottom-inner {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+@media (max-width: 650px) {
+  .auibar-footer-main {
+    padding-top: 24px !important;
+    padding-bottom: 18px !important;
+  }
+
+  .auibar-footer-grid {
+    row-gap: 25px !important;
+  }
+}
+
+
+/* AU-IBAR FOOTER — TYPOGRAPHY REFINEMENT */
+
+/* Move the burgundy rule beneath the heading text */
+.auibar-footer-heading {
+  padding-bottom: 17px !important;
+  margin-bottom: 14px !important;
+}
+
+.auibar-footer-heading::after {
+  bottom: 0 !important;
+  margin: 0 !important;
+  width: 62px;
+  height: 2px;
+}
+
+/* Smaller, elegant repository description */
+.auibar-footer-identity p {
+  font-size: 0.82rem !important;
+  line-height: 1.55 !important;
+  font-weight: 400;
+  margin-bottom: 10px !important;
+}
+
+.auibar-footer-identity p:last-child {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 650px) {
+  .auibar-footer-identity p {
+    font-size: 0.82rem !important;
+    line-height: 1.55 !important;
+  }
+}
+
+
+/* AU-IBAR FOOTER — LOGO AND DESCRIPTION POLISH */
+
+/* Centre the official logo within the description column */
+.auibar-footer-brand {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100%;
+  margin-bottom: 12px !important;
+}
+
+.auibar-footer-brand img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 155px !important;
+  max-height: 115px;
+}
+
+/* Smaller repository description with justified alignment */
+.auibar-footer-identity p {
+  font-size: 0.78rem !important;
+  font-weight: 400;
+  line-height: 1.56 !important;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  margin-bottom: 9px !important;
+}
+
+.auibar-footer-identity p:last-child {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 650px) {
+  .auibar-footer-identity p {
+    text-align: left;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* AU-IBAR FOOTER — LEFT-ALIGNED BRAND */
+
+.auibar-footer-brand {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  width: 100%;
+}
+
+.auibar-footer-brand img {
+  display: block;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  max-width: 155px !important;
+  object-position: left center !important;
+}
+
+
+
+/* AU-IBAR — FINAL FOOTER PRESENTATION */
+
+.auibar-footer-main {
+  background-color: #f4f1eb;
+  background-image:
+    linear-gradient(
+      rgba(244, 241, 235, 0.45),
+      rgba(244, 241, 235, 0.45)
+    ),
+    url('/assets/papsdl/images/footer-bottom-bg-1-2.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* Slightly smaller institutional navigation */
+.auibar-footer-links a,
+.auibar-cookie-button {
+  font-size: 0.82rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Maintain proportionate contact typography */
+.auibar-footer-contact-item,
+.auibar-footer-contact-item a {
+  font-size: 0.82rem !important;
+  line-height: 1.55 !important;
+}
+
+.auibar-footer-heading {
+  font-size: 1.12rem !important;
+}
+
+/* Retain the solid AU-IBAR green copyright strip */
+.auibar-footer-bottom {
+  background: #0f6a43 !important;
+}
+
+
+/* AU-IBAR REFINEMENT V2 — FOOTER ALIGNMENT */
+
+/* Center and constrain all four footer columns */
+.auibar-footer-main .auibar-footer-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(24px, 3vw, 40px) !important;
+  padding-right: clamp(24px, 3vw, 40px) !important;
+  box-sizing: border-box;
+}
+
+/* Keep a balanced, responsive four-column layout */
+.auibar-footer-grid {
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(0, 1fr)
+    minmax(0, 0.85fr)
+    minmax(0, 1.08fr);
+  column-gap: clamp(28px, 3vw, 46px) !important;
+  align-items: start;
+}
+
+/* Keep logo and description aligned with the first column */
+.auibar-footer-identity {
+  padding-left: 0 !important;
+  padding-right: 12px;
+}
+
+.auibar-footer-brand {
+  justify-content: flex-start !important;
+  width: 100%;
+}
+
+.auibar-footer-brand img {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  max-width: 155px !important;
+}
+
+/* Subtle footer frame without changing background image */
+.auibar-footer-main .auibar-footer-container {
+  border-left: 1px solid rgba(26, 86, 50, 0.08);
+  border-right: 1px solid rgba(26, 86, 50, 0.08);
+}
+
+/* Align copyright strip with main footer content */
+.auibar-footer-bottom .auibar-footer-container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(24px, 3vw, 40px) !important;
+  padding-right: clamp(24px, 3vw, 40px) !important;
+}
+
+/* Preserve the existing responsive layout */
+@media (max-width: 1199.98px) {
+  .auibar-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .auibar-footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .auibar-footer-identity {
+    padding-right: 0;
+  }
+
+  .auibar-footer-main .auibar-footer-container,
+  .auibar-footer-bottom .auibar-footer-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* END AU-IBAR REFINEMENT V2 — FOOTER */

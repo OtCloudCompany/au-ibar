@@ -1,0 +1,54 @@
+<section class="paps-hero" aria-label="AU-IBAR featured knowledge">
+
+  <div class="paps-hero-story">
+
+    <div
+      *ngFor="let slide of slides; let i = index"
+      class="paps-hero-slide"
+      [class.active]="i === activeSlide"
+      [style.background]="slide.background">
+
+      <div class="paps-hero-overlay"></div>
+
+      <div class="paps-hero-content">
+        <div class="paps-hero-copy">
+
+          <h1>{{ slide.title }}</h1>
+
+          <p>{{ slide.description }}</p>
+
+          <a class="paps-hero-button" routerLink="/search">
+            Explore the Repository
+            <span class="auibar-cta-arrow" aria-hidden="true">→</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="paps-hero-bottom">
+
+      <div class="paps-hero-controls"
+           aria-label="Featured photograph selection">
+
+        <button
+          *ngFor="let slide of slides; let i = index"
+          type="button"
+          class="paps-hero-dot"
+          [class.active]="i === activeSlide"
+          [attr.aria-label]="'Show photograph ' + (i + 1)"
+          [attr.aria-pressed]="i === activeSlide"
+          (click)="goToSlide(i)">
+        </button>
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+  <ds-auibar-thematic-areas></ds-auibar-thematic-areas>
+
+</section>

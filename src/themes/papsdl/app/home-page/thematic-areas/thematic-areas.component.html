@@ -1,0 +1,45 @@
+<section class="auibar-themes" aria-labelledby="auibar-themes-heading">
+  <div class="auibar-themes-container">
+
+    <header class="auibar-themes-header">
+      <div>
+
+        <h2 id="auibar-themes-heading">
+          Browse by Thematic Areas
+        </h2>
+
+        <p>
+          Discover research, publications and institutional knowledge
+          across AU-IBAR's thematic priorities.
+        </p>
+      </div>
+    </header>
+
+    <div class="auibar-themes-grid">
+
+      <a
+        *ngFor="let theme of themes"
+        class="auibar-theme-card"
+        routerLink="/search"
+        [queryParams]="{ query: theme.query }"
+        [attr.aria-label]="'Explore ' + theme.title + ' resources'">
+
+        <span class="auibar-theme-icon" aria-hidden="true">
+          <i class="fa-solid" [class]="theme.icon"></i>
+        </span>
+
+        <span class="auibar-theme-content">
+          <strong>{{ theme.title }}</strong>
+          <small>{{ theme.description }}</small>
+        </span>
+
+        <span class="auibar-theme-arrow" aria-hidden="true">
+          <i class="fa-solid fa-arrow-up-right"></i>
+        </span>
+
+      </a>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,100 @@
+<section class="events-card">
+
+  <div class="events-heading">
+    <div>
+      <span class="events-kicker">PAPS CALENDAR</span>
+      <h2>Upcoming Events</h2>
+      <div class="heading-line"></div>
+    </div>
+
+    <div class="calendar-icon">
+      <i class="fa-solid fa-calendar-days"></i>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="event-status">
+    Loading upcoming events...
+  </div>
+
+  <div *ngIf="failed" class="event-status">
+    Calendar temporarily unavailable.
+  </div>
+
+  <ng-container *ngIf="!loading && !failed && upcomingEvents.length">
+
+    <!-- Primary / next event -->
+    <div class="event-feature">
+
+      <div class="event-date-box">
+        <strong>{{ getDay(upcomingEvents[0]) }}</strong>
+        <span>{{ getMonth(upcomingEvents[0]) }}</span>
+      </div>
+
+      <div class="event-copy">
+        <h3>{{ upcomingEvents[0].title }}</h3>
+
+        <div class="event-meta">
+          <span>
+            <i class="fa-regular fa-clock"></i>
+            {{ getFormattedDate(upcomingEvents[0]) }}
+            <ng-container *ngIf="getFormattedTime(upcomingEvents[0])">
+              · {{ getFormattedTime(upcomingEvents[0]) }}
+            </ng-container>
+          </span>
+
+          <span *ngIf="upcomingEvents[0].location">
+            <i class="fa-solid fa-location-dot"></i>
+            {{ upcomingEvents[0].location }}
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Following events -->
+    <div
+      *ngIf="upcomingEvents.length > 1"
+      class="following-events">
+
+      <div
+        *ngFor="let event of upcomingEvents.slice(1)"
+        class="following-event">
+
+        <div class="following-date">
+          <strong>{{ getDay(event) }}</strong>
+          <span>{{ getMonth(event) }}</span>
+        </div>
+
+        <div class="following-copy">
+          <h4>{{ event.title }}</h4>
+
+          <span>
+            {{ getFormattedDate(event) }}
+            <ng-container *ngIf="getFormattedTime(event)">
+              · {{ getFormattedTime(event) }}
+            </ng-container>
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </ng-container>
+
+  <div
+    *ngIf="!loading && !failed && !upcomingEvents.length"
+    class="event-status">
+    No upcoming events currently published.
+  </div>
+
+  <a
+    class="events-footer"
+    [href]="calendarUrl"
+    target="_blank"
+    rel="noopener">
+    View full calendar
+    <span>→</span>
+  </a>
+
+</section>

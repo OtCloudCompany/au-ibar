@@ -1,3 +1,4 @@
+import { COMPONENTS as PAPSDL_THEME_EAGER_COMPONENTS } from './papsdl/eager-theme-components';
 // import { COMPONENTS as CUSTOM_THEME_EAGER_COMPONENTS } from './custom/eager-theme-components';
 import { COMPONENTS as DSPACE_THEME_EAGER_COMPONENTS } from './dspace/eager-theme-components';
 
@@ -11,4 +12,5 @@ import { COMPONENTS as DSPACE_THEME_EAGER_COMPONENTS } from './dspace/eager-them
 export const EAGER_THEME_COMPONENTS = [
   // ...CUSTOM_THEME_EAGER_COMPONENTS,
   ...DSPACE_THEME_EAGER_COMPONENTS,
+  ...PAPSDL_THEME_EAGER_COMPONENTS,
 ];

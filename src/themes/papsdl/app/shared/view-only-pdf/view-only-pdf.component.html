@@ -1,0 +1,186 @@
+<section
+  class="view-only-pdf"
+  (contextmenu)="preventContextMenu($event)">
+
+  <header class="viewer-header viewer-header-controls-only">
+
+    <div
+      class="viewer-toolbar"
+      *ngIf="pdfDocument && !loading">
+
+      <button
+        type="button"
+        class="viewer-control"
+        aria-label="Zoom out"
+        title="Zoom out"
+        (click)="zoomOut()"
+        [dsBtnDisabled]="rendering || scale <= 0.65">
+        <i class="fas fa-minus"></i>
+      </button>
+
+      <button
+        type="button"
+        class="viewer-zoom-value"
+        title="Reset zoom"
+        (click)="resetZoom()"
+        [dsBtnDisabled]="rendering">
+        {{ scale * 100 | number:'1.0-0' }}%
+      </button>
+
+      <button
+        type="button"
+        class="viewer-control"
+        aria-label="Zoom in"
+        title="Zoom in"
+        (click)="zoomIn()"
+        [dsBtnDisabled]="rendering || scale >= 2.5">
+        <i class="fas fa-plus"></i>
+      </button>
+
+    </div>
+
+  </header>
+
+  <div
+    class="viewer-loading"
+    *ngIf="loading">
+
+    <span class="viewer-spinner" aria-hidden="true"></span>
+
+    <strong>Loading document preview…</strong>
+
+    <small>
+      Larger protected PDFs may take a little longer to prepare.
+    </small>
+
+  </div>
+
+  <div
+    class="viewer-message viewer-message-error"
+    *ngIf="!loading && errorMessage">
+
+    <i
+      class="fas"
+      [class.fa-lock]="accessDenied"
+      [class.fa-exclamation-triangle]="!accessDenied">
+    </i>
+
+    <div>
+      <strong *ngIf="accessDenied">Access required</strong>
+      <strong *ngIf="!accessDenied">Preview unavailable</strong>
+      <p>{{ errorMessage }}</p>
+    </div>
+
+  </div>
+
+  <ng-container
+    *ngIf="!loading && !errorMessage && pdfDocument">
+
+    <div class="viewer-document-summary">
+
+      <span>
+        <i class="fas fa-file-pdf"></i>
+        {{ pageNumbers.length }}
+        {{ pageNumbers.length === 1 ? 'page' : 'pages' }}
+      </span>
+
+      <span *ngIf="rendering">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        Rendering pages…
+      </span>
+
+      <span *ngIf="!rendering">
+        <i class="fas fa-check-circle"></i>
+        Ready
+      </span>
+
+    </div>
+
+    <div
+      class="viewer-pages"
+      (dragstart)="preventDrag($event)">
+
+      <article
+        class="pdf-page"
+        *ngFor="
+          let pageNumber of visiblePageNumbers;
+          trackBy: trackPageNumber
+        ">
+
+        <div class="pdf-page-label">
+          Page {{ pageNumber }} of {{ pageNumbers.length }}
+        </div>
+
+        <div class="canvas-wrapper">
+
+          <canvas
+            #pdfCanvas
+            class="pdf-canvas"
+            draggable="false"
+            [attr.aria-label]="'PDF page ' + pageNumber">
+          </canvas>
+
+          <div
+            class="pdf-watermark"
+            aria-hidden="true">
+            {{ watermarkText }}
+          </div>
+
+        </div>
+
+      </article>
+
+      <div
+        class="pdf-progressive-controls"
+        *ngIf="hasMorePages()">
+
+        <div class="pdf-progressive-status">
+          Showing
+          <strong>{{ visiblePageNumbers.length }}</strong>
+          of
+          <strong>{{ pageNumbers.length }}</strong>
+          pages
+        </div>
+
+        <div class="pdf-progressive-actions">
+
+          <button
+            type="button"
+            class="btn btn-primary btn-sm"
+            (click)="loadMorePages()"
+            [dsBtnDisabled]="rendering">
+
+            <i class="fas fa-plus-circle mr-1"></i>
+            Load next {{ pagesPerBatch }} pages
+
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-outline-secondary btn-sm"
+            (click)="loadNextLargeBatch()"
+            [dsBtnDisabled]="rendering">
+
+            <i class="fas fa-layer-group mr-1"></i>
+            Load next 10 pages
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div
+        class="pdf-all-pages-loaded"
+        *ngIf="!hasMorePages() && pageNumbers.length > pagesPerBatch">
+
+        <i class="fas fa-check-circle"></i>
+        All {{ pageNumbers.length }} pages are displayed.
+
+      </div>
+
+    </div>
+
+  </ng-container>
+
+</section>

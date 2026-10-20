@@ -1,0 +1,131 @@
+<ng-container *ngVar="(bitstreams$ | async) as bitstreams">
+
+  <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0">
+
+    <!-- ===================================================== -->
+    <!-- CONTROLLED ONLINE VIEW                               -->
+    <!-- ===================================================== -->
+
+    <ng-container *ngIf="isViewOnlyItem(); else normalDownloads">
+
+      <ng-container
+        *ngIf="getViewOnlyPdf(bitstreams) as pdf; else noPdfPreview">
+
+        <ds-view-only-pdf
+          [bitstream]="pdf"
+          watermarkText="ONLINE VIEW ONLY">
+        </ds-view-only-pdf>
+
+      </ng-container>
+
+      <ng-template #noPdfPreview>
+
+        <div
+          class="alert alert-secondary mb-0"
+          role="alert">
+
+          No PDF preview is available for this item.
+
+        </div>
+
+      </ng-template>
+
+    </ng-container>
+
+
+    <!-- ===================================================== -->
+    <!-- NORMAL DOWNLOAD MODE                                 -->
+    <!-- ===================================================== -->
+
+    <ng-template #normalDownloads>
+
+      <ul class="file-section list-group">
+
+        <li
+          *ngFor="let file of bitstreams"
+          class="list-group-item paps-file-row">
+
+          <div
+            class="paps-file-icon"
+            aria-hidden="true">
+
+            <i [class]="getFileIcon(file)"></i>
+
+          </div>
+
+          <div class="paps-file-content">
+
+            <ds-file-download-link
+              [bitstream]="file"
+              [item]="item">
+
+              <span class="paps-file-title">
+                {{ getFileDescription(file) }}
+              </span>
+
+              <span class="paps-file-hint">
+                {{ getDownloadLabel(file) }}
+              </span>
+
+            </ds-file-download-link>
+
+          </div>
+
+          <div
+            class="paps-file-download-icon"
+            aria-hidden="true">
+
+            <i class="fas fa-download"></i>
+
+          </div>
+
+        </li>
+
+      </ul>
+
+
+      <ds-loading
+        *ngIf="isLoading"
+        message="{{ 'loading.default' | translate }}"
+        [showMessage]="false">
+      </ds-loading>
+
+
+      <div
+        *ngIf="!isLastPage"
+        class="mt-1"
+        id="view-more">
+
+        <button
+          type="button"
+          class="bitstream-view-more btn btn-outline-secondary btn-sm"
+          (click)="getNextPage()">
+
+          {{ 'item.page.bitstreams.view-more' | translate }}
+
+        </button>
+
+      </div>
+
+
+      <div
+        *ngIf="isLastPage && currentPage !== 1"
+        class="mt-1"
+        id="collapse">
+
+        <button
+          type="button"
+          class="bitstream-collapse btn btn-outline-secondary btn-sm"
+          (click)="currentPage = undefined; getNextPage()">
+
+          {{ 'item.page.bitstreams.collapse' | translate }}
+
+        </button>
+
+      </div>
+
+    </ng-template>
+
+  </ds-metadata-field-wrapper>
+
+</ng-container>

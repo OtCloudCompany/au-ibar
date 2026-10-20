@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="240" height="320" viewBox="0 0 240 320"
+     role="img" aria-label="Document thumbnail unavailable">
+  
+  <rect x="38" y="34" width="164" height="248"
+        rx="10" fill="#FFFFFF" stroke="#D8E6DA" stroke-width="2"/>
+  <path d="M157 34v48h45" fill="#E3EFE4"/>
+  <path d="M157 34l45 48h-45z" fill="#DCECDD"/>
+  <rect x="62" y="115" width="116" height="9"
+        rx="4" fill="#1A5632"/>
+  <rect x="62" y="139" width="92" height="7"
+        rx="3" fill="#A8C9AD"/>
+  <rect x="62" y="157" width="116" height="7"
+        rx="3" fill="#DCE8DE"/>
+  <rect x="62" y="175" width="107" height="7"
+        rx="3" fill="#DCE8DE"/>
+  <rect x="62" y="214" width="116" height="2" fill="#B4A269"/>
+  <text x="120" y="244"
+        text-anchor="middle"
+        font-family="Arial,sans-serif"
+        font-size="15"
+        font-weight="bold"
+        fill="#1A5632">AU-IBAR</text>
+</svg>

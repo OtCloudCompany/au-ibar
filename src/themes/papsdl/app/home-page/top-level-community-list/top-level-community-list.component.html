@@ -1,0 +1,33 @@
+<ng-container *ngVar="(communitiesRD$ | async) as communitiesRD">
+  <div *ngIf="communitiesRD?.hasSucceeded" class="text-md-center">
+    <h2 class="font-weight-bold py-2">
+      {{'home.top-level-communities.help' | translate}}
+    </h2>
+    <div class="row justify-content-between" *ngIf="communitiesFetched?.length > 0">
+      <div class="col-md-2 col-sm-6 my-2 px-sm-4 d-flex" *ngFor="let community of communitiesFetched">
+        <div class="card bg-light h-100 d-flex flex-column w-100">
+          <a routerLink="/communities/{{ community.uuid }}">
+            <img class="card-img-top" src="/assets/papsdl/images/communities/{{ community.logo }}.jpeg" alt="">
+          </a>
+          <div class="card-body p-md-2 d-flex flex-column text-center h-100">
+            <a routerLink="/communities/{{ community.uuid }}" class="flex-grow-1">
+              {{ community.name }}
+            </a>
+            <span class="badge bg-au-red text-white px-2 mt-auto community-item-counts">
+              <a routerLink="/communities/{{ community.uuid }}" class="text-white">
+                {{ community.itemsCount }} Items
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <a routerLink="/community-list" class="text-au-light-green all-collections-link">
+        <i class="fas fa-arrow-circle-right fa-sm text-au-light-green"></i> View all Collections
+      </a>
+    </div>
+  </div>
+  <ds-error *ngIf="communitiesRD?.hasFailed " message="{{'error.top-level-communities' | translate}}"></ds-error>
+  <ds-loading *ngIf="communitiesRD?.isLoading " message="{{'loading.top-level-communities' | translate}}"></ds-loading>
+</ng-container>

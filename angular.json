@@ -40,7 +40,12 @@
             "aot": true,
             "assets": [
               "src/assets",
-              "src/robots.txt"
+              "src/robots.txt",
+              {
+                "glob": "**/*",
+                "input": "src/themes/papsdl/assets",
+                "output": "/assets/papsdl/"
+              }
             ],
             "styles": [
               "src/styles/startup.scss",
@@ -61,7 +66,12 @@
               },
               "node_modules/leaflet/dist/leaflet.css",
               "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css",
-              "node_modules/leaflet.markercluster/dist/MarkerCluster.css"
+              "node_modules/leaflet.markercluster/dist/MarkerCluster.css",
+              {
+                "input": "src/themes/papsdl/styles/theme.scss",
+                "inject": false,
+                "bundleName": "papsdl-theme"
+              }
             ],
             "scripts": [],
             "baseHref": "/"

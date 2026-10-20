@@ -1,0 +1,129 @@
+<section class="editorial-strip">
+
+  <div class="container-fluid editorial-container">
+
+
+    <!-- ===================================================== -->
+    <!-- LATEST AU-IBAR KNOWLEDGE RESOURCES                  -->
+    <!-- ===================================================== -->
+
+    <section class="latest-discovery-section">
+
+      <div class="latest-discovery-heading">
+
+        <div>
+
+          <h2>
+            <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+            Latest Knowledge Resources
+          </h2>
+
+          <div class="heading-line"></div>
+        </div>
+
+
+        <a
+          href="/search?spc.page=1&spc.sf=dc.date.accessioned&spc.sd=DESC"
+          class="latest-discovery-explore">
+          Explore all documents
+          <span aria-hidden="true">→</span>
+        </a>
+
+      </div>
+
+
+      <div
+        *ngIf="latestRD?.isLoading"
+        class="editorial-loading">
+        Loading latest documents...
+      </div>
+
+      <div
+        *ngIf="latestRD?.hasFailed"
+        class="editorial-loading">
+        Latest documents are temporarily unavailable.
+      </div>
+
+
+      <div
+        *ngIf="!latestRD?.isLoading && !latestRD?.hasFailed"
+        class="latest-showcase">
+
+        <button
+          type="button"
+          class="editorial-resource-nav editorial-resource-prev"
+          aria-label="Previous latest document"
+          (click)="previousLatestDocument()">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+
+        <div class="editorial-resource-track">
+
+          <a
+            *ngFor="let item of latestCarouselItems"
+            class="editorial-resource-item"
+            [href]="getItemUrl(item)">
+
+            <div class="editorial-resource-cover">
+
+              <ng-container
+                *ngIf="(getLatestThumbnail(item) | async) as thumbnail;
+                       else latestNoThumbnail">
+
+                <img
+                  [src]="thumbnail"
+                  [alt]="getTitle(item)"
+                  (error)="handleThumbnailError($event)">
+
+              </ng-container>
+
+              <ng-template #latestNoThumbnail>
+                <div class="editorial-resource-placeholder">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+              </ng-template>
+
+            </div>
+
+
+            <span
+              *ngIf="getDate(item)"
+              class="editorial-resource-date">
+              {{ getDate(item) }}
+            </span>
+
+
+
+            <strong class="editorial-resource-title">
+              {{ getTitle(item) }}
+            </strong>
+
+          </a>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="editorial-resource-nav editorial-resource-next"
+          aria-label="Next latest document"
+          (click)="nextLatestDocument()">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================== -->
+    <!-- PRIMARY EDITORIAL ROW                                 -->
+    <!-- ===================================================== -->
+
+    
+
+  </div>
+
+</section>

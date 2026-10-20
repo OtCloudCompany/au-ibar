@@ -1,0 +1,28 @@
+<h2 class="">Recent Submissions</h2>
+<div *ngIf="itemsLoaded" class="bg-light pt-3 pb-5 px-2">
+  <ngb-carousel #carousel [interval]="5000"
+                [wrap]="true" [pauseOnHover]="true">
+    <ng-template ngbSlide *ngFor="let chunk of chunks$ | async">
+      <div class="row">
+        <div *ngFor="let item of chunk" class="col-md-3">
+          <div class="card h-100 d-flex flex-column w-100 p-1">
+            <a [href]="getItemUrl(item)">
+              <img [src]="getThumbnail(item) | async" class="card-img-top" alt="Thumbnail">
+            </a>
+            <div class="card-body px-1 d-flex flex-column">
+              <a [href]="getItemUrl(item)">
+                <p>{{ getTitle(item) }}</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+<ds-error *ngIf="itemRD?.hasFailed" message="{{'error.recent-submissions' | translate}}"></ds-error>
+<ds-loading *ngIf="!itemRD || itemRD.isLoading"
+            message="{{'loading.recent-submissions' | translate}}">
+</ds-loading>
+

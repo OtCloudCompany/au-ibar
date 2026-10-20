@@ -1,0 +1,4772 @@
+/* Keep the standard DSpace publication-page rules, then apply the theme. */
+@import '../../../../../../../app/item-page/simple/item-types/publication/publication.component.scss';
+
+/* ========================================================================== */
+/* PAPS modern publication item page                                          */
+/* ========================================================================== */
+
+:host {
+  --paps-red: #A61E2D;
+  --paps-red-dark: #72102b;
+  --paps-green: #0E591A;
+  --paps-green-soft: rgba(7, 93, 43, 0.08);
+  --paps-blue: #176b9a;
+  --paps-gold: #c7a24b;
+  --paps-ink: #222b32;
+  --paps-body: #3d4850;
+  --paps-muted: #68747d;
+  --paps-border: #dfe5e9;
+  --paps-border-soft: #e9edf0;
+  --paps-surface: #ffffff;
+  --paps-soft: #f5f7f8;
+  --paps-shadow: 0 0.45rem 1.6rem rgba(26, 39, 51, 0.075);
+  --paps-shadow-hover: 0 0.7rem 2rem rgba(26, 39, 51, 0.11);
+
+  display: block;
+  color: var(--paps-body);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Record hero                                                                */
+/* -------------------------------------------------------------------------- */
+
+.record-hero {
+  position: relative;
+  overflow: hidden;
+  margin: 1.15rem 0 1.5rem;
+  border: 1px solid var(--paps-border);
+  border-radius: 1.05rem;
+  background:
+    radial-gradient(
+      circle at 96% 4%,
+      rgba(167, 25, 63, 0.12),
+      transparent 23rem
+    ),
+    radial-gradient(
+      circle at 3% 100%,
+      rgba(7, 93, 43, 0.08),
+      transparent 20rem
+    ),
+    linear-gradient(135deg, #ffffff 0%, #f8fafb 100%);
+  box-shadow: var(--paps-shadow);
+}
+
+.record-hero::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.38rem;
+  background: linear-gradient(
+    180deg,
+    var(--paps-red) 0%,
+    var(--paps-gold) 50%,
+    var(--paps-green) 100%
+  );
+  content: '';
+}
+
+.record-hero-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.45rem 1.7rem 0.75rem 2rem;
+}
+
+.record-hero-title {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.record-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.55rem;
+  color: var(--paps-red);
+  font-size: 0.73rem;
+  font-weight: 750;
+  letter-spacing: 0.085em;
+  text-transform: uppercase;
+}
+
+.record-hero-admin {
+  flex: 0 0 auto;
+}
+
+:host ::ng-deep .record-hero ds-item-page-title-field h1,
+:host ::ng-deep .record-hero ds-item-page-title-field h2 {
+  max-width: 72rem;
+  margin: 0;
+  color: var(--paps-ink);
+  font-size: clamp(1.7rem, 2.7vw, 2.55rem);
+  font-weight: 650;
+  letter-spacing: -0.028em;
+  line-height: 1.22;
+}
+
+.record-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.35rem 1.7rem 1rem 2rem;
+}
+
+.record-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  max-width: 24rem;
+  padding: 0.38rem 0.68rem;
+  overflow: hidden;
+  border: 1px solid rgba(23, 107, 154, 0.16);
+  border-radius: 999px;
+  background: rgba(23, 107, 154, 0.06);
+  color: #28576f;
+  font-size: 0.76rem;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.record-meta-chip i {
+  color: var(--paps-blue);
+}
+
+.record-meta-chip.access-chip {
+  border-color: rgba(7, 93, 43, 0.18);
+  background: rgba(7, 93, 43, 0.07);
+  color: var(--paps-green);
+}
+
+.record-meta-chip.access-chip i {
+  color: var(--paps-green);
+}
+
+.record-action-bar {
+  padding: 0.44rem 1.45rem 0.55rem 1.7rem;
+  border-top: 1px solid rgba(218, 224, 228, 0.9);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.record-action-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.record-action-list .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.55rem;
+  color: #3c4750;
+  font-size: 0.85rem;
+  font-weight: 650;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.record-action-list .nav-link i {
+  color: var(--paps-red);
+}
+
+.record-action-list .nav-link:hover,
+.record-action-list .nav-link:focus {
+  background: rgba(167, 25, 63, 0.08);
+  color: var(--paps-red-dark);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.record-action-list .dropdown-menu {
+  overflow: hidden;
+  border: 1px solid var(--paps-border);
+  border-radius: 0.65rem;
+  box-shadow: var(--paps-shadow);
+}
+
+.record-action-list .dropdown-item {
+  padding: 0.55rem 0.9rem;
+  font-size: 0.86rem;
+}
+
+.record-action-list .dropdown-item:hover,
+.record-action-list .dropdown-item:focus {
+  background: rgba(167, 25, 63, 0.07);
+  color: var(--paps-red-dark);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Main metadata layout                                                       */
+/* -------------------------------------------------------------------------- */
+
+.modern-item-layout {
+  align-items: flex-start;
+  margin-top: 0;
+}
+
+.modern-item-main {
+  padding-right: 0.9rem;
+}
+
+.modern-item-sidebar {
+  padding-left: 0.9rem;
+}
+
+.modern-content-card,
+.modern-side-card,
+.modern-metrics-card {
+  overflow: hidden;
+  border: 1px solid var(--paps-border);
+  border-radius: 0.95rem;
+  background: var(--paps-surface);
+  box-shadow: var(--paps-shadow);
+}
+
+.modern-content-card {
+  margin-bottom: 1.15rem;
+}
+
+.modern-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 1.15rem;
+  border-bottom: 1px solid var(--paps-border-soft);
+  background: linear-gradient(
+    90deg,
+    rgba(167, 25, 63, 0.065),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.modern-card-header > div:last-child {
+  min-width: 0;
+}
+
+.modern-card-header h2 {
+  margin: 0;
+  color: var(--paps-ink);
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.modern-card-kicker {
+  display: block;
+  margin-bottom: 0.1rem;
+  color: var(--paps-red);
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.modern-card-icon {
+  display: grid;
+  width: 2.45rem;
+  height: 2.45rem;
+  flex: 0 0 2.45rem;
+  place-items: center;
+  border-radius: 0.68rem;
+  background: rgba(167, 25, 63, 0.1);
+  color: var(--paps-red);
+}
+
+.modern-card-body {
+  padding: 1.15rem;
+}
+
+.modern-abstract-text {
+  margin: 0;
+  color: #39444c;
+  font-size: 0.98rem;
+  line-height: 1.78;
+}
+
+.modern-metadata-grid {
+  margin-bottom: -1rem;
+}
+
+.modern-metadata-field {
+  position: relative;
+  height: calc(100% - 1rem);
+  margin-bottom: 1rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid #e7ecef;
+  border-radius: 0.72rem;
+  background: linear-gradient(145deg, #ffffff, #fafbfc);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.modern-metadata-field::before {
+  display: block;
+  width: 2.1rem;
+  height: 0.18rem;
+  margin-bottom: 0.65rem;
+  border-radius: 999px;
+  background: rgba(167, 25, 63, 0.55);
+  content: '';
+}
+
+.modern-metadata-field:hover {
+  border-color: rgba(167, 25, 63, 0.25);
+  box-shadow: 0 0.3rem 0.9rem rgba(24, 38, 52, 0.055);
+  transform: translateY(-1px);
+}
+
+.modern-metadata-field-wide {
+  min-height: auto;
+}
+
+.modern-field-label {
+  margin: 0 0 0.42rem;
+  color: #6b747c;
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.modern-field-value {
+  color: #252c32;
+  line-height: 1.58;
+}
+
+.modern-field-value a {
+  color: var(--paps-blue);
+  font-weight: 600;
+}
+
+.modern-subject-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.modern-subject-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.31rem 0.58rem;
+  border: 1px solid rgba(23, 107, 154, 0.17);
+  border-radius: 999px;
+  background: rgba(23, 107, 154, 0.07);
+  color: var(--paps-blue);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.modern-subject-chip:hover,
+.modern-subject-chip:focus {
+  background: rgba(23, 107, 154, 0.12);
+  text-decoration: none;
+}
+
+/* Normalise DSpace child field components placed inside metadata cards. */
+:host ::ng-deep .modern-metadata-field .simple-view-element {
+  margin-bottom: 0 !important;
+}
+
+:host ::ng-deep .modern-metadata-field .simple-view-element-header {
+  margin: 0 0 0.42rem;
+  color: #6b747c;
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+:host ::ng-deep .modern-metadata-field .simple-view-element-body {
+  color: #252c32;
+  line-height: 1.58;
+}
+
+:host ::ng-deep .modern-metadata-field a {
+  overflow-wrap: anywhere;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Sidebar                                                                    */
+/* -------------------------------------------------------------------------- */
+
+.modern-sidebar-sticky {
+  position: sticky;
+  top: 1rem;
+}
+
+.modern-side-card,
+.modern-metrics-card {
+  margin-bottom: 1rem;
+}
+
+.modern-side-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1rem;
+  border-bottom: 1px solid var(--paps-border-soft);
+  background: linear-gradient(
+    135deg,
+    rgba(7, 93, 43, 0.075),
+    #ffffff
+  );
+}
+
+.modern-side-card-header h2 {
+  margin: 0;
+  color: var(--paps-ink);
+  font-size: 1.03rem;
+  font-weight: 700;
+}
+
+.modern-side-card-header > i {
+  color: var(--paps-green);
+  font-size: 1.2rem;
+}
+
+.modern-side-card-kicker {
+  display: block;
+  margin-bottom: 0.12rem;
+  color: #77828a;
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.modern-side-card-body {
+  padding: 1rem;
+}
+
+.modern-thumbnail-wrapper {
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.modern-file-section-wrapper {
+  margin-top: 0.75rem;
+}
+
+:host ::ng-deep .modern-files-card .file-section {
+  margin-bottom: 0;
+}
+
+:host ::ng-deep .modern-files-card .list-group-item {
+  padding: 0.8rem;
+  border-color: var(--paps-border-soft);
+  border-radius: 0.55rem;
+}
+
+:host ::ng-deep .modern-files-card ds-file-download-link a {
+  overflow-wrap: anywhere;
+}
+
+/* Usage metric cards */
+.modern-metrics-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: linear-gradient(135deg, #ffffff, #f7f9fa);
+}
+
+.modern-metric {
+  display: flex;
+  align-items: center;
+  gap: 0.72rem;
+  min-width: 0;
+  padding: 0.95rem;
+}
+
+.modern-metric + .modern-metric {
+  border-left: 1px solid var(--paps-border-soft);
+}
+
+.modern-metric-icon {
+  display: grid;
+  width: 2.55rem;
+  height: 2.55rem;
+  flex: 0 0 2.55rem;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(167, 25, 63, 0.1);
+  color: var(--paps-red);
+}
+
+.modern-metric-content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.modern-metric-label {
+  overflow: hidden;
+  color: #6e7982;
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.modern-metric-value {
+  color: var(--paps-ink);
+  font-size: 1.3rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+/* Quick facts */
+.modern-facts-body {
+  padding: 0.35rem 1rem 1rem;
+}
+
+:host ::ng-deep .modern-facts-body .simple-view-element,
+:host ::ng-deep .modern-facts-body ds-item-page-date-field,
+:host ::ng-deep .modern-facts-body ds-metadata-representation-list,
+:host ::ng-deep .modern-facts-body ds-generic-item-page-field,
+:host ::ng-deep .modern-facts-body ds-item-page-collections {
+  display: block;
+  padding: 0.85rem 0;
+  margin: 0;
+  border-bottom: 1px solid #edf0f2;
+}
+
+:host ::ng-deep .modern-facts-body > *:last-child {
+  border-bottom: 0;
+}
+
+:host ::ng-deep .modern-facts-body .simple-view-element-header {
+  margin: 0 0 0.35rem;
+  color: #707b83;
+  font-size: 0.69rem;
+  font-weight: 750;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+}
+
+:host ::ng-deep .modern-facts-body .simple-view-element-body {
+  color: #2d373e;
+  line-height: 1.52;
+}
+
+:host ::ng-deep .modern-facts-body a {
+  overflow-wrap: anywhere;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reader positioned after metadata                                           */
+/* -------------------------------------------------------------------------- */
+
+.modern-reader-stage {
+  overflow: hidden;
+  margin: 1.5rem 0 1.25rem;
+  border: 1px solid #d7dde1;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 0.65rem 2rem rgba(26, 39, 51, 0.1);
+}
+
+.modern-reader-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.05rem 1.3rem;
+  border-bottom: 1px solid #e0e5e8;
+  background: linear-gradient(
+    120deg,
+    rgba(7, 93, 43, 0.1),
+    rgba(255, 255, 255, 0.98) 46%,
+    rgba(167, 25, 63, 0.08)
+  );
+}
+
+.modern-reader-heading {
+  min-width: 0;
+}
+
+.modern-reader-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  margin-bottom: 0.25rem;
+  color: var(--paps-green);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.078em;
+  text-transform: uppercase;
+}
+
+.modern-reader-title {
+  margin: 0;
+  color: var(--paps-ink);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.modern-reader-description {
+  max-width: 54rem;
+  margin: 0.3rem 0 0;
+  color: var(--paps-muted);
+  font-size: 0.87rem;
+  line-height: 1.55;
+}
+
+.modern-reader-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 0 0 auto;
+  padding: 0.42rem 0.7rem;
+  border: 1px solid rgba(7, 93, 43, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--paps-green);
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.reader-status-dot {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: #21a75a;
+  box-shadow: 0 0 0 0.2rem rgba(33, 167, 90, 0.13);
+}
+
+.modern-reader-body {
+  padding: 1rem;
+  background: linear-gradient(145deg, #e8edef, #f4f6f7);
+}
+
+:host ::ng-deep .modern-reader-body ds-view-only-pdf,
+:host ::ng-deep .modern-reader-body .view-only-pdf {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border: 1px solid #d1d8dc;
+  border-radius: 0.82rem;
+  background: #fff;
+  box-shadow: 0 0.3rem 1rem rgba(24, 36, 48, 0.08);
+}
+
+:host ::ng-deep .modern-reader-body .viewer-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 0.85rem 1rem;
+  background: #fff;
+}
+
+:host ::ng-deep .modern-reader-body .viewer-pages {
+  min-height: 34rem;
+  max-height: 76vh;
+  padding: 1.25rem;
+  background: #4f5559;
+}
+
+:host ::ng-deep .modern-reader-body .pdf-page,
+:host ::ng-deep .modern-reader-body .canvas-wrapper,
+:host ::ng-deep .modern-reader-body .pdf-canvas,
+:host ::ng-deep .modern-reader-body canvas {
+  max-width: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Collapsible usage analytics                                                 */
+/* -------------------------------------------------------------------------- */
+
+.usage-insights-panel {
+  overflow: hidden;
+  margin: 1.25rem 0 2rem;
+  border: 1px solid var(--paps-border);
+  border-radius: 0.95rem;
+  background: #fff;
+  box-shadow: var(--paps-shadow);
+}
+
+.usage-insights-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(23, 107, 154, 0.08),
+    #ffffff 58%,
+    rgba(167, 25, 63, 0.055)
+  );
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.usage-insights-toggle:hover,
+.usage-insights-toggle:focus {
+  background: linear-gradient(
+    110deg,
+    rgba(23, 107, 154, 0.13),
+    #ffffff 58%,
+    rgba(167, 25, 63, 0.08)
+  );
+  outline: none;
+}
+
+.usage-toggle-icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
+  place-items: center;
+  border-radius: 0.78rem;
+  background: rgba(23, 107, 154, 0.11);
+  color: var(--paps-blue);
+  font-size: 1.15rem;
+}
+
+.usage-toggle-content {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.usage-toggle-kicker {
+  color: var(--paps-blue);
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.078em;
+  text-transform: uppercase;
+}
+
+.usage-toggle-title {
+  color: var(--paps-ink);
+  font-size: 1.05rem;
+}
+
+.usage-toggle-description {
+  margin-top: 0.12rem;
+  color: var(--paps-muted);
+  font-size: 0.79rem;
+}
+
+.usage-toggle-summary {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex: 0 0 auto;
+}
+
+.usage-summary-item {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.usage-summary-item small {
+  color: #78838c;
+  font-size: 0.61rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.usage-summary-item strong {
+  color: var(--paps-ink);
+  font-size: 1rem;
+}
+
+.usage-toggle-chevron {
+  display: grid;
+  width: 2.1rem;
+  height: 2.1rem;
+  place-items: center;
+  border: 1px solid #dfe4e8;
+  border-radius: 50%;
+  background: #fff;
+  color: #53606a;
+}
+
+.usage-toggle-chevron i {
+  transition: transform 200ms ease;
+}
+
+.usage-insights-toggle.is-open .usage-toggle-chevron i {
+  transform: rotate(180deg);
+}
+
+.usage-insights-body {
+  padding: 1.05rem;
+  border-top: 1px solid #e2e7ea;
+  background: #fbfcfc;
+}
+
+.modern-analytics-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.modern-analytics-tabs .nav-link {
+  border-radius: 999px;
+  color: #53616b;
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.modern-analytics-tabs .nav-link.active {
+  background: var(--paps-blue);
+  color: #fff;
+}
+
+.usage-tab-content {
+  padding-top: 0.35rem;
+}
+
+.modern-chart-panel,
+.analytics-table-panel {
+  overflow: hidden;
+  border: 1px solid #e1e6e9;
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+.modern-chart-panel {
+  min-height: 20rem;
+  padding: 0.85rem;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.8fr) minmax(0, 1.4fr);
+  gap: 1rem;
+}
+
+.analytics-table-panel thead {
+  background: #f1f4f6;
+  color: #5d6871;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.analytics-table-panel th,
+.analytics-table-panel td {
+  padding: 0.7rem 0.75rem;
+  vertical-align: middle;
+}
+
+/* Minimise the chart without making it unreadable. */
+:host ::ng-deep .usage-insights-body highcharts-chart {
+  display: block;
+  width: 100% !important;
+  height: 340px !important;
+}
+
+:host ::ng-deep .usage-insights-body .highcharts-container,
+:host ::ng-deep .usage-insights-body .highcharts-root {
+  max-width: 100% !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive                                                                 */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 991.98px) {
+  .record-hero-main,
+  .modern-reader-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .modern-item-main,
+  .modern-item-sidebar {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .modern-sidebar-sticky {
+    position: static;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .usage-toggle-summary {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .record-hero-main {
+    padding: 1.25rem 1.1rem 0.75rem 1.4rem;
+  }
+
+  .record-hero-meta {
+    padding-right: 1rem;
+    padding-left: 1.4rem;
+  }
+
+  .record-action-bar {
+    padding-right: 0.85rem;
+    padding-left: 1rem;
+  }
+
+  .record-action-list {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .record-action-list .nav-item,
+  .record-action-list .nav-link {
+    width: 100%;
+  }
+
+  .modern-reader-status {
+    align-self: flex-start;
+  }
+
+  .usage-insights-toggle {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .usage-toggle-summary {
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 4rem;
+  }
+
+  .usage-summary-item {
+    text-align: left;
+  }
+
+  :host ::ng-deep .modern-reader-body .viewer-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  :host ::ng-deep .modern-reader-body .viewer-pages {
+    min-height: 25rem;
+    padding: 0.65rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .record-hero-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .record-meta-chip {
+    max-width: 100%;
+  }
+
+  .modern-metrics-card {
+    grid-template-columns: 1fr;
+  }
+
+  .modern-metric + .modern-metric {
+    border-top: 1px solid var(--paps-border-soft);
+    border-left: 0;
+  }
+
+  .usage-toggle-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) auto;
+    padding-left: 0;
+  }
+
+  :host ::ng-deep .usage-insights-body highcharts-chart {
+    height: 290px !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Print                                                                       */
+/* -------------------------------------------------------------------------- */
+
+@media print {
+  .record-action-bar,
+  .modern-reader-stage,
+  .modern-metrics-card,
+  .usage-insights-panel,
+  .record-hero-admin {
+    display: none !important;
+  }
+
+  .record-hero,
+  .modern-content-card,
+  .modern-side-card {
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+/* ========================================================================== */
+/* Enhanced "About this record" sidebar and thumbnail                         */
+/* ========================================================================== */
+
+.modern-record-thumbnail {
+  position: relative;
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--paps-border-soft, #e6ebee);
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(167, 25, 63, 0.08),
+      transparent 70%
+    ),
+    #f8fafb;
+  text-align: center;
+}
+
+.modern-record-thumbnail::after {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid rgba(7, 93, 43, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0E591A;
+  content: 'Repository record';
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+:host ::ng-deep .modern-record-thumbnail ds-thumbnail img {
+  width: auto;
+  max-width: 100%;
+  max-height: 15rem;
+  border: 1px solid #d8dee2;
+  border-radius: 0.55rem;
+  background: #fff;
+  box-shadow: 0 0.45rem 1.25rem rgba(27, 41, 53, 0.13);
+  object-fit: contain;
+}
+
+:host ::ng-deep .modern-record-thumbnail .thumbnail {
+  margin: 0 auto;
+}
+
+.modern-facts-body {
+  padding: 0;
+}
+
+.record-fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1rem;
+  border-bottom: 1px solid #edf0f2;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.record-fact:last-child {
+  border-bottom: 0;
+}
+
+.record-fact:hover {
+  background: #fafbfc;
+}
+
+.record-fact-icon {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 2.25rem;
+  place-items: center;
+  border-radius: 0.6rem;
+  background: rgba(7, 93, 43, 0.08);
+  color: #0E591A;
+  font-size: 0.85rem;
+}
+
+.record-fact-content {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.record-fact-label {
+  display: block;
+  margin-bottom: 0.28rem;
+  color: #747f88;
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+}
+
+.record-fact-value {
+  color: #293239;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.record-fact-value a {
+  color: #176b9a;
+  font-weight: 600;
+}
+
+.record-fact-value a:hover {
+  color: #A61E2D;
+  text-decoration: underline;
+}
+
+:host ::ng-deep .record-fact-component .simple-view-element {
+  margin: 0 !important;
+}
+
+:host ::ng-deep .record-fact-component .simple-view-element-header {
+  margin: 0 0 0.28rem;
+  color: #747f88;
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+}
+
+:host ::ng-deep .record-fact-component .simple-view-element-body {
+  color: #293239;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+:host ::ng-deep .record-fact-component ul {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+:host ::ng-deep .record-fact-component ds-item-page-collections a {
+  color: #176b9a;
+  font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+  .modern-record-thumbnail::after {
+    display: none;
+  }
+
+  :host ::ng-deep .modern-record-thumbnail ds-thumbnail img {
+    max-height: 18rem;
+  }
+}
+
+
+/* ========================================================================== */
+/* Final test-site refinements: media fallback and FAO-style social sharing    */
+/* ========================================================================== */
+
+.record-action-bar {
+  padding: 0.85rem 1.7rem;
+  border-top: 1px solid var(--paps-border);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.record-action-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.record-metadata-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.55rem;
+  color: var(--paps-ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.record-metadata-link i {
+  color: var(--paps-red);
+}
+
+.record-metadata-link:hover,
+.record-metadata-link:focus {
+  background: rgba(167, 25, 63, 0.08);
+  color: var(--paps-red-dark);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.record-share-group {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.record-share-label {
+  color: var(--paps-muted);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.record-share-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.record-share-button {
+  display: inline-grid;
+  width: 2.55rem;
+  height: 2.55rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 0.2rem 0.55rem rgba(28, 41, 53, 0.14);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease;
+}
+
+.record-share-button:hover,
+.record-share-button:focus {
+  color: #fff;
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 0.4rem 0.9rem rgba(28, 41, 53, 0.2);
+  text-decoration: none;
+}
+
+.share-x {
+  background: #050505;
+  font-family: Arial, sans-serif;
+  font-size: 1.05rem;
+}
+
+.share-facebook {
+  background: #4267b2;
+}
+
+.share-linkedin {
+  background: #0877a9;
+}
+
+.share-email {
+  background: #7a7d80;
+}
+
+
+:host ::ng-deep .modern-media-viewer-wrapper .media-viewer {
+  width: 100%;
+}
+
+:host ::ng-deep .modern-media-viewer-wrapper ngx-gallery {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  height: 320px !important;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #d8dee2;
+  border-radius: 0.7rem;
+  background: #fff;
+  box-shadow: 0 0.45rem 1.25rem rgba(27, 41, 53, 0.12);
+}
+
+:host ::ng-deep .modern-media-viewer-wrapper .ngx-gallery-layout {
+  width: 100%;
+  height: 100%;
+}
+
+:host ::ng-deep .modern-media-viewer-wrapper .ngx-gallery-image-wrapper {
+  background: #f5f6f7;
+}
+
+:host ::ng-deep .modern-media-viewer-wrapper .ngx-gallery-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.modern-record-thumbnail {
+  position: relative;
+  min-height: 13rem;
+  padding: 1.35rem 1.25rem 2.7rem;
+  text-align: center;
+}
+
+:host ::ng-deep .modern-record-thumbnail ds-thumbnail {
+  display: block;
+  width: 100%;
+}
+
+:host ::ng-deep .modern-record-thumbnail .thumbnail {
+  display: flex;
+  min-height: 10rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+:host ::ng-deep .modern-record-thumbnail img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 16rem;
+  margin: 0 auto;
+  border: 1px solid #d6dde1;
+  border-radius: 0.55rem;
+  background: #fff;
+  box-shadow: 0 0.55rem 1.5rem rgba(25, 39, 52, 0.16);
+  object-fit: contain;
+}
+
+.modern-thumbnail-caption {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.85rem;
+  left: 1rem;
+  color: #607078;
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767.98px) {
+  .record-action-layout {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .record-share-group {
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .record-share-icons {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 575.98px) {
+  :host ::ng-deep .modern-media-viewer-wrapper ngx-gallery {
+    height: 240px !important;
+  }
+}
+
+
+/* ========================================================================== */
+/* Final production-aligned media, sharing and label corrections              */
+/* ========================================================================== */
+
+/* Show all social glyphs in white, including Font Awesome pseudo-elements. */
+.record-share-button,
+.record-share-button:hover,
+.record-share-button:focus,
+.record-share-button:active,
+.record-share-button i,
+.record-share-button i::before,
+.record-share-button span,
+.record-share-button svg {
+  color: #fff !important;
+  fill: #fff !important;
+  text-decoration: none !important;
+}
+
+.x-symbol {
+  color: #fff !important;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 750;
+  line-height: 1;
+}
+
+/* Prevent a blank preview strip when no media/thumbnail exists. */
+.modern-record-media:empty {
+  display: none;
+}
+
+.modern-record-media {
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+  border: 1px solid var(--paps-border-soft);
+  border-radius: 0.7rem;
+  background: linear-gradient(145deg, #f8faf9, #f1f5f5);
+}
+
+.modern-thumbnail-loading {
+  display: flex;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: #69757e;
+  font-size: 0.78rem;
+}
+
+.modern-record-thumbnail {
+  position: relative;
+  padding: 1rem 1rem 2.35rem;
+  text-align: center;
+}
+
+.modern-record-thumbnail img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 18rem;
+  margin: 0 auto;
+  border: 1px solid #d4dce0;
+  border-radius: 0.55rem;
+  background: #fff;
+  box-shadow: 0 0.55rem 1.4rem rgba(25, 39, 52, 0.15);
+  object-fit: contain;
+}
+
+.modern-thumbnail-caption {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.7rem;
+  left: 1rem;
+  color: #68747c;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.modern-media-viewer-wrapper {
+  padding: 0.8rem;
+}
+
+:host ::ng-deep .modern-media-viewer-wrapper ngx-gallery {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  height: 300px !important;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 0.55rem;
+  background: #fff;
+}
+
+/* One label system for both native and nested DSpace metadata components. */
+:host {
+  --metadata-label-size: 0.7rem;
+  --metadata-label-colour: #737f88;
+  --metadata-label-spacing: 0.065em;
+}
+
+.record-fact-label,
+.modern-field-label,
+:host ::ng-deep .simple-view-element-header,
+:host ::ng-deep .record-fact .simple-view-element-header,
+:host ::ng-deep .modern-metadata-field .simple-view-element-header,
+:host ::ng-deep .modern-facts-body .simple-view-element-header,
+:host ::ng-deep h1.simple-view-element-header,
+:host ::ng-deep h2.simple-view-element-header,
+:host ::ng-deep h3.simple-view-element-header,
+:host ::ng-deep h4.simple-view-element-header {
+  display: block;
+  margin: 0 0 0.38rem !important;
+  color: var(--metadata-label-colour) !important;
+  font-size: var(--metadata-label-size) !important;
+  font-weight: 750 !important;
+  letter-spacing: var(--metadata-label-spacing) !important;
+  line-height: 1.35 !important;
+  text-transform: uppercase !important;
+}
+
+.record-fact-value,
+.modern-field-value,
+:host ::ng-deep .simple-view-element-body,
+:host ::ng-deep .record-fact .simple-view-element-body,
+:host ::ng-deep .modern-metadata-field .simple-view-element-body {
+  color: #293239;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 575.98px) {
+  :host ::ng-deep .modern-media-viewer-wrapper ngx-gallery {
+    height: 235px !important;
+  }
+}
+
+
+/* Final standard DSpace thumbnail rendering */
+.modern-record-thumbnail {
+  min-height: 0;
+  padding: 1rem;
+}
+
+:host ::ng-deep .modern-record-thumbnail ds-thumbnail {
+  display: block;
+  width: 100%;
+}
+
+:host ::ng-deep .modern-record-thumbnail .thumbnail {
+  display: flex;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+:host ::ng-deep .modern-record-thumbnail img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 18rem;
+  margin: 0 auto;
+  border: 1px solid #d4dce0;
+  border-radius: 0.55rem;
+  background: #fff;
+  box-shadow: 0 0.55rem 1.4rem rgba(25, 39, 52, 0.15);
+  object-fit: contain;
+}
+
+
+
+/* ========================================================================== */
+/* Compact progressive metadata layout                                         */
+/* ========================================================================== */
+
+.record-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+
+.record-info-tile {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid #e4e9ec;
+  border-radius: 0.8rem;
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #fbfcfd 100%
+    );
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+
+.record-info-tile:hover {
+  border-color: rgba(166, 30, 45, 0.2);
+  box-shadow:
+    0 0.35rem 1rem
+    rgba(26, 39, 51, 0.055);
+  transform: translateY(-1px);
+}
+
+
+.record-info-icon {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  flex: 0 0 2.35rem;
+  place-items: center;
+  border-radius: 0.7rem;
+  background: rgba(14, 89, 26, 0.075);
+  color: #0E591A;
+  font-size: 0.86rem;
+}
+
+
+.record-info-content {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+
+.record-info-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #6e7b84;
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+
+.record-info-value {
+  display: block;
+  color: #26343d;
+  font-size: 0.91rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+
+.record-info-wide {
+  grid-column: 1 / -1;
+  padding: 1rem;
+  border: 1px solid #e4e9ec;
+  border-radius: 0.8rem;
+  background: #fcfdfe;
+}
+
+
+.record-info-wide-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+
+.record-info-wide-heading .record-info-label {
+  margin: 0;
+}
+
+
+
+/* ========================================================================== */
+/* Repository context                                                          */
+/* ========================================================================== */
+
+.repository-context-card,
+.persistent-link-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--paps-border);
+  border-radius: 0.9rem;
+  background: #fff;
+  box-shadow:
+    0 0.35rem 1.15rem
+    rgba(26, 39, 51, 0.05);
+}
+
+
+.repository-context-icon,
+.persistent-link-icon {
+  display: grid;
+  width: 2.85rem;
+  height: 2.85rem;
+  flex: 0 0 2.85rem;
+  place-items: center;
+  border-radius: 0.8rem;
+}
+
+
+.repository-context-icon {
+  background: rgba(166, 30, 45, 0.085);
+  color: #A61E2D;
+}
+
+
+.persistent-link-icon {
+  background: rgba(14, 89, 26, 0.085);
+  color: #0E591A;
+}
+
+
+.repository-context-content,
+.persistent-link-content {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+
+.repository-context-kicker,
+.persistent-link-kicker {
+  display: block;
+  margin-bottom: 0.12rem;
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+
+.repository-context-kicker {
+  color: #A61E2D;
+}
+
+
+.persistent-link-kicker {
+  color: #0E591A;
+}
+
+
+.repository-context-card h2,
+.persistent-link-card h2 {
+  margin: 0 0 0.3rem;
+  color: #25323a;
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+
+.repository-context-value {
+  color: #176b9a;
+  font-size: 0.88rem;
+}
+
+
+:host ::ng-deep
+.repository-context-value
+ds-item-page-collections
+h2,
+:host ::ng-deep
+.repository-context-value
+ds-item-page-collections
+h3,
+:host ::ng-deep
+.repository-context-value
+ds-item-page-collections
+h5 {
+  display: none;
+}
+
+
+:host ::ng-deep
+.repository-context-value
+ds-item-page-collections {
+  margin: 0;
+}
+
+
+.persistent-link-value {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  color: #087a8b;
+  font-size: 0.84rem;
+  font-weight: 550;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.persistent-link-value:hover {
+  color: #0E591A;
+  text-decoration: none;
+}
+
+
+.persistent-link-action {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 2.5rem;
+  place-items: center;
+  border: 1px solid rgba(14, 89, 26, 0.15);
+  border-radius: 50%;
+  background: rgba(14, 89, 26, 0.055);
+  color: #0E591A;
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+
+.persistent-link-action:hover {
+  background: rgba(14, 89, 26, 0.12);
+  color: #0E591A;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+
+
+/* Keep long file lists independent from main metadata flow */
+.modern-sidebar-sticky {
+  position: sticky;
+  top: 1.25rem;
+}
+
+
+/* Responsive */
+@media (max-width: 767.98px) {
+
+  .record-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .record-info-wide {
+    grid-column: auto;
+  }
+
+  .repository-context-card,
+  .persistent-link-card {
+    align-items: flex-start;
+  }
+
+  .persistent-link-value {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+}
+
+
+@media (max-width: 991.98px) {
+
+  .modern-sidebar-sticky {
+    position: static;
+  }
+
+}
+
+
+/* ========================================================================== */
+/* Social sharing                                                              */
+/* ========================================================================== */
+
+.record-action-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+
+.record-share-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+
+.record-share-label {
+  color: #6e7a82;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+.record-share-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+
+.record-share-button {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow:
+    0 0.25rem 0.7rem
+    rgba(20, 31, 40, 0.12);
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    opacity 150ms ease;
+}
+
+
+.record-share-button:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow:
+    0 0.45rem 1rem
+    rgba(20, 31, 40, 0.18);
+  text-decoration: none;
+}
+
+
+.share-x {
+  background: #101010;
+}
+
+
+.share-facebook {
+  background: #4267b2;
+}
+
+
+.share-linkedin {
+  background: #0a66c2;
+}
+
+
+.share-email {
+  background: #7b848b;
+}
+
+
+.x-symbol {
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+
+/* ========================================================================== */
+/* File/download presentation                                                   */
+/* ========================================================================== */
+
+.modern-file-section-wrapper {
+  margin-top: 0.85rem;
+}
+
+
+/* Each DSpace file row */
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 4.35rem;
+  margin-bottom: 0.55rem;
+  padding: 0.85rem 3.2rem 0.85rem 3.25rem;
+  overflow: hidden;
+  border: 1px solid #dfe6e9;
+  border-radius: 0.75rem !important;
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #fbfcfd 100%
+    );
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease,
+    background-color 150ms ease;
+}
+
+
+/* document icon */
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group-item::before {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border-radius: 0.5rem;
+  background: rgba(166, 30, 45, 0.085);
+  color: #A61E2D;
+  content: '\f1c1';
+  font-family: 'Font Awesome 5 Free';
+  font-size: 0.85rem;
+  font-weight: 900;
+  transform: translateY(-50%);
+}
+
+
+/* download cue */
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group-item::after {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  color: #0E591A;
+  content: '\f019';
+  font-family: 'Font Awesome 5 Free';
+  font-size: 0.9rem;
+  font-weight: 900;
+  transform: translateY(-50%);
+}
+
+
+/* clickable title/link */
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group-item a {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  color: #087685;
+  font-size: 0.91rem;
+  font-weight: 650;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+
+/* optional helper cue */
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group-item a::after {
+  display: block;
+  margin-top: 0.22rem;
+  color: #829099;
+  content: 'Download document';
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group-item:hover {
+  border-color: rgba(14, 89, 26, 0.25);
+  background: #ffffff;
+  box-shadow:
+    0 0.35rem 1rem
+    rgba(23, 44, 57, 0.08);
+  transform: translateY(-1px);
+}
+
+
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group-item:hover::after {
+  transform:
+    translateY(-50%)
+    translateY(-1px);
+}
+
+
+/* Remove default spacing that can make long file lists huge */
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group {
+  gap: 0;
+  margin: 0;
+}
+
+
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group-item:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Visually distinguish large multi-file groups */
+.modern-files-card {
+  overflow: hidden;
+}
+
+
+.modern-files-card .modern-side-card-header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+
+/* If many documents exist, keep the sidebar manageable */
+.modern-file-section-wrapper {
+  max-height: 34rem;
+  overflow-y: auto;
+  padding-right: 0.15rem;
+  scrollbar-width: thin;
+}
+
+
+/* scrollbar */
+.modern-file-section-wrapper::-webkit-scrollbar {
+  width: 0.42rem;
+}
+
+
+.modern-file-section-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.modern-file-section-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #c9d3d8;
+}
+
+
+/* ========================================================================== */
+/* Mobile                                                                      */
+/* ========================================================================== */
+
+@media (max-width: 767.98px) {
+
+  .record-action-layout {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .record-share-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .record-share-label {
+    display: none;
+  }
+
+  .record-share-button {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .modern-file-section-wrapper {
+    max-height: none;
+  }
+
+}
+
+
+/* ========================================================================== */
+/* FINAL DENSITY REFINEMENTS                                                    */
+/* ========================================================================== */
+
+/* Hero: less oversized, more editorial */
+.record-hero {
+  margin-top: 0.8rem;
+  margin-bottom: 1.15rem;
+}
+
+.record-hero-main {
+  padding: 1.35rem 1.7rem 0.7rem;
+}
+
+:host ::ng-deep
+.record-hero-title
+ds-item-page-title-field h1 {
+  margin: 0;
+  font-size: clamp(1.9rem, 2.7vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.record-hero-eyebrow {
+  margin-bottom: 0.55rem;
+}
+
+.record-hero-meta {
+  gap: 0.45rem;
+  padding: 0.65rem 1.7rem 1rem;
+}
+
+.record-meta-chip {
+  padding: 0.38rem 0.7rem;
+  font-size: 0.74rem;
+}
+
+.record-action-bar {
+  padding: 0.7rem 1.7rem;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Compact Item Information                                                    */
+/* -------------------------------------------------------------------------- */
+
+.modern-metadata-card .modern-card-header {
+  padding: 0.8rem 1rem;
+}
+
+.modern-metadata-card .modern-card-body {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.modern-metadata-card .modern-card-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 2.25rem;
+}
+
+.modern-metadata-card .modern-card-kicker {
+  font-size: 0.61rem;
+}
+
+.modern-metadata-card .modern-card-header h2 {
+  font-size: 1rem;
+}
+
+.record-info-grid {
+  gap: 0.65rem;
+}
+
+.record-info-tile {
+  gap: 0.68rem;
+  min-height: 4.25rem;
+  padding: 0.72rem 0.8rem;
+  border-radius: 0.7rem;
+}
+
+.record-info-icon {
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 2rem;
+  border-radius: 0.58rem;
+  font-size: 0.75rem;
+}
+
+.record-info-label {
+  margin-bottom: 0.18rem;
+  font-size: 0.59rem;
+  letter-spacing: 0.065em;
+}
+
+.record-info-value {
+  font-size: 0.82rem;
+  line-height: 1.42;
+}
+
+.record-info-wide {
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.7rem;
+}
+
+.record-info-wide-heading {
+  gap: 0.6rem;
+  margin-bottom: 0.55rem;
+}
+
+.modern-subject-list {
+  gap: 0.35rem;
+}
+
+.modern-subject-chip {
+  padding: 0.32rem 0.62rem;
+  font-size: 0.72rem;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Compact repository / URI cards                                              */
+/* -------------------------------------------------------------------------- */
+
+.repository-context-card,
+.persistent-link-card {
+  gap: 0.75rem;
+  margin-bottom: 0.7rem;
+  padding: 0.75rem 0.9rem;
+}
+
+.repository-context-icon,
+.persistent-link-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 2.25rem;
+}
+
+.repository-context-card h2,
+.persistent-link-card h2 {
+  margin-bottom: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.repository-context-kicker,
+.persistent-link-kicker {
+  font-size: 0.58rem;
+}
+
+
+
+/* ========================================================================== */
+/* REFINED FILE DOWNLOAD LIST                                                   */
+/* ========================================================================== */
+
+/* Disable previous pseudo icons */
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group-item::before,
+:host ::ng-deep
+.modern-file-section-wrapper
+.list-group-item::after {
+  display: none !important;
+  content: none !important;
+}
+
+
+:host ::ng-deep
+.modern-file-section-wrapper
+.paps-file-row {
+  display: grid !important;
+  grid-template-columns: 2rem minmax(0, 1fr) 1.5rem;
+  min-height: 0;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.4rem;
+  padding: 0.62rem 0.72rem !important;
+  border: 1px solid #dfe5e8;
+  border-radius: 0.68rem !important;
+  background: #fff;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+
+:host ::ng-deep
+.modern-file-section-wrapper
+.paps-file-row:hover {
+  border-color: rgba(14, 89, 26, 0.24);
+  box-shadow:
+    0 0.28rem 0.8rem
+    rgba(26, 39, 51, 0.07);
+  transform: translateY(-1px);
+}
+
+
+:host ::ng-deep
+.paps-file-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 0.55rem;
+  background: rgba(166, 30, 45, 0.08);
+  color: #A61E2D;
+  font-size: 0.78rem;
+}
+
+
+:host ::ng-deep
+.paps-file-content {
+  min-width: 0;
+}
+
+
+:host ::ng-deep
+.paps-file-content
+ds-file-download-link {
+  display: block;
+  min-width: 0;
+}
+
+
+:host ::ng-deep
+.paps-file-content a {
+  display: block;
+  color: #087687;
+  text-decoration: none;
+}
+
+
+:host ::ng-deep
+.paps-file-title {
+  display: block;
+  overflow: hidden;
+  font-size: 0.79rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+:host ::ng-deep
+.paps-file-hint {
+  display: block;
+  margin-top: 0.12rem;
+  color: #8a969e;
+  font-size: 0.55rem;
+  font-weight: 750;
+  letter-spacing: 0.055em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+
+:host ::ng-deep
+.paps-file-download-icon {
+  color: #0E591A;
+  font-size: 0.76rem;
+  text-align: center;
+  transition: transform 150ms ease;
+}
+
+
+:host ::ng-deep
+.paps-file-row:hover
+.paps-file-download-icon {
+  transform: translateY(-1px);
+}
+
+
+/* tighter large file sets */
+.modern-file-section-wrapper {
+  max-height: 30rem;
+}
+
+
+/* View more / Collapse should look intentional */
+:host ::ng-deep
+.modern-file-section-wrapper
+.bitstream-view-more,
+:host ::ng-deep
+.modern-file-section-wrapper
+.bitstream-collapse {
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.4rem 0.7rem;
+  border-color: #d9e1e5;
+  border-radius: 0.55rem;
+  color: #52616a;
+  font-size: 0.68rem;
+  font-weight: 650;
+}
+
+
+:host ::ng-deep
+.modern-file-section-wrapper
+.bitstream-view-more:hover,
+:host ::ng-deep
+.modern-file-section-wrapper
+.bitstream-collapse:hover {
+  border-color: #0E591A;
+  background: rgba(14, 89, 26, 0.055);
+  color: #0E591A;
+}
+
+
+/* Files card slightly tighter */
+.modern-files-card .modern-side-card-header {
+  padding: 0.72rem 0.9rem;
+}
+
+.modern-files-card .modern-side-card-body {
+  padding: 0.75rem;
+}
+
+
+@media (max-width: 767.98px) {
+
+  :host ::ng-deep
+  .paps-file-title {
+    white-space: normal;
+  }
+
+}
+
+/* Remove legacy duplicate download hint */
+:host ::ng-deep
+.paps-file-content a::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* ========================================================================== */
+/* Final hero title refinement                                                 */
+/* ========================================================================== */
+
+.record-hero-main {
+  padding: 1rem 1.45rem 0.55rem;
+}
+
+:host ::ng-deep
+.record-hero-title
+ds-item-page-title-field h1 {
+  font-size: clamp(1.55rem, 2.15vw, 2.35rem) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em;
+}
+
+.record-hero-eyebrow {
+  margin-bottom: 0.4rem;
+  font-size: 0.7rem;
+}
+
+.record-hero-meta {
+  padding: 0.55rem 1.45rem 0.75rem;
+}
+
+.record-action-bar {
+  padding: 0.55rem 1.45rem;
+}
+
+:host ::ng-deep
+.modern-file-section-wrapper
+.paps-file-row {
+  gap: 0.55rem;
+  margin-bottom: 0.32rem;
+  padding: 0.5rem 0.62rem !important;
+}
+
+:host ::ng-deep
+.paps-file-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  font-size: 0.7rem;
+}
+
+:host ::ng-deep
+.paps-file-title {
+  font-size: 0.75rem;
+}
+
+:host ::ng-deep
+.paps-file-hint {
+  margin-top: 0.08rem;
+  font-size: 0.5rem;
+}
+
+:host ::ng-deep
+.paps-file-download-icon {
+  font-size: 0.7rem;
+}
+
+/* Slightly smaller final hero title */
+:host ::ng-deep
+.record-hero-title
+ds-item-page-title-field h1 {
+  font-size: clamp(1.4rem, 1.85vw, 2rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.018em;
+}
+
+.record-hero-main {
+  padding-top: 0.85rem;
+  padding-bottom: 0.45rem;
+}
+
+
+/* ========================================================================== */
+/* ABSTRACT / DOCUMENT PREVIEW TABS                                            */
+/* ========================================================================== */
+
+.record-reading-panel {
+  margin: 0 0 1.15rem;
+  overflow: hidden;
+  border: 1px solid #dfe5e9;
+  border-radius: 0.9rem;
+  background: #fff;
+  box-shadow:
+    0 0.3rem 1.15rem
+    rgba(26, 39, 51, 0.045);
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Tab navigation                                                              */
+/* -------------------------------------------------------------------------- */
+
+.record-reading-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 0 1rem;
+  border-bottom: 1px solid #e3e8eb;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(166, 30, 45, 0.025),
+      rgba(14, 89, 26, 0.02)
+    );
+}
+
+
+.record-reading-tab {
+  position: relative;
+  display: inline-flex;
+  min-height: 3.35rem;
+  align-items: center;
+  gap: 0.48rem;
+  padding: 0 1.1rem;
+
+  border: 0;
+  background: transparent;
+
+  color: #687680;
+  font-size: 0.74rem;
+  font-weight: 750;
+  letter-spacing: 0.015em;
+
+  cursor: pointer;
+
+  transition:
+    color 150ms ease,
+    background-color 150ms ease;
+}
+
+
+.record-reading-tab i {
+  font-size: 0.75rem;
+}
+
+
+.record-reading-tab::after {
+  position: absolute;
+  right: 0.85rem;
+  bottom: -1px;
+  left: 0.85rem;
+
+  height: 3px;
+
+  border-radius: 999px 999px 0 0;
+
+  background: transparent;
+
+  content: '';
+}
+
+
+.record-reading-tab:hover {
+  color: #A61E2D;
+}
+
+
+.record-reading-tab.active {
+  color: #A61E2D;
+  background: rgba(166, 30, 45, 0.025);
+}
+
+
+.record-reading-tab.active::after {
+  background: #A61E2D;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Shared content                                                              */
+/* -------------------------------------------------------------------------- */
+
+.record-reading-content {
+  min-height: 8rem;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Abstract                                                                    */
+/* -------------------------------------------------------------------------- */
+
+.record-abstract-panel {
+  padding: 1.15rem 1.35rem 1.3rem;
+}
+
+
+.record-reading-kicker {
+  display: block;
+  margin-bottom: 0.55rem;
+
+  color: #A61E2D;
+
+  font-size: 0.61rem;
+  font-weight: 800;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+
+.record-abstract-text {
+  max-width: 100%;
+  margin: 0;
+
+  color: #33444f;
+
+  font-size: 0.91rem;
+  line-height: 1.8;
+
+  text-align: justify;
+}
+
+
+.record-tab-empty {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  padding: 1rem;
+
+  color: #76838b;
+
+  font-size: 0.78rem;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Preview                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.record-preview-panel {
+  padding: 0;
+}
+
+
+.record-preview-panel
+ds-paps-document-preview {
+  display: block;
+}
+
+
+/*
+ * Preview already has its own card styling.
+ * When embedded inside the tab container, remove the redundant outer
+ * card boundary so both components visually become one panel.
+ */
+:host ::ng-deep
+.record-preview-panel
+.paps-preview {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Responsive                                                                  */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 575.98px) {
+
+  .record-reading-tabs {
+    padding: 0 0.35rem;
+  }
+
+  .record-reading-tab {
+    flex: 1 1 50%;
+    justify-content: center;
+    padding: 0 0.5rem;
+    font-size: 0.68rem;
+  }
+
+  .record-abstract-panel {
+    padding: 0.9rem;
+  }
+
+  .record-abstract-text {
+    font-size: 0.84rem;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+}
+
+
+/* ========================================================================== */
+/* MULTILINGUAL ABSTRACT                                                       */
+/* ========================================================================== */
+
+.abstract-language-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin: -0.15rem 0 1rem;
+  padding-bottom: 0.75rem;
+
+  border-bottom: 1px solid #e5eaed;
+}
+
+
+.abstract-language-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.abstract-language-tab {
+  position: relative;
+
+  min-height: 2rem;
+
+  padding: 0.38rem 0.75rem;
+
+  border: 1px solid #d9e1e5;
+  border-radius: 0.45rem;
+
+  background: #fff;
+  color: #596b75;
+
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.abstract-language-tab:hover {
+  border-color: rgba(166, 30, 45, 0.45);
+  color: #A61E2D;
+}
+
+.abstract-language-tab.active {
+  border-color: #A61E2D;
+
+  background: rgba(166, 30, 45, 0.07);
+  color: #A61E2D;
+}
+
+.record-abstract-body.is-rtl {
+  text-align: right;
+}
+
+.record-abstract-body.is-rtl .record-reading-kicker {
+  text-align: right;
+}
+
+.record-abstract-text {
+  white-space: pre-line;
+}
+
+
+/* Arabic / RTL readability */
+
+.record-abstract-body[dir='rtl'] .record-abstract-text {
+  direction: rtl;
+  text-align: right;
+
+  font-size: 0.98rem;
+  line-height: 2;
+}
+
+
+/* Mobile */
+
+@media (max-width: 575.98px) {
+
+  .abstract-language-bar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .abstract-language-tabs {
+    width: 100%;
+  }
+
+  .abstract-language-tab {
+    flex: 0 0 auto;
+  }
+}
+
+/* Standardise descriptive metadata typography */
+
+.metadata-detail-value,
+.metadata-detail-value a,
+.metadata-detail-value span {
+  font-family: inherit !important;
+  font-size: 0.76rem !important;
+  font-weight: 500 !important;
+  line-height: 1.45;
+  color: #17364a;
+}
+
+.metadata-detail-label {
+  font-family: inherit;
+}
+
+/* Clickable descriptive metadata */
+
+.record-info-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(0, 107, 150, 0.45);
+
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.record-info-link:hover {
+  color: #087486;
+  border-bottom-color: #087486;
+  text-decoration: none;
+}
+
+/* =========================================================
+   FORCE COLLECTIONS + PERMANENT LINK INTO ONE ROW
+   ========================================================= */
+
+.record-bottom-meta-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) !important;
+  gap: 1rem !important;
+  width: 100%;
+  margin-top: 1rem;
+  align-items: stretch;
+}
+
+.record-bottom-meta-grid > .repository-context-card,
+.record-bottom-meta-grid > .persistent-link-card {
+  grid-column: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+
+  margin: 0 !important;
+
+  height: 100%;
+  min-height: 6.5rem;
+}
+
+/* Keep both cards vertically balanced */
+.record-bottom-meta-grid .repository-context-card,
+.record-bottom-meta-grid .persistent-link-card {
+  display: flex;
+  align-items: center;
+}
+
+/* Prevent permanent URL from forcing the grid wider */
+.record-bottom-meta-grid .persistent-link-content {
+  min-width: 0;
+}
+
+.record-bottom-meta-grid .persistent-link-value {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Tablet / mobile */
+@media (max-width: 767.98px) {
+  .record-bottom-meta-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+
+/* === AU BRAND VISUAL ENHANCEMENTS === */
+
+/* AU corporate palette
+   Green 1  : #1A5632
+   Green 2  : #348F41
+   Maroon   : #9F2241
+   Gold     : #B4A269
+   Grey     : #58595B
+   White    : #FFFFFF
+*/
+
+/* Hero refresh */
+.record-hero {
+  border: 1px solid rgba(180, 162, 105, 0.28) !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(180, 162, 105, 0.22) 0%,
+      rgba(255, 255, 255, 0.96) 58%,
+      rgba(159, 34, 65, 0.08) 100%
+    ) !important;
+  box-shadow: 0 0.4rem 1.2rem rgba(31, 37, 41, 0.05);
+}
+
+/* Hide the small entity header so title becomes the hero */
+.record-hero-eyebrow {
+  display: none !important;
+}
+
+/* Title: slightly smaller + AU maroon */
+.record-hero-title h1,
+.record-hero-title .item-page-title,
+.record-hero-title ds-item-page-title-field h1,
+.record-hero-title ds-item-page-title-field .item-page-field-value,
+.record-hero-title ds-item-page-title-field .simple-view-element,
+.record-hero-title ds-item-page-title-field .item-page-field {
+  color: #9F2241 !important;
+  font-size: clamp(2rem, 3vw, 2.9rem) !important;
+  line-height: 1.12 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em;
+}
+
+/* Hero meta chips */
+.record-meta-chip {
+  border: 1px solid rgba(180, 162, 105, 0.42) !important;
+  background: rgba(180, 162, 105, 0.12) !important;
+  color: #1A5632 !important;
+  box-shadow: none !important;
+}
+
+.record-meta-chip i {
+  color: #9F2241 !important;
+}
+
+.record-meta-chip.access-chip {
+  border-color: rgba(26, 86, 50, 0.34) !important;
+  background: rgba(26, 86, 50, 0.10) !important;
+  color: #1A5632 !important;
+}
+
+/* Action bar line */
+.record-action-bar {
+  border-top: 1px solid rgba(180, 162, 105, 0.22) !important;
+}
+
+/* Share label */
+.record-share-label {
+  color: #58595B !important;
+  letter-spacing: 0.08em;
+}
+
+/* ===================================================== */
+/* TABS — make them look obviously clickable             */
+/* ===================================================== */
+
+.record-tab-nav,
+.record-tabs,
+.record-reading-tabs,
+.abstract-preview-tabs,
+.nav-tabs {
+  gap: 0.55rem;
+  padding: 0.85rem 1rem 0 !important;
+  border-bottom: 1px solid rgba(88, 89, 91, 0.18) !important;
+  background: rgba(255,255,255,0.94);
+}
+
+.record-tab-nav button,
+.record-tabs button,
+.record-reading-tabs button,
+.abstract-preview-tabs button,
+.record-tab-nav .nav-link,
+.record-tabs .nav-link,
+.record-reading-tabs .nav-link,
+.abstract-preview-tabs .nav-link,
+.nav-tabs .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.8rem 1rem !important;
+  border: 1px solid rgba(88, 89, 91, 0.22) !important;
+  border-bottom: none !important;
+  border-radius: 0.8rem 0.8rem 0 0 !important;
+  background: #f7f5f1 !important;
+  color: #58595B !important;
+  font-weight: 700 !important;
+  transition: all 150ms ease;
+}
+
+.record-tab-nav button:hover,
+.record-tabs button:hover,
+.record-reading-tabs button:hover,
+.abstract-preview-tabs button:hover,
+.record-tab-nav .nav-link:hover,
+.record-tabs .nav-link:hover,
+.record-reading-tabs .nav-link:hover,
+.abstract-preview-tabs .nav-link:hover,
+.nav-tabs .nav-link:hover {
+  background: rgba(180, 162, 105, 0.18) !important;
+  color: #1A5632 !important;
+  border-color: rgba(180, 162, 105, 0.55) !important;
+}
+
+.record-tab-nav button.active,
+.record-tabs button.active,
+.record-reading-tabs button.active,
+.abstract-preview-tabs button.active,
+.record-tab-nav .nav-link.active,
+.record-tabs .nav-link.active,
+.record-reading-tabs .nav-link.active,
+.abstract-preview-tabs .nav-link.active,
+.nav-tabs .nav-link.active {
+  background: #fff !important;
+  color: #9F2241 !important;
+  border-color: rgba(159, 34, 65, 0.35) !important;
+  box-shadow: inset 0 -3px 0 #9F2241;
+}
+
+/* Abstract language pills */
+.abstract-language-switch,
+.record-abstract-language-switch {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.abstract-language-switch button,
+.record-abstract-language-switch button {
+  border: 1px solid rgba(180, 162, 105, 0.4) !important;
+  background: #fff !important;
+  color: #58595B !important;
+  border-radius: 0.7rem !important;
+  font-weight: 700 !important;
+}
+
+.abstract-language-switch button.active,
+.record-abstract-language-switch button.active {
+  background: rgba(180, 162, 105, 0.16) !important;
+  color: #9F2241 !important;
+  border-color: rgba(159, 34, 65, 0.4) !important;
+}
+
+/* If the old abstract sub-labels still appear, hide them */
+.abstract-language-label,
+.abstract-selected-label,
+.record-abstract-heading,
+.record-abstract-active-language,
+.record-abstract-description {
+  display: none !important;
+}
+
+
+
+/* =========================================================
+   AU BRAND POLISH — SHARE ICONS, FILES, ITEM INFORMATION
+   ========================================================= */
+
+
+/* =========================================================
+   1. SHARE ICONS
+   ========================================================= */
+
+.record-share-group {
+  gap: 0.55rem;
+}
+
+.record-share-label {
+  color: #58595B !important;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.record-share-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+}
+
+.record-share-button {
+  width: 2.35rem;
+  height: 2.35rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(88, 89, 91, 0.16) !important;
+
+  background: #FFFFFF !important;
+  color: #58595B !important;
+
+  box-shadow:
+    0 2px 7px rgba(31, 41, 55, 0.08);
+
+  transition:
+    transform 150ms ease,
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.record-share-button:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(180, 162, 105, 0.65) !important;
+
+  background: #B4A269 !important;
+  color: #FFFFFF !important;
+
+  box-shadow:
+    0 5px 14px rgba(31, 41, 55, 0.12);
+
+  text-decoration: none;
+}
+
+/* Give individual networks subtle AU palette identity */
+.record-share-button.share-x {
+  background: #58595B !important;
+  color: #FFFFFF !important;
+}
+
+.record-share-button.share-facebook {
+  background: #1A5632 !important;
+  color: #FFFFFF !important;
+}
+
+.record-share-button.share-linkedin {
+  background: #348F41 !important;
+  color: #FFFFFF !important;
+}
+
+.record-share-button.share-email {
+  background: #9F2241 !important;
+  color: #FFFFFF !important;
+}
+
+.record-share-button.share-x:hover,
+.record-share-button.share-facebook:hover,
+.record-share-button.share-linkedin:hover,
+.record-share-button.share-email:hover {
+  background: #B4A269 !important;
+  color: #FFFFFF !important;
+}
+
+.x-symbol {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   2. DOWNLOAD / FILE CARDS
+   ========================================================= */
+
+.modern-side-card,
+.modern-files-card {
+  border: 1px solid rgba(26, 86, 50, 0.15) !important;
+  border-radius: 1rem !important;
+
+  background: #FFFFFF !important;
+
+  box-shadow:
+    0 8px 24px rgba(31, 41, 55, 0.06);
+}
+
+.modern-side-card-header {
+  padding: 1rem 1.1rem !important;
+
+  border-bottom: 1px solid rgba(26, 86, 50, 0.10) !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(26, 86, 50, 0.075) 0%,
+      rgba(180, 162, 105, 0.07) 100%
+    ) !important;
+}
+
+.modern-side-card-kicker {
+  color: #58595B !important;
+
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.modern-side-card-header h2 {
+  color: #1A5632 !important;
+  font-weight: 700;
+}
+
+.modern-side-card-header > i {
+  color: #1A5632 !important;
+}
+
+.modern-side-card-body {
+  padding: 1rem !important;
+}
+
+
+/* Thumbnail / media preview */
+.modern-record-media {
+  border: 1px solid rgba(88, 89, 91, 0.10);
+  border-radius: 0.85rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(180, 162, 105, 0.08),
+      rgba(26, 86, 50, 0.035)
+    );
+
+  overflow: hidden;
+}
+
+
+/* Individual files inside file-section component */
+.modern-file-section-wrapper {
+  margin-top: 0.8rem;
+}
+
+.modern-file-section-wrapper a {
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background-color 150ms ease;
+}
+
+/* Use AU maroon for PDF/document identity */
+.modern-file-section-wrapper .fa-file-pdf,
+.modern-file-section-wrapper .fa-file,
+.modern-file-section-wrapper .fa-file-alt {
+  color: #9F2241 !important;
+}
+
+/* Download icons */
+.modern-file-section-wrapper .fa-download {
+  color: #1A5632 !important;
+}
+
+
+/* =========================================================
+   3. ITEM INFORMATION CARD
+   ========================================================= */
+
+.modern-metadata-card {
+  border: 1px solid rgba(159, 34, 65, 0.13) !important;
+  border-radius: 1rem !important;
+
+  background: #FFFFFF;
+
+  box-shadow:
+    0 8px 24px rgba(31, 41, 55, 0.05);
+}
+
+.modern-metadata-card .modern-card-header {
+  border-bottom: 1px solid rgba(159, 34, 65, 0.10) !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(159, 34, 65, 0.075) 0%,
+      rgba(180, 162, 105, 0.055) 100%
+    ) !important;
+}
+
+.modern-card-icon {
+  background: rgba(159, 34, 65, 0.10) !important;
+  color: #9F2241 !important;
+}
+
+.modern-card-kicker {
+  color: #9F2241 !important;
+}
+
+.modern-card-header h2 {
+  color: #1A5632 !important;
+}
+
+
+/* Individual metadata tiles */
+.record-info-tile,
+.record-info-wide {
+  border: 1px solid rgba(88, 89, 91, 0.13) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #FFFFFF 0%,
+      rgba(180, 162, 105, 0.035) 100%
+    ) !important;
+
+  box-shadow: none !important;
+
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease;
+}
+
+.record-info-tile:hover,
+.record-info-wide:hover {
+  transform: translateY(-1px);
+
+  border-color: rgba(180, 162, 105, 0.42) !important;
+
+  box-shadow:
+    0 4px 12px rgba(31, 41, 55, 0.055);
+}
+
+
+/* Metadata icons */
+.record-info-icon {
+  background: rgba(26, 86, 50, 0.075) !important;
+  color: #1A5632 !important;
+}
+
+.record-info-icon i {
+  color: #1A5632 !important;
+}
+
+
+/* Labels */
+.record-info-label {
+  color: #58595B !important;
+
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* Values */
+.record-info-value {
+  color: #17364A !important;
+  font-weight: 500;
+}
+
+
+/* Clickable metadata */
+.record-info-link {
+  color: #17364A !important;
+
+  border-bottom:
+    1px dotted rgba(159, 34, 65, 0.42);
+
+  text-decoration: none !important;
+
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.record-info-link:hover {
+  color: #9F2241 !important;
+  border-bottom-color: #9F2241;
+}
+
+
+/* Subject chips */
+.modern-subject-chip {
+  border: 1px solid rgba(26, 86, 50, 0.22) !important;
+
+  background: rgba(26, 86, 50, 0.055) !important;
+
+  color: #1A5632 !important;
+
+  font-weight: 600;
+
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
+}
+
+.modern-subject-chip:hover {
+  transform: translateY(-1px);
+
+  background: #1A5632 !important;
+  border-color: #1A5632 !important;
+
+  color: #FFFFFF !important;
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   SMALL SCREEN POLISH
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+  .record-share-button {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+
+  .record-info-tile,
+  .record-info-wide {
+    border-radius: 0.8rem;
+  }
+
+}
+
+
+/* =========================================================
+   AU NAVIGATION-STYLE ABSTRACT / DOCUMENT PREVIEW TABS
+   ========================================================= */
+
+.record-reading-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+  gap: 0 !important;
+  padding: 0 !important;
+
+  border: 1px solid rgba(88, 89, 91, 0.12) !important;
+  border-radius: 1rem 1rem 0 0 !important;
+
+  background: #f1f3f1 !important;
+
+  overflow: visible !important;
+}
+
+/* Individual navigation tile */
+.record-reading-tab {
+  position: relative;
+
+  min-height: 5.4rem;
+
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.45rem;
+
+  margin: 0 !important;
+  padding: 0.9rem 1rem !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  background: transparent !important;
+
+  color: #1A5632 !important;
+
+  font-weight: 700 !important;
+
+  cursor: pointer;
+
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+/* divider between the two */
+.record-reading-tab + .record-reading-tab {
+  border-left: 1px solid rgba(88, 89, 91, 0.14) !important;
+}
+
+/* icons */
+.record-reading-tab i {
+  font-size: 1.45rem;
+  color: #348F41 !important;
+
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+/* labels */
+.record-reading-tab span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* hover */
+.record-reading-tab:hover {
+  background: rgba(180, 162, 105, 0.11) !important;
+  color: #9F2241 !important;
+}
+
+.record-reading-tab:hover i {
+  color: #9F2241 !important;
+  transform: translateY(-1px);
+}
+
+/* active tile */
+.record-reading-tab.active {
+  background: #FFFFFF !important;
+  color: #9F2241 !important;
+
+  box-shadow:
+    0 5px 14px rgba(31, 41, 55, 0.055) !important;
+}
+
+.record-reading-tab.active i {
+  color: #9F2241 !important;
+}
+
+/* remove old underline treatment */
+.record-reading-tab.active::before {
+  display: none !important;
+}
+
+/* downward pointer */
+.record-reading-tab.active::after {
+  content: '';
+
+  position: absolute;
+  left: 50%;
+  bottom: -0.65rem;
+
+  width: 1.3rem;
+  height: 1.3rem;
+
+  background: #FFFFFF;
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  border-right: 1px solid rgba(88, 89, 91, 0.12);
+  border-bottom: 1px solid rgba(88, 89, 91, 0.12);
+
+  z-index: 3;
+}
+
+/* give language row breathing room beneath pointer */
+.record-abstract-panel {
+  padding-top: 1.45rem !important;
+}
+
+/* Preview panel too */
+.record-preview-panel {
+  padding-top: 1.45rem !important;
+}
+
+
+/* Language buttons visually secondary to primary tabs */
+.abstract-language-tabs {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.abstract-language-tab {
+  padding: 0.48rem 0.8rem !important;
+
+  border: 1px solid rgba(88, 89, 91, 0.18) !important;
+  border-radius: 0.55rem !important;
+
+  background: #FFFFFF !important;
+  color: #58595B !important;
+
+  font-size: 0.73rem;
+  font-weight: 700;
+
+  box-shadow: none !important;
+}
+
+.abstract-language-tab:hover {
+  border-color: #B4A269 !important;
+  color: #9F2241 !important;
+}
+
+.abstract-language-tab.active {
+  border-color: #9F2241 !important;
+
+  background: rgba(159, 34, 65, 0.055) !important;
+  color: #9F2241 !important;
+}
+
+
+/* Mobile */
+@media (max-width: 575.98px) {
+
+  .record-reading-tab {
+    min-height: 4.6rem;
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  .record-reading-tab i {
+    font-size: 1.2rem;
+  }
+
+  .record-reading-tab span {
+    font-size: 0.78rem;
+  }
+
+}
+
+
+/* =========================================================
+   COMPACT AU ABSTRACT / DOCUMENT PREVIEW NAVIGATION
+   Inspired by centered navigation strip reference
+   ========================================================= */
+
+.record-reading-panel {
+  overflow: visible !important;
+}
+
+
+/* Outer strip */
+.record-reading-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+  width: min(100%, 46rem) !important;
+  margin: 1rem auto 0 !important;
+
+  padding: 0 !important;
+  gap: 0 !important;
+
+  border: 1px solid rgba(88, 89, 91, 0.13) !important;
+  border-radius: 0.8rem 0.8rem 0 0 !important;
+
+  background: rgba(88, 89, 91, 0.055) !important;
+
+  overflow: visible !important;
+}
+
+
+/* Individual tab */
+.record-reading-tab {
+  position: relative;
+
+  min-height: 4.4rem !important;
+
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.25rem !important;
+
+  margin: 0 !important;
+  padding: 0.65rem 1rem !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  background: transparent !important;
+
+  color: #58595B !important;
+
+  cursor: pointer;
+
+  box-shadow: none !important;
+
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+
+/* Central divider */
+.record-reading-tab + .record-reading-tab {
+  border-left: 1px solid rgba(88, 89, 91, 0.13) !important;
+}
+
+
+/* Icons */
+.record-reading-tab i {
+  font-size: 1.12rem !important;
+  color: #348F41 !important;
+}
+
+
+/* Labels */
+.record-reading-tab span {
+  font-size: 0.76rem !important;
+  line-height: 1.15;
+  font-weight: 700 !important;
+}
+
+
+/* Hover */
+.record-reading-tab:hover {
+  background: rgba(180, 162, 105, 0.10) !important;
+  color: #1A5632 !important;
+}
+
+.record-reading-tab:hover i {
+  color: #1A5632 !important;
+}
+
+
+/* Active */
+.record-reading-tab.active {
+  background: #FFFFFF !important;
+  color: #9F2241 !important;
+
+  box-shadow:
+    inset 0 3px 0 #9F2241 !important;
+}
+
+.record-reading-tab.active i {
+  color: #9F2241 !important;
+}
+
+
+/* Hide previous active underline/pseudo styles */
+.record-reading-tab.active::before {
+  display: none !important;
+}
+
+
+/* Small active pointer */
+.record-reading-tab.active::after {
+  content: '';
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -0.42rem;
+
+  width: 0.78rem;
+  height: 0.78rem;
+
+  background: #FFFFFF;
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  border-right: 1px solid rgba(88, 89, 91, 0.11);
+  border-bottom: 1px solid rgba(88, 89, 91, 0.11);
+
+  z-index: 3;
+}
+
+
+/* Content remains full width */
+.record-reading-content {
+  margin-top: 0 !important;
+}
+
+
+/* Enough room for the pointer */
+.record-abstract-panel,
+.record-preview-panel {
+  padding-top: 1.25rem !important;
+}
+
+
+/* Mobile */
+@media (max-width: 575.98px) {
+
+  .record-reading-tabs {
+    width: calc(100% - 1rem) !important;
+    margin-top: 0.6rem !important;
+  }
+
+  .record-reading-tab {
+    min-height: 3.9rem !important;
+    padding: 0.55rem 0.45rem !important;
+  }
+
+  .record-reading-tab i {
+    font-size: 1rem !important;
+  }
+
+  .record-reading-tab span {
+    font-size: 0.7rem !important;
+  }
+}
+
+
+/* =========================================================
+   COMPACT LEFT-ALIGNED GLASS TAB NAVIGATION
+   ========================================================= */
+
+.record-reading-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+  width: min(100%, 34rem) !important;
+  margin: 0.9rem 0 0 1rem !important;
+
+  padding: 0 !important;
+  gap: 0 !important;
+
+  position: relative;
+
+  border: 1px solid rgba(88, 89, 91, 0.13) !important;
+  border-radius: 0.95rem 0.95rem 0.55rem 0.55rem !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.88) 0%,
+      rgba(244,244,240,0.76) 100%
+    ) !important;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 10px 22px rgba(31, 41, 55, 0.08),
+    0 2px 5px rgba(31, 41, 55, 0.04),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+
+  overflow: visible !important;
+}
+
+
+/* subtle base glow under whole strip */
+.record-reading-tabs::before {
+  content: '';
+
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: -0.45rem;
+
+  height: 0.9rem;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(26, 86, 50, 0.10) 0%,
+      rgba(26, 86, 50, 0) 72%
+    );
+
+  filter: blur(6px);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* Individual tab */
+.record-reading-tab {
+  position: relative;
+  z-index: 1;
+
+  min-height: 4.05rem !important;
+
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.2rem !important;
+
+  margin: 0 !important;
+  padding: 0.58rem 0.85rem !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.40) 0%,
+      rgba(247,247,243,0.30) 100%
+    ) !important;
+
+  color: #58595B !important;
+
+  cursor: pointer;
+
+  box-shadow: none !important;
+
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease,
+    color 160ms ease;
+}
+
+
+/* divider */
+.record-reading-tab + .record-reading-tab {
+  border-left: 1px solid rgba(88, 89, 91, 0.11) !important;
+}
+
+
+/* icons */
+.record-reading-tab i {
+  font-size: 1rem !important;
+  color: #348F41 !important;
+
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+
+/* text */
+.record-reading-tab span {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+
+/* Hover */
+.record-reading-tab:hover {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(180, 162, 105, 0.10),
+      rgba(255,255,255,0.55)
+    ) !important;
+
+  color: #1A5632 !important;
+}
+
+.record-reading-tab:hover i {
+  color: #1A5632 !important;
+  transform: translateY(-1px);
+}
+
+
+/* Active tab */
+.record-reading-tab.active {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.98) 0%,
+      rgba(252,249,247,0.96) 100%
+    ) !important;
+
+  color: #9F2241 !important;
+
+  box-shadow:
+    inset 0 3px 0 #9F2241,
+    0 6px 14px rgba(31,41,55,0.07) !important;
+
+  transform: translateY(-1px);
+}
+
+.record-reading-tab.active i {
+  color: #9F2241 !important;
+}
+
+
+/* Remove old underline */
+.record-reading-tab.active::before {
+  display: none !important;
+}
+
+
+/* Active pointer */
+.record-reading-tab.active::after {
+  content: '';
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -0.38rem;
+
+  width: 0.72rem;
+  height: 0.72rem;
+
+  background: rgba(255,255,255,0.98);
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  border-right: 1px solid rgba(88,89,91,0.10);
+  border-bottom: 1px solid rgba(88,89,91,0.10);
+
+  box-shadow:
+    2px 2px 4px rgba(31,41,55,0.035);
+
+  z-index: 2;
+}
+
+
+/* Keep content aligned with page rather than tabs */
+.record-reading-content {
+  margin-top: 0 !important;
+}
+
+
+/* Space for pointer */
+.record-abstract-panel,
+.record-preview-panel {
+  padding-top: 1.15rem !important;
+}
+
+
+/* Mobile */
+@media (max-width: 575.98px) {
+
+  .record-reading-tabs {
+    width: calc(100% - 1rem) !important;
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+  }
+
+  .record-reading-tab {
+    min-height: 3.7rem !important;
+    padding: 0.5rem 0.4rem !important;
+  }
+
+  .record-reading-tab i {
+    font-size: 0.95rem !important;
+  }
+
+  .record-reading-tab span {
+    font-size: 0.68rem !important;
+  }
+
+}
+
+/* Remove rounded corners from compact reading tabs */
+.record-reading-tabs {
+  border-radius: 0 !important;
+}
+
+.record-reading-tab {
+  border-radius: 0 !important;
+}
+
+.record-reading-tab.active {
+  border-radius: 0 !important;
+}
+
+/* Final polish for compact reading tabs */
+
+.record-reading-tabs {
+  box-shadow:
+    0 10px 20px rgba(31, 41, 55, 0.07),
+    0 2px 5px rgba(31, 41, 55, 0.035) !important;
+}
+
+/* inactive state */
+.record-reading-tab:not(.active) {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(247, 246, 241, 0.96) 0%,
+      rgba(241, 239, 233, 0.88) 100%
+    ) !important;
+
+  color: #58595B !important;
+}
+
+/* active state slightly brighter / raised */
+.record-reading-tab.active {
+  background:
+    linear-gradient(
+      180deg,
+      #FFFFFF 0%,
+      #FCFBF8 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 3px 0 #9F2241,
+    0 7px 15px rgba(31, 41, 55, 0.08) !important;
+}
+
+/* inactive green icon */
+.record-reading-tab:not(.active) i {
+  color: #348F41 !important;
+}
+
+/* active maroon icon */
+.record-reading-tab.active i {
+  color: #9F2241 !important;
+}
+
+/* Force completely square reading tabs */
+.record-reading-tabs,
+.record-reading-tabs .record-reading-tab,
+.record-reading-tabs .record-reading-tab:first-child,
+.record-reading-tabs .record-reading-tab:last-child,
+.record-reading-tabs .record-reading-tab.active,
+.record-reading-tabs .record-reading-tab:first-child.active,
+.record-reading-tabs .record-reading-tab:last-child.active {
+  border-radius: 0 !important;
+}
+
+
+/* =========================================================
+   ATTACHED CONTENT DECK — ABSTRACT / DOCUMENT PREVIEW
+   ========================================================= */
+
+/* Tabs sit above the content surface */
+.record-reading-tabs {
+  position: relative;
+  z-index: 4;
+}
+
+
+/* Shared content deck */
+.record-reading-content {
+  position: relative;
+  z-index: 2;
+
+  margin-top: -1px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.99) 0%,
+      rgba(252, 252, 249, 0.97) 100%
+    ) !important;
+
+  border-top:
+    1px solid rgba(88, 89, 91, 0.12);
+
+  box-shadow:
+    0 12px 24px rgba(31, 41, 55, 0.055),
+    0 4px 9px rgba(31, 41, 55, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 10px 18px -18px rgba(26, 86, 50, 0.24);
+
+}
+
+
+/* Fine upper edge to visually connect content to tabs */
+.record-reading-content::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(159, 34, 65, 0.16) 0%,
+      rgba(180, 162, 105, 0.10) 35%,
+      rgba(26, 86, 50, 0.08) 100%
+    );
+
+  opacity: 0.7;
+
+  pointer-events: none;
+}
+
+
+/* Abstract surface */
+.record-abstract-panel {
+  padding-top: 1.4rem !important;
+  padding-bottom: 1.3rem !important;
+}
+
+
+/* Preview uses same attached surface */
+.record-preview-panel {
+  padding-top: 1.4rem !important;
+  padding-bottom: 1.3rem !important;
+}
+
+
+/* Give active pointer a little more depth */
+.record-reading-tab.active::after {
+  box-shadow:
+    3px 3px 6px rgba(31, 41, 55, 0.07) !important;
+
+  z-index: 5 !important;
+}
+
+
+/* Slight depth immediately beneath navigation */
+.record-reading-tabs::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -0.55rem;
+
+  height: 0.8rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(31, 41, 55, 0.09) 0%,
+      rgba(31, 41, 55, 0) 100%
+    );
+
+  filter: blur(5px);
+
+  opacity: 0.48;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+/* =========================================================
+   ATTACHED TAB + CONTENT SHELL
+   Inspired by layered documentation tabs
+   ========================================================= */
+
+.record-reading-panel {
+  position: relative;
+  overflow: visible !important;
+
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+
+  padding-top: 0.9rem;
+}
+
+
+/* ---------------------------------------------------------
+   TAB STRIP
+   --------------------------------------------------------- */
+
+.record-reading-tabs {
+  position: relative;
+  z-index: 5;
+
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+  width: min(100%, 34rem) !important;
+  margin: 0 0 -1px 1.35rem !important;
+
+  padding: 0 !important;
+  gap: 0 !important;
+
+  border: 0 !important;
+
+  background: transparent !important;
+
+  box-shadow: none !important;
+
+  overflow: visible !important;
+}
+
+
+/* individual tabs */
+.record-reading-tab {
+  position: relative;
+
+  min-height: 4rem !important;
+
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.2rem !important;
+
+  padding: 0.55rem 0.8rem !important;
+  margin: 0 !important;
+
+  border: 1px solid rgba(88, 89, 91, 0.18) !important;
+  border-bottom: 0 !important;
+
+  border-radius: 0 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(240, 239, 233, 0.96),
+      rgba(230, 229, 222, 0.96)
+    ) !important;
+
+  color: #58595B !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.85);
+
+  cursor: pointer;
+}
+
+
+/* first tab */
+.record-reading-tab:first-child {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.98),
+      rgba(249,247,243,0.98)
+    ) !important;
+}
+
+
+/* divider */
+.record-reading-tab + .record-reading-tab {
+  border-left: 0 !important;
+}
+
+
+/* icons */
+.record-reading-tab i {
+  font-size: 1rem !important;
+  color: #348F41 !important;
+}
+
+
+/* labels */
+.record-reading-tab span {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+}
+
+
+/* hover */
+.record-reading-tab:hover {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.98),
+      rgba(246,243,235,0.98)
+    ) !important;
+
+  color: #1A5632 !important;
+}
+
+
+/* ---------------------------------------------------------
+   ACTIVE TAB
+   --------------------------------------------------------- */
+
+.record-reading-tab.active {
+  z-index: 6;
+
+  background: #FFFFFF !important;
+
+  color: #9F2241 !important;
+
+  border-color: rgba(180, 162, 105, 0.55) !important;
+
+  box-shadow:
+    inset 0 3px 0 #9F2241,
+    0 -2px 7px rgba(31,41,55,0.05) !important;
+}
+
+.record-reading-tab.active i {
+  color: #9F2241 !important;
+}
+
+
+/* active pointer */
+.record-reading-tab.active::after {
+  content: '';
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -0.48rem;
+
+  width: 0.9rem;
+  height: 0.9rem;
+
+  background: #FFFFFF;
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  border-right: 1px solid rgba(180, 162, 105, 0.32);
+  border-bottom: 1px solid rgba(180, 162, 105, 0.32);
+
+  box-shadow:
+    2px 2px 5px rgba(31,41,55,0.035);
+
+  z-index: 7;
+}
+
+
+/* ---------------------------------------------------------
+   OUTER CONTENT SHELL
+   --------------------------------------------------------- */
+
+.record-reading-content {
+  position: relative;
+  z-index: 2;
+
+  margin: 0 !important;
+
+  border: 1px solid rgba(180, 162, 105, 0.45) !important;
+
+  border-radius: 0.9rem !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(180, 162, 105, 0.22) 0%,
+      rgba(180, 162, 105, 0.11) 100%
+    ) !important;
+
+  padding:
+    1.25rem !important;
+
+  box-shadow:
+    0 12px 28px rgba(31, 41, 55, 0.08),
+    0 4px 10px rgba(31, 41, 55, 0.045),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+}
+
+
+/* ---------------------------------------------------------
+   INNER WHITE CONTENT SURFACE
+   --------------------------------------------------------- */
+
+.record-reading-content::after {
+  content: '';
+
+  position: absolute;
+
+  inset: 0.55rem;
+
+  background: #FFFFFF;
+
+  border: 1px solid rgba(88, 89, 91, 0.10);
+
+  border-radius: 0.55rem;
+
+  box-shadow:
+    0 4px 10px rgba(31,41,55,0.035);
+
+  z-index: -1;
+}
+
+
+/* actual abstract / preview spacing */
+.record-abstract-panel,
+.record-preview-panel {
+  padding:
+    1.35rem 1.4rem 1.4rem !important;
+}
+
+
+/* language buttons stay within white content */
+.abstract-language-bar {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* abstract text */
+.record-abstract-body {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* preview content */
+.record-preview-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 575.98px) {
+
+  .record-reading-tabs {
+    width: calc(100% - 1rem) !important;
+    margin-left: 0.5rem !important;
+  }
+
+  .record-reading-tab {
+    min-height: 3.7rem !important;
+  }
+
+  .record-reading-content {
+    padding: 0.8rem !important;
+  }
+
+  .record-abstract-panel,
+  .record-preview-panel {
+    padding: 1rem !important;
+  }
+}
+
+/* =========================================================
+   TRANSPARENT FLAT READING CONTENT
+   ========================================================= */
+
+.record-reading-content {
+  border-radius: 0 !important;
+
+  background: transparent !important;
+
+  box-shadow:
+    0 10px 24px rgba(31, 41, 55, 0.055),
+    0 3px 8px rgba(31, 41, 55, 0.035) !important;
+
+  border:
+    1px solid rgba(88, 89, 91, 0.10) !important;
+}
+
+
+/* Remove inner white card/surface */
+.record-reading-content::after {
+  display: none !important;
+}
+
+
+/* Keep content itself transparent */
+.record-abstract-panel,
+.record-preview-panel {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+
+/* Ensure tabs remain square */
+.record-reading-tabs,
+.record-reading-tab,
+.record-reading-tab.active {
+  border-radius: 0 !important;
+}
+
+
+/* =========================================================
+   ITEM SHARE — WHATSAPP
+   ========================================================= */
+
+.record-share-button.share-whatsapp {
+  background: #25D366 !important;
+  border-color: #25D366 !important;
+  color: #FFFFFF !important;
+}
+
+
+.record-share-button.share-whatsapp i {
+  color: #FFFFFF !important;
+}
+
+
+.record-share-button.share-whatsapp:hover,
+.record-share-button.share-whatsapp:focus {
+  background: #1FAF57 !important;
+  border-color: #1FAF57 !important;
+  color: #FFFFFF !important;
+
+  transform: translateY(-1px);
+}
+
+
+
+/* AU-IBAR — CENTRED DOCUMENT THUMBNAILS */
+
+/* The existing template places ds-thumbnail inside
+   .modern-record-media, not .modern-record-thumbnail. */
+
+.modern-record-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  padding: 18px;
+}
+
+:host ::ng-deep .modern-record-media ds-metadata-field-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+:host ::ng-deep .modern-record-media ds-thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+:host ::ng-deep .modern-record-media .thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+:host ::ng-deep .modern-record-media ds-thumbnail img {
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 295px !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  border: 1px solid #d6dde1;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 5px 16px rgba(25, 39, 52, 0.12);
+}
+
+@media (max-width: 650px) {
+  .modern-record-media {
+    min-height: 250px;
+    padding: 14px;
+  }
+
+  :host ::ng-deep .modern-record-media ds-thumbnail img {
+    max-height: 240px !important;
+  }
+}
+
+/* AU-IBAR — MULTIMEDIA PREVIEW */
+
+.auibar-multimedia-preview {
+  width: 100%;
+  padding: 20px;
+  background: #f5f7f7;
+  border-radius: 12px;
+  min-height: 220px;
+}
+
+:host ::ng-deep .auibar-multimedia-preview video {
+  display: block;
+  width: 100%;
+  max-width: 1100px;
+  max-height: 650px;
+  margin: 0 auto;
+  background: #111;
+  border-radius: 8px;
+}
+
+:host ::ng-deep .auibar-multimedia-preview img {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 650px) {
+  .auibar-multimedia-preview {
+    padding: 10px;
+  }
+}
+
+/* =========================================================
+   AU-IBAR — IMAGE GALLERY LAYOUT REFINEMENT
+   ========================================================= */
+
+:host ::ng-deep .auibar-multimedia-preview ngx-gallery {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  height: 540px !important;
+  margin: 0 auto !important;
+}
+
+:host ::ng-deep .auibar-multimedia-preview ngx-gallery-image {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+:host ::ng-deep .auibar-multimedia-preview .ngx-gallery-image-wrapper {
+  width: 100% !important;
+}
+
+:host ::ng-deep .auibar-multimedia-preview .ngx-gallery-image {
+  background-size: contain !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Override the native 340px image restriction */
+:host ::ng-deep .auibar-multimedia-preview ngx-gallery-image::after {
+  display: none !important;
+}
+
+@media (max-width: 650px) {
+  :host ::ng-deep .auibar-multimedia-preview ngx-gallery {
+    height: 350px !important;
+  }
+}

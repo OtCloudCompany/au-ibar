@@ -6,3 +6,51 @@
   align-items: center;
   flex-direction: column;
 }
+
+
+/* AU-IBAR HOMEPAGE — REMOVE MAIN TOP GAP */
+
+/* The hero should start directly beneath the repository header. */
+main:has(ds-themed-home-page) {
+  margin-top: 0 !important;
+}
+
+/* =========================================================
+   AU-IBAR — FULL-SCREEN IMAGE VIEWER STACKING
+   ========================================================= */
+
+ngx-gallery-preview.ngx-gallery-active {
+  z-index: 2147483000 !important;
+}
+
+ngx-gallery-preview.ngx-gallery-active .ngx-gallery-preview-img-wrapper {
+  z-index: 1;
+}
+
+ngx-gallery-preview.ngx-gallery-active .ngx-gallery-preview-icons,
+ngx-gallery-preview.ngx-gallery-active .ngx-gallery-arrow {
+  z-index: 3;
+}
+
+/* =========================================================
+   AU-IBAR GALLERY LIGHTBOX TAB FIX
+   Hide reading tabs during full-screen image viewing.
+   Tabs automatically return when the lightbox closes.
+   ========================================================= */
+
+
+
+
+
+/* AU-IBAR GALLERY LIGHTBOX TAB FIX */
+
+
+
+/* AU-IBAR GALLERY LIGHTBOX TAB FIX */
+
+
+
+/* AU-IBAR: hide reading tabs while image lightbox is open. */
+body.auibar-gallery-preview-open .record-reading-tabs {
+  visibility: hidden !important;
+}

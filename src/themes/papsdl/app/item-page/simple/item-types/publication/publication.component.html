@@ -1,0 +1,981 @@
+<ds-results-back-button
+  *ngIf="showBackButton$ | async"
+  [back]="back">
+</ds-results-back-button>
+
+
+<!-- IIIF -->
+<div class="row" *ngIf="iiifEnabled">
+  <div class="col-12">
+    <ds-mirador-viewer
+      id="iiif-viewer"
+      [object]="object"
+      [searchable]="iiifSearchEnabled"
+      [query]="iiifQuery$ | async">
+    </ds-mirador-viewer>
+  </div>
+</div>
+
+
+<!-- ====================================================== -->
+<!-- RECORD HERO                                            -->
+<!-- ====================================================== -->
+
+<section class="record-hero">
+
+  <div class="record-hero-main">
+
+    <div class="record-hero-title">
+
+      <span class="record-hero-eyebrow">
+        <i class="fas fa-file-alt"></i>
+
+        <ng-container
+          *ngIf="object.firstMetadataValue(['dc.type']) as itemType;
+                 else repositoryRecord">
+          {{ itemType }}
+        </ng-container>
+
+        <ng-template #repositoryRecord>
+          Repository record
+        </ng-template>
+
+      </span>
+
+
+      <ds-item-page-title-field
+        [item]="object">
+      </ds-item-page-title-field>
+
+    </div>
+
+
+    <div class="record-hero-admin">
+      <ds-dso-edit-menu></ds-dso-edit-menu>
+    </div>
+
+  </div>
+
+
+  <div class="record-hero-meta">
+
+    <span
+      class="record-meta-chip"
+      *ngIf="object.firstMetadataValue(['dc.date.issued']) as issuedDate">
+      <i class="fas fa-calendar-alt"></i>
+      {{ issuedDate }}
+    </span>
+
+
+    <span
+      class="record-meta-chip"
+      *ngIf="object.allMetadataValues(['dc.language.iso']).length">
+
+      <i class="fas fa-language"></i>
+
+      <ng-container
+        *ngFor="
+          let language of object.allMetadataValues(['dc.language.iso']);
+          let last = last
+        ">
+        {{ getLanguageName(language) }}<span *ngIf="!last">, </span>
+      </ng-container>
+
+    </span>
+
+
+    <span
+      class="record-meta-chip"
+      *ngIf="
+        object.firstMetadataValue(['aupaps.identifier.reference'])
+          as reference
+      ">
+      <i class="fas fa-tag"></i>
+      {{ reference }}
+    </span>
+
+
+    <span
+      class="record-meta-chip access-chip"
+      *ngIf="
+        object.firstMetadataValue(['local.access.mode']) === 'view-only' ||
+        object.firstMetadataValue(['local.access.mode']) === 'restricted-view'
+      ">
+      <i class="fas fa-book-open"></i>
+      Read Online
+    </span>
+
+  </div>
+
+
+<nav
+  class="record-action-bar"
+  aria-label="Item actions">
+
+  <div class="record-action-layout">
+
+    <a
+      class="record-metadata-link"
+      [routerLink]="[itemPageRoute + '/full']">
+
+      <i class="fas fa-info-circle"></i>
+      <span>{{ 'item.page.link.full' | translate }}</span>
+
+    </a>
+
+
+    <div
+      class="record-share-group"
+      *ngIf="
+        object.firstMetadataValue(['dc.identifier.uri'])
+          as persistentUri
+      ">
+
+      <span class="record-share-label">
+        Share
+      </span>
+
+      <div class="record-share-icons">
+
+        <a
+          class="record-share-button share-x"
+          [href]="
+            'https://twitter.com/intent/tweet?url=' +
+            persistentUri
+          "
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on X"
+          title="Share on X">
+
+          <span class="x-symbol">X</span>
+
+        </a>
+
+
+        <a
+          class="record-share-button share-facebook"
+          [href]="
+            'https://www.facebook.com/sharer/sharer.php?u=' +
+            persistentUri
+          "
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on Facebook"
+          title="Share on Facebook">
+
+          <i class="fab fa-facebook-f"></i>
+
+        </a>
+
+
+        <a
+          class="record-share-button share-linkedin"
+          [href]="
+            'https://www.linkedin.com/sharing/share-offsite/?url=' +
+            persistentUri
+          "
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on LinkedIn"
+          title="Share on LinkedIn">
+
+          <i class="fab fa-linkedin-in"></i>
+
+        </a>
+
+
+        <a
+          class="record-share-button share-whatsapp"
+          [href]="
+            'https://wa.me/?text=' +
+            persistentUri
+          "
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Share on WhatsApp"
+          title="Share on WhatsApp">
+
+          <i class="fab fa-whatsapp"></i>
+
+        </a>
+
+
+        <a
+          class="record-share-button share-email"
+          [href]="
+            'mailto:?subject=' +
+            object.firstMetadataValue(['dc.title']) +
+            '&body=' +
+            persistentUri
+          "
+          aria-label="Share by email"
+          title="Share by email">
+
+          <i class="fas fa-envelope"></i>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>
+</section>
+
+
+
+<!-- ====================================================== -->
+<!-- PRIMARY READING TABS                                   -->
+<!-- ====================================================== -->
+
+<section class="record-reading-panel">
+
+  <!-- Tab navigation -->
+  <div
+    class="record-reading-tabs"
+    role="tablist"
+    aria-label="Document information">
+
+    <button
+      type="button"
+      class="record-reading-tab"
+      [class.active]="activeRecordTab === 'abstract'"
+      [attr.aria-selected]="activeRecordTab === 'abstract'"
+      (click)="activeRecordTab = 'abstract'">
+
+      <i class="fas fa-align-left"></i>
+      <span>Abstract</span>
+
+    </button>
+
+
+    <button
+      type="button"
+      class="record-reading-tab"
+      [class.active]="activeRecordTab === 'preview'"
+      [attr.aria-selected]="activeRecordTab === 'preview'"
+      (click)="activeRecordTab = 'preview'">
+
+      <i
+        [class]="
+          getRecordMediaType() === 'video'
+            ? 'fas fa-play-circle'
+            : getRecordMediaType() === 'image'
+              ? 'fas fa-images'
+              : 'fas fa-file-pdf'
+        ">
+      </i>
+      <span>{{ getPreviewTabLabel() }}</span>
+
+    </button>
+
+  </div>
+
+
+  <!-- Abstract -->
+  <div
+    class="record-reading-content record-abstract-panel"
+    *ngIf="activeRecordTab === 'abstract'">
+
+    <ng-container *ngIf="(abstractValues$ | async) as abstracts">
+
+      <!-- No abstract -->
+      <div
+        class="record-tab-empty"
+        *ngIf="abstracts.length === 0">
+
+        <i class="fas fa-info-circle"></i>
+        No abstract is available for this record.
+
+      </div>
+
+
+      <ng-container *ngIf="getSelectedAbstract(abstracts) as selectedAbstract">
+
+        <!-- LANGUAGE SELECTOR -->
+        <div
+          class="abstract-language-bar"
+          *ngIf="abstracts.length > 1">
+
+          <div
+            class="abstract-language-tabs"
+            role="tablist"
+            aria-label="Abstract language">
+
+            <button
+              *ngFor="let abstract of abstracts"
+              type="button"
+              class="abstract-language-tab"
+              [class.active]="
+                getAbstractLanguage(selectedAbstract) ===
+                getAbstractLanguage(abstract)
+              "
+              [attr.aria-selected]="
+                getAbstractLanguage(selectedAbstract) ===
+                getAbstractLanguage(abstract)
+              "
+              (click)="
+                selectAbstractLanguage(
+                  getAbstractLanguage(abstract)
+                )
+              ">
+
+              {{ getAbstractLanguageLabel(
+                  getAbstractLanguage(abstract)
+              ) }}
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- ABSTRACT CONTENT -->
+        <div
+          class="record-abstract-body"
+          [class.is-rtl]="isRtlAbstract(selectedAbstract)"
+          [attr.dir]="
+            isRtlAbstract(selectedAbstract)
+              ? 'rtl'
+              : 'ltr'
+          ">
+
+          <div
+            class="record-abstract-text"
+            [innerHTML]="selectedAbstract.value">
+          </div>
+
+        </div>
+
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+
+
+  <!-- PDF preview -->
+  <div
+    class="record-reading-content record-preview-panel"
+    *ngIf="activeRecordTab === 'preview'">
+
+    <!--
+      Component is instantiated only when this tab is selected.
+      PDF.js therefore does not consume resources during normal
+      Abstract viewing.
+    -->
+    <ng-container *ngIf="isMultimediaRecord(); else pdfPreview">
+
+      <div class="auibar-multimedia-preview">
+        <ds-media-viewer [item]="object"></ds-media-viewer>
+      </div>
+
+    </ng-container>
+
+    <ng-template #pdfPreview>
+      <ds-paps-document-preview
+        [item]="object">
+      </ds-paps-document-preview>
+    </ng-template>
+
+  </div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- MAIN ITEM CONTENT                                      -->
+<!-- ====================================================== -->
+
+<div class="row modern-item-layout">
+
+  <!-- Main metadata -->
+  <main class="col-12 col-lg-8 modern-item-main">
+
+
+    
+    <!-- ITEM INFORMATION -->
+    <section class="modern-content-card modern-metadata-card">
+
+      <header class="modern-card-header">
+
+        <div class="modern-card-icon">
+          <i class="fas fa-list"></i>
+        </div>
+
+        <div>
+          <span class="modern-card-kicker">
+            Descriptive metadata
+          </span>
+          <h2>Item information</h2>
+        </div>
+
+      </header>
+
+
+      <div class="modern-card-body">
+
+        <div class="record-info-grid">
+
+
+          <!-- Reference -->
+          <div
+            class="record-info-tile"
+            *ngIf="
+              object.firstMetadataValue(
+                ['aupaps.identifier.reference']
+              ) as reference
+            ">
+
+            <div class="record-info-icon">
+              <i class="fas fa-tag"></i>
+            </div>
+
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Reference
+              </span>
+
+              <span class="record-info-value">
+                {{ reference }}
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- Meeting Chair -->
+          <div
+            class="record-info-tile"
+            *ngIf="
+              object.firstMetadataValue(
+                ['aupaps.meeting.chair']
+              ) as chair
+            ">
+
+            <div class="record-info-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Meeting Chair
+              </span>
+
+              <span class="record-info-value">
+                {{ chair }}
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- Chairing Country -->
+          <div
+            class="record-info-tile"
+            *ngIf="
+              object.firstMetadataValue(
+                ['aupaps.meeting.country']
+              ) as country
+            ">
+
+            <div class="record-info-icon">
+              <i class="fas fa-flag"></i>
+            </div>
+
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Chairing Country
+              </span>
+
+              <span class="record-info-value">
+                <a
+                  class="record-info-link"
+                  [routerLink]="['/search']"
+                  [queryParams]="{
+                    query:
+                      'aupaps.meeting.country:&quot;' +
+                      country +
+                      '&quot;'
+                  }">
+                  {{ country }}
+                </a>
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- Document Type -->
+          <div
+            class="record-info-tile"
+            *ngIf="
+              object.firstMetadataValue(
+                ['dc.type']
+              ) as type
+            ">
+
+            <div class="record-info-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Document Type
+              </span>
+
+              <span class="record-info-value">
+                <a
+                  class="record-info-link"
+                  [routerLink]="['/search']"
+                  [queryParams]="{
+                    query: 'dc.type:&quot;' + type + '&quot;'
+                  }">
+                  {{ type }}
+                </a>
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- Date -->
+          <div
+            class="record-info-tile"
+            *ngIf="
+              object.firstMetadataValue(
+                ['dc.date.issued']
+              ) as date
+            ">
+
+            <div class="record-info-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Date Issued
+              </span>
+
+              <span class="record-info-value">
+                {{ date }}
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- Language -->
+          <div
+            class="record-info-tile"
+            *ngIf="
+              object.allMetadataValues(
+                ['dc.language.iso']
+              ).length
+            ">
+
+            <div class="record-info-icon">
+              <i class="fas fa-language"></i>
+            </div>
+
+            <div class="record-info-content">
+
+              <span class="record-info-label">
+                Language
+              </span>
+
+              <span class="record-info-value">
+
+                <ng-container
+                  *ngFor="
+                    let language of
+                      object.allMetadataValues(
+                        ['dc.language.iso']
+                      );
+                    let last = last
+                  ">
+                  {{ getLanguageName(language) }}<span *ngIf="!last">, </span>
+                </ng-container>
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- Publisher -->
+          <div
+            class="record-info-tile"
+            *ngIf="object.firstMetadataValue(['dc.publisher']) as publisher">
+
+            <div class="record-info-icon">
+              <i class="fas fa-building"></i>
+            </div>
+
+            <div class="record-info-content">
+
+              <span class="record-info-label">
+                Publisher
+              </span>
+
+              <span class="record-info-value">
+                {{ publisher }}
+              </span>
+
+            </div>
+
+          </div>
+
+
+<!-- Author -->
+<div
+  class="record-info-tile"
+  *ngIf="object.allMetadataValues(['dc.contributor.author']).length">
+
+  <div class="record-info-icon">
+    <i class="fas fa-user-edit"></i>
+  </div>
+
+  <div class="record-info-content">
+
+    <span class="record-info-label">
+      Author
+    </span>
+
+    <span class="record-info-value">
+      <ng-container
+        *ngFor="
+          let author of object.allMetadataValues(['dc.contributor.author']);
+          let last = last
+        ">
+
+        <a
+          class="record-info-link"
+          [routerLink]="['/browse/author']"
+          [queryParams]="{ startsWith: author }">
+          {{ author }}
+        </a>
+
+        <span *ngIf="!last">; </span>
+
+      </ng-container>
+    </span>
+
+  </div>
+
+</div>
+
+
+          <!-- Scope Theme -->
+          <div
+            class="record-info-tile"
+            *ngIf="
+              object.firstMetadataValue(
+                ['aupaps.scope.theme']
+              ) as scopeTheme
+            ">
+
+            <div class="record-info-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+
+            <div class="record-info-content">
+
+              <span class="record-info-label">
+                Scope Theme
+              </span>
+
+              <span class="record-info-value">
+                {{ scopeTheme }}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- SUBJECT KEYWORDS -->
+          <div
+            class="record-info-wide"
+            *ngIf="object.hasMetadata(['dc.subject'])">
+
+            <div class="record-info-wide-heading">
+
+              <div class="record-info-icon">
+                <i class="fas fa-tags"></i>
+              </div>
+
+              <span class="record-info-label">
+                Subject Keywords
+              </span>
+
+            </div>
+
+            <div class="modern-subject-list">
+
+              <ng-container
+                *ngFor="
+                  let subject of
+                    object.allMetadataValues(['dc.subject'])
+                ">
+
+                <a
+                  class="modern-subject-chip"
+                  [routerLink]="['/browse/subject']"
+                  [queryParams]="{ startsWith: subject }">
+                  {{ subject }}
+                </a>
+
+              </ng-container>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    
+    <!-- COLLECTIONS + PERMANENT LINK -->
+    <div class="record-bottom-meta-grid">
+
+      <!-- COLLECTIONS -->
+      <section class="repository-context-card">
+
+      <div class="repository-context-icon">
+        <i class="fas fa-folder-open"></i>
+      </div>
+
+      <div class="repository-context-content">
+
+        <span class="repository-context-kicker">
+          Repository location
+        </span>
+
+        <h2>Collections</h2>
+
+        <div class="repository-context-value">
+          <ds-item-page-collections
+            [item]="object">
+          </ds-item-page-collections>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PERSISTENT LINK -->
+    <section
+      class="persistent-link-card"
+      *ngIf="
+        object.firstMetadataValue(
+          ['dc.identifier.uri']
+        ) as persistentUri
+      ">
+
+      <div class="persistent-link-icon">
+        <i class="fas fa-link"></i>
+      </div>
+
+      <div class="persistent-link-content">
+
+        <span class="persistent-link-kicker">
+          Persistent identifier
+        </span>
+
+        <h2>Permanent link</h2>
+
+        <a
+          class="persistent-link-value"
+          [href]="persistentUri"
+          target="_blank"
+          rel="noopener noreferrer">
+          {{ persistentUri }}
+        </a>
+
+      </div>
+
+      <a
+        class="persistent-link-action"
+        [href]="persistentUri"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Open permanent link"
+        aria-label="Open permanent link">
+
+        <i class="fas fa-external-link-alt"></i>
+
+      </a>
+
+    </section>
+
+    </div>
+    <!-- /record-bottom-meta-grid -->
+
+
+  </main>
+
+
+  <!-- ==================================================== -->
+  <!-- SIDEBAR                                              -->
+  <!-- ==================================================== -->
+
+  <aside class="col-12 col-lg-4 modern-item-sidebar">
+
+    <div class="modern-sidebar-sticky">
+
+
+      <!-- NORMAL DOWNLOADABLE ITEM -->
+      <section
+        class="modern-side-card modern-files-card"
+        *ngIf="
+          object.firstMetadataValue(['local.access.mode']) !== 'view-only' &&
+          object.firstMetadataValue(['local.access.mode']) !== 'restricted-view'
+        ">
+
+        <header class="modern-side-card-header">
+
+          <div>
+            <span class="modern-side-card-kicker">
+              Document
+            </span>
+
+            <h2>
+              {{ 'item.page.files' | translate }}
+            </h2>
+          </div>
+
+          <i class="fas fa-download"></i>
+
+        </header>
+
+
+        <div class="modern-side-card-body">
+
+          <div class="modern-record-media">
+
+            
+
+
+            <ng-container
+              *ngIf="!isMultimediaRecord()">
+
+              <ds-metadata-field-wrapper
+                [class]="'mb-0 pb-0'"
+                [hideIfNoTextContent]="false">
+
+                <ds-thumbnail
+                  [thumbnail]="object?.thumbnail | async">
+                </ds-thumbnail>
+
+              </ds-metadata-field-wrapper>
+
+            </ng-container>
+
+          </div>
+
+
+          <div class="modern-file-section-wrapper">
+
+            <ds-item-page-file-section
+              [item]="object">
+            </ds-item-page-file-section>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- CONTROLLED VIEW ITEM -->
+      <section
+        class="modern-side-card"
+        *ngIf="
+          object.firstMetadataValue(['local.access.mode']) === 'view-only' ||
+          object.firstMetadataValue(['local.access.mode']) === 'restricted-view'
+        ">
+
+        <header class="modern-side-card-header">
+
+          <div>
+            <span class="modern-side-card-kicker">
+              Access
+            </span>
+
+            <h2>Online viewing</h2>
+          </div>
+
+          <i class="fas fa-book-open"></i>
+
+        </header>
+
+        <div class="modern-side-card-body">
+
+          <p class="mb-0">
+            This document is available for consultation
+            through the repository reader.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </aside>
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- CONTROLLED PDF READER                                  -->
+<!-- ====================================================== -->
+
+<section
+  class="modern-reader-stage"
+  *ngIf="
+    object.firstMetadataValue(['local.access.mode']) === 'view-only' ||
+    object.firstMetadataValue(['local.access.mode']) === 'restricted-view'
+  ">
+
+  <header class="modern-reader-header">
+
+    <div>
+      <span class="modern-reader-kicker">
+        <i class="fas fa-book-open"></i>
+        Document reader
+      </span>
+
+      <h2>Read this document online</h2>
+
+      <p>
+        The document is available for consultation within
+        the repository.
+      </p>
+
+    </div>
+
+  </header>
+
+
+  <div class="modern-reader-body">
+
+    <ds-item-page-file-section
+      [item]="object">
+    </ds-item-page-file-section>
+
+  </div>
+
+</section>

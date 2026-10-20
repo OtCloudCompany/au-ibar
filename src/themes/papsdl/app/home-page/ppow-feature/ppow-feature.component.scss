@@ -1,0 +1,577 @@
+.ppow-card {
+  height: 100%;
+  padding: 24px 26px 20px;
+  border: 1px solid #dfe5e9;
+  background: #fff;
+}
+
+.ppow-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 26px;
+}
+
+.ppow-kicker {
+  display: block;
+  color: #a91624;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.ppow-heading h2 {
+  margin: 5px 0 0;
+  color: #0E591A;
+  font-size: 1.45rem;
+  font-weight: 800;
+}
+
+.heading-line {
+  width: 138px;
+  height: 3px;
+  margin-top: 13px;
+  background: #00a7d1;
+}
+
+.ppow-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 56px;
+  border-radius: 50%;
+  background: #f1f4f5;
+  color: #007d7a;
+  font-size: 1.25rem;
+}
+
+.ppow-feature {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.ppow-date {
+  width: 82px;
+  min-width: 82px;
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: #0E591A;
+  color: #fff;
+}
+
+.ppow-date strong {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.ppow-date span {
+  margin-top: 6px;
+  font-size: .8rem;
+  font-weight: 800;
+}
+
+.ppow-copy {
+  min-width: 0;
+}
+
+.ppow-period {
+  display: block;
+  margin-bottom: 5px;
+  color: #007d7a;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.ppow-title {
+  display: block;
+  color: #0E591A;
+  font-size: .92rem;
+  font-weight: 800;
+  line-height: 1.38;
+  text-decoration: none;
+}
+
+.ppow-title:hover {
+  color: #a91624;
+}
+
+.ppow-reference {
+  display: block;
+  margin-top: 8px;
+  color: #a91624;
+  font-size: .67rem;
+  font-weight: 800;
+}
+
+.ppow-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 22px;
+  border-top: 1px solid #e4e9ec;
+  padding-top: 12px;
+}
+
+.ppow-actions a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #007d7a;
+  font-size: .8rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ppow-actions a:hover {
+  color: #a91624;
+}
+
+.ppow-status {
+  color: #71808b;
+  font-size: .85rem;
+}
+
+/* AU palette override */
+.ppow-date {
+  background: #0E591A;
+}
+
+.ppow-icon {
+  color: #0E591A;
+}
+
+.ppow-actions a {
+  color: #0E591A;
+}
+
+.ppow-actions a:hover {
+  color: #083D11;
+}
+
+/* Editorial wrap layout */
+@media (min-width: 1400px) {
+  .ppow-feature {
+    display: block;
+  }
+
+  .ppow-date {
+    float: left;
+    margin: 0 22px 14px 0;
+  }
+
+  .ppow-copy {
+    display: block;
+    min-width: 0;
+  }
+
+  .ppow-copy::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .ppow-actions {
+    clear: both;
+  }
+}
+
+@media (min-width: 1400px) {
+  .ppow-date {
+    width: 104px;
+    min-width: 104px;
+    height: 118px;
+  }
+}
+
+/* Refined responsive PPoW layout */
+@media (min-width: 1400px) {
+  .ppow-feature {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+  }
+
+  .ppow-date {
+    float: none;
+    margin: 0;
+    width: 112px;
+    min-width: 112px;
+    height: 126px;
+  }
+
+  .ppow-copy {
+    display: block;
+    min-width: 0;
+  }
+
+  .ppow-title {
+    line-height: 1.42;
+  }
+
+  .ppow-actions {
+    clear: both;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 24px;
+    padding-top: 14px;
+  }
+
+  .ppow-actions a {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e6eaed;
+  }
+
+  .ppow-actions a:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (min-width: 1450px) {
+  .ppow-feature {
+    grid-template-columns: 122px minmax(0, 1fr);
+  }
+
+  .ppow-date {
+    width: 122px;
+    min-width: 122px;
+    height: 132px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .ppow-feature {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .ppow-date {
+    float: none;
+    margin: 0;
+  }
+}
+
+.ppow-actions a > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.ppow-actions a > i:last-child {
+  flex: 0 0 auto;
+}
+
+/* Compact standardized AU date tile */
+@media (min-width: 1400px) {
+  .ppow-feature {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+  }
+
+  .ppow-date {
+    float: none;
+    margin: 0;
+    width: 88px;
+    min-width: 88px;
+    height: 96px;
+    border-radius: 12px;
+  }
+
+  .ppow-date strong {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .ppow-date span {
+    margin-top: 6px;
+    font-size: .72rem;
+    line-height: 1;
+  }
+
+  .ppow-copy {
+    min-width: 0;
+  }
+
+  .ppow-period {
+    margin-bottom: 6px;
+    font-size: .72rem;
+  }
+
+  .ppow-title {
+    font-size: .9rem;
+    line-height: 1.35;
+  }
+}
+
+.ppow-actions {
+  margin-top: 18px;
+}
+
+.ppow-actions a {
+  min-height: 36px;
+  padding: 8px 0;
+  font-size: .78rem;
+}
+
+@media (min-width: 1400px) {
+  .ppow-card {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+
+/* ==========================================================
+   PPoW — MONTHLY FOCUS AREAS
+   ========================================================== */
+
+.ppow-focus {
+  margin-top: 20px;
+  padding-top: 16px;
+
+  border-top: 1px solid #e3e8eb;
+}
+
+.ppow-focus-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 11px;
+
+  color: #687781;
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.ppow-focus-heading i {
+  color: #0E591A;
+  font-size: .75rem;
+  opacity: .75;
+}
+
+.ppow-focus-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.ppow-focus-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  min-width: 0;
+
+  padding: 4px 9px 4px 5px;
+
+  border: 1px solid #d6e1d8;
+  border-radius: 999px;
+
+  background: #f8faf8;
+
+  color: #294b30;
+  font-size: .65rem;
+  font-weight: 700;
+  line-height: 1.25;
+
+  text-decoration: none;
+
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    color .16s ease,
+    transform .16s ease;
+}
+
+.ppow-focus-hash {
+  width: 18px;
+  height: 18px;
+
+  flex: 0 0 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #0E591A;
+  color: #fff;
+
+  font-size: .63rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.ppow-focus-label {
+  min-width: 0;
+}
+
+.ppow-focus-tag:hover {
+  border-color: #0E591A;
+  background: #eef5ef;
+  color: #083D11;
+
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.ppow-focus-tag:focus-visible {
+  outline: 2px solid #D4AF37;
+  outline-offset: 2px;
+}
+
+
+@media (max-width: 767.98px) {
+
+  .ppow-focus {
+    margin-top: 17px;
+  }
+
+  .ppow-focus-tags {
+    gap: 6px;
+  }
+
+  .ppow-focus-tag {
+    font-size: .64rem;
+  }
+
+}
+
+/* AU maroon heading accent */
+.heading-line {
+  background: #A61E2D !important;
+}
+
+
+/* =========================================================
+   PROGRAMME OF WORK — AU GOLD FOCUS HEADING
+   ========================================================= */
+
+.ppow-focus-heading span {
+  color: #B4A269 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.055em !important;
+  text-transform: uppercase !important;
+}
+
+
+
+/* =========================================================
+   PROGRAMME OF WORK — FOCUS AREAS FINAL COLOURS
+   ========================================================= */
+
+/* Heading: BLACK */
+.ppow-focus-heading,
+.ppow-focus-heading span {
+  color: #111111 !important;
+}
+
+
+/*
+ * Subject pills: AU GOLD.
+ * Target the immediate rendered pills regardless of whether
+ * they are anchors, spans or buttons.
+ */
+.ppow-focus-tags > * {
+  background: #B4A269 !important;
+
+  border-color: #B4A269 !important;
+
+  color: #111111 !important;
+
+  box-shadow: none !important;
+}
+
+
+/* Text/link inside each subject */
+.ppow-focus-tags > * a,
+.ppow-focus-tags > * span {
+  color: #111111 !important;
+}
+
+
+/* Keep the small hashtag/icon strongly AU Green */
+.ppow-focus-tags > * i,
+.ppow-focus-tags .fa-hashtag,
+.ppow-focus-tags .fa-solid {
+  color: #1A5632 !important;
+}
+
+
+/* Slightly richer hover */
+.ppow-focus-tags > *:hover {
+  background: #A8955D !important;
+
+  border-color: #A8955D !important;
+}
+
+
+/* =========================================================
+   FOCUS AREAS — FINAL AU COLOUR TREATMENT
+   ========================================================= */
+
+/* Heading itself: black */
+.ppow-focus-heading,
+.ppow-focus-heading span {
+  color: #111111 !important;
+}
+
+
+/* Focus-area pills: AU Gold */
+.ppow-focus-tags > a,
+.ppow-focus-tags > span,
+.ppow-focus-tags > button,
+.ppow-focus-tag {
+  background: #B4A269 !important;
+  border-color: #B4A269 !important;
+  color: #111111 !important;
+  box-shadow: none !important;
+}
+
+
+/* Text inside a pill */
+.ppow-focus-tags > a span,
+.ppow-focus-tags > button span,
+.ppow-focus-tag span {
+  color: #111111 !important;
+}
+
+
+/* Dark green hashtag circle/icon for contrast */
+.ppow-focus-tags i,
+.ppow-focus-tag i {
+  color: #1A5632 !important;
+}
+
+
+/* restrained hover */
+.ppow-focus-tags > a:hover,
+.ppow-focus-tags > button:hover,
+.ppow-focus-tag:hover {
+  background: #A8955D !important;
+  border-color: #A8955D !important;
+  color: #111111 !important;
+}

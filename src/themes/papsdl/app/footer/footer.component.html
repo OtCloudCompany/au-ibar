@@ -1,0 +1,179 @@
+<footer class="auibar-footer">
+
+  <div class="auibar-footer-main">
+    <div class="container-fluid auibar-footer-container">
+
+      <div class="auibar-footer-grid">
+
+        <!-- Identity -->
+        <div class="auibar-footer-column auibar-footer-identity">
+
+          <a routerLink="/home" class="auibar-footer-brand"
+             aria-label="AU-IBAR Knowledge Repository home">
+            <img
+              src="assets/papsdl/images/au-ibar-logo-footer.png"
+              alt="African Union Inter-African Bureau for Animal Resources"
+              loading="lazy">
+          </a>
+
+          <p>
+            The AU-IBAR Knowledge Repository acquires,
+            processes and preserves materials produced by
+            the African Union, researchers, regional offices
+            and collaborating partners.
+          </p>
+
+          <p>
+            It provides access to official AU-IBAR documents,
+            including conference and working papers, reports,
+            departmental publications, commissioned studies
+            and correspondence.
+          </p>
+
+        </div>
+
+        <!-- Contact -->
+        <div class="auibar-footer-column">
+
+          <h2 class="auibar-footer-heading">Get in Touch</h2>
+
+          <address class="auibar-footer-contact">
+
+            <div class="auibar-footer-contact-item">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <span>
+                Kenindia Business Park, Museum Hill,
+                Westlands Road, Nairobi, Kenya
+              </span>
+            </div>
+
+            <div class="auibar-footer-contact-item">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              <a href="tel:+254203674000">
+                +254 (20) 3674 000
+              </a>
+            </div>
+
+            <div class="auibar-footer-contact-item">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:ibar.office@au-ibar.org">
+                ibar.office&#64;au-ibar.org
+              </a>
+            </div>
+
+          </address>
+
+        </div>
+
+        <!-- Navigation -->
+        <div class="auibar-footer-column">
+
+          <h2 class="auibar-footer-heading">Quick Links</h2>
+
+          <nav class="auibar-footer-links" aria-label="Quick links">
+
+            <a routerLink="/home">Repository Home</a>
+
+            <a routerLink="/community-list">
+              Communities &amp; Collections
+            </a>
+
+            <a href="/search?spc.page=1&amp;spc.sf=dc.date.accessioned&amp;spc.sd=DESC">
+              Knowledge Resources
+            </a>
+
+            <a href="https://www.au-ibar.org/projects"
+               target="_blank" rel="noopener noreferrer">
+              AU-IBAR Projects
+              <i class="fa-solid fa-arrow-up-right-from-square"
+                 aria-hidden="true"></i>
+            </a>
+
+            <a href="https://www.au-ibar.org/resources"
+               target="_blank" rel="noopener noreferrer">
+              AU-IBAR Resources
+              <i class="fa-solid fa-arrow-up-right-from-square"
+                 aria-hidden="true"></i>
+            </a>
+
+            <a href="https://www.au-ibar.org/what-we-do/thematic-areas"
+               target="_blank" rel="noopener noreferrer">
+              Thematic Areas
+              <i class="fa-solid fa-arrow-up-right-from-square"
+                 aria-hidden="true"></i>
+            </a>
+
+          </nav>
+
+        </div>
+
+        <!-- Policies -->
+        <div class="auibar-footer-column">
+
+          <h2 class="auibar-footer-heading">
+            Disclaimer &amp; Policies
+          </h2>
+
+          <nav class="auibar-footer-links" aria-label="Policies">
+
+            <a href="https://www.au-ibar.org/cookie-policy"
+               target="_blank" rel="noopener noreferrer">
+              Cookie Policy
+            </a>
+
+            <a href="https://www.au-ibar.org/personal-data-protection-policy"
+               target="_blank" rel="noopener noreferrer">
+              Personal Data Protection Policy
+            </a>
+
+            <a href="https://www.au-ibar.org/privacy-policy"
+               target="_blank" rel="noopener noreferrer">
+              Privacy Policy
+            </a>
+
+            <a href="https://www.au-ibar.org/protection-of-your-personal-data"
+               target="_blank" rel="noopener noreferrer">
+              Protection of Your Personal Data
+            </a>
+
+            <button type="button"
+                    class="auibar-cookie-button"
+                    (click)="openCookieSettings()">
+              Cookie Preferences
+            </button>
+
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="auibar-footer-bottom">
+
+    <div class="container-fluid auibar-footer-container
+                auibar-footer-bottom-inner">
+
+      <span>
+        © {{ dateObj | date:'y' }} African Union –
+        Inter-African Bureau for Animal Resources.
+        All rights reserved.
+      </span>
+
+      <span class="auibar-footer-bottom-links">
+        <a routerLink="/info/feedback">Feedback</a>
+        <a href="https://www.au-ibar.org/"
+           target="_blank" rel="noopener noreferrer">
+          Official AU-IBAR Website
+          <i class="fa-solid fa-arrow-up-right-from-square"
+             aria-hidden="true"></i>
+        </a>
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>

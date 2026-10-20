@@ -1,0 +1,59 @@
+<section class="fishgov-spotlight" aria-labelledby="fishgov-title">
+  <div class="fishgov-container">
+
+    <div class="fishgov-heading-row">
+      <div class="fishgov-heading-copy">
+        <span class="fishgov-kicker">FEATURED KNOWLEDGE PROGRAMME</span>
+        <h2 id="fishgov-title">
+          FishGov<span>2</span> Knowledge Spotlight
+        </h2>
+        <p>
+          Knowledge advancing sustainable fisheries governance,
+          aquaculture development and Africa's Blue Economy.
+        </p>
+      </div>
+
+      <a class="fishgov-explore"
+         routerLink="/search"
+         [queryParams]="fishgovSearch">
+        Explore FishGov2 Knowledge
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <div class="fishgov-resources">
+      <a
+        *ngFor="let resource of resources"
+        class="fishgov-card"
+        [routerLink]="['/items', resource.uuid]">
+
+        <div class="fishgov-card-image">
+          <img
+            [src]="resource.image"
+            alt=""
+            loading="lazy">
+        </div>
+
+        <div class="fishgov-card-body">
+
+          <span class="fishgov-card-category">
+            {{ resource.category }}
+          </span>
+
+          <h3>{{ resource.title }}</h3>
+
+          <p *ngIf="resource.description">
+            {{ resource.description }}
+          </p>
+
+          <span class="fishgov-card-action">
+            View publication
+            <span aria-hidden="true">→</span>
+          </span>
+
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,17 @@
+<ds-home-coar></ds-home-coar>
+<ds-paps-hero-slider></ds-paps-hero-slider>
+<ds-auibar-fishgov2-spotlight></ds-auibar-fishgov2-spotlight>
+<ds-paps-editorial-strip></ds-paps-editorial-strip>
+<ds-auibar-document-types></ds-auibar-document-types>
+<div class="container-fluid px-0">
+  <ng-container searchContentTop *ngTemplateOutlet="homeContent"></ng-container>
+</div>
+
+<ds-suggestions-popup></ds-suggestions-popup>
+
+<ng-template #homeContent>
+  <ng-container *ngIf="(site$ | async) as site">
+<!--     <ds-view-tracker [object]="site"></ds-view-tracker> -->
+  </ng-container>
+
+</ng-template>
