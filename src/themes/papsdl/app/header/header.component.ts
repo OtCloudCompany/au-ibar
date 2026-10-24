@@ -9,7 +9,6 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { HeaderComponent as BaseComponent } from '../../../../app/header/header.component';
 import { ContextHelpToggleComponent } from '../../../../app/header/context-help-toggle/context-help-toggle.component';
-import { ThemedSearchNavbarComponent } from '../../../../app/search-navbar/themed-search-navbar.component';
 import { ThemedAuthNavMenuComponent } from '../../../../app/shared/auth-nav-menu/themed-auth-nav-menu.component';
 import { ImpersonateNavbarComponent } from '../../../../app/shared/impersonate-navbar/impersonate-navbar.component';
 import { ThemedLangSwitchComponent } from '../../../../app/shared/lang-switch/themed-lang-switch.component';
@@ -28,7 +27,6 @@ import { ThemedSearchFormComponent } from '../../../../app/shared/search-form/th
     TranslateModule,
     ContextHelpToggleComponent,
     ThemedLangSwitchComponent,
-    ThemedSearchNavbarComponent,
     ThemedAuthNavMenuComponent,
     ImpersonateNavbarComponent,
     ThemedSearchFormComponent,

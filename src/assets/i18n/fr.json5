@@ -12086,5 +12086,36 @@
   // TODO New key - Add a translation
   "bitstream.related.deleted": "deleted",
 
+  // AU-IBAR (2026-10-24): labels for Language/Country facets and Browse by Type
+  "search.filters.filter.language.head": "Langue",
+  "search.filters.filter.language.placeholder": "Langue",
+  "search.filters.filter.language.label": "Rechercher une langue",
+  "search.filters.filter.country.head": "Pays / région",
+  "search.filters.filter.country.placeholder": "Pays / région",
+  "search.filters.filter.country.label": "Rechercher un pays ou une région",
+  "search.filters.applied.f.language": "Langue",
+  "search.filters.applied.f.country": "Pays / région",
+  "browse.comcol.by.type": "Par type",
+  "browse.metadata.type": "Type",
+  "browse.metadata.type.breadcrumbs": "Parcourir par type",
+  "menu.section.browse_global_by_type": "Par type",
+
+  // AU-IBAR (2026-10-24): subject-heading facet, browse tree and vocabulary labels
+  "search.filters.filter.auibarsubject.head": "Vedette-matière",
+  "search.filters.filter.auibarsubject.placeholder": "Vedette-matière",
+  "search.filters.filter.auibarsubject.label": "Rechercher une vedette-matière",
+  "search.filters.applied.f.auibarsubject": "Vedette-matière",
+  "browse.comcol.by.auibar-subjects": "Par vedette-matière",
+  "browse.metadata.auibar-subjects": "Vedette-matière",
+  "browse.metadata.auibar-subjects.breadcrumbs": "Parcourir par vedette-matière AU-IBAR",
+  "browse.metadata.auibar-subjects.tree.description": "Sélectionnez une vedette-matière à ajouter comme filtre de recherche",
+  "menu.section.browse_global_by_auibar-subjects": "Par vedette-matière",
+  "vocabulary-treeview.tree.description.auibar-subjects": "Vedettes-matière AU-IBAR",
+  "browse.comcol.by.auibar-types": "Par type de produit",
+  "browse.metadata.auibar-types": "Type de produit",
+  "browse.metadata.auibar-types.breadcrumbs": "Parcourir par type de produit AU-IBAR",
+  "browse.metadata.auibar-types.tree.description": "Sélectionnez un type de produit à ajouter comme filtre de recherche",
+  "menu.section.browse_global_by_auibar-types": "Par type de produit",
+  "vocabulary-treeview.tree.description.auibar-types": "Types de produits de connaissance AU-IBAR",
 
 }

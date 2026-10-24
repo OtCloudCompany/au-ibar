@@ -3,6 +3,10 @@ import {
   Component, Inject, OnInit, OnDestroy, PLATFORM_ID,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import {
+  APP_CONFIG,
+  AppConfig,
+} from '@dspace/config/app-config.interface';
 
 interface FishGovResource {
   uuid: string;
@@ -25,7 +29,12 @@ export class Fishgov2SpotlightComponent implements OnInit, OnDestroy {
 
   readonly fishgovSearch = { query: 'FishGov2' };
 
-  private readonly base = '/server/api';
+  // AU-IBAR (2026-10-24): use the configured REST URL instead of a hard-coded
+  // relative '/server/api', which fails on localhost:4000 and on any host where
+  // the REST API is not served from the same origin as the UI.
+  private get base(): string {
+    return `${this.appConfig.rest.baseUrl}/api`;
+  }
   private readonly maxPages = 4;
   private controller?: AbortController;
 
@@ -61,7 +70,10 @@ export class Fishgov2SpotlightComponent implements OnInit, OnDestroy {
 
   resources: FishGovResource[] = [...this.fallback];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    @Inject(APP_CONFIG) private appConfig: AppConfig,
+  ) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {

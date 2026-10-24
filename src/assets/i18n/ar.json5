@@ -12160,5 +12160,36 @@
   // TODO New key - Add a translation
   "bitstream.related.deleted": "deleted",
 
+  // AU-IBAR (2026-10-24): labels for Language/Country facets and Browse by Type
+  "search.filters.filter.language.head": "اللغة",
+  "search.filters.filter.language.placeholder": "اللغة",
+  "search.filters.filter.language.label": "البحث عن لغة",
+  "search.filters.filter.country.head": "البلد / المنطقة",
+  "search.filters.filter.country.placeholder": "البلد / المنطقة",
+  "search.filters.filter.country.label": "البحث عن بلد أو منطقة",
+  "search.filters.applied.f.language": "اللغة",
+  "search.filters.applied.f.country": "البلد / المنطقة",
+  "browse.comcol.by.type": "حسب النوع",
+  "browse.metadata.type": "النوع",
+  "browse.metadata.type.breadcrumbs": "تصفح حسب النوع",
+  "menu.section.browse_global_by_type": "حسب النوع",
+
+  // AU-IBAR (2026-10-24): subject-heading facet, browse tree and vocabulary labels
+  "search.filters.filter.auibarsubject.head": "رأس الموضوع",
+  "search.filters.filter.auibarsubject.placeholder": "رأس الموضوع",
+  "search.filters.filter.auibarsubject.label": "البحث في رؤوس الموضوعات",
+  "search.filters.applied.f.auibarsubject": "رأس الموضوع",
+  "browse.comcol.by.auibar-subjects": "حسب رأس الموضوع",
+  "browse.metadata.auibar-subjects": "رأس الموضوع",
+  "browse.metadata.auibar-subjects.breadcrumbs": "تصفح حسب رؤوس موضوعات AU-IBAR",
+  "browse.metadata.auibar-subjects.tree.description": "اختر رأس موضوع لإضافته كمرشح بحث",
+  "menu.section.browse_global_by_auibar-subjects": "حسب رأس الموضوع",
+  "vocabulary-treeview.tree.description.auibar-subjects": "رؤوس موضوعات AU-IBAR",
+  "browse.comcol.by.auibar-types": "حسب نوع المنتج",
+  "browse.metadata.auibar-types": "نوع المنتج",
+  "browse.metadata.auibar-types.breadcrumbs": "تصفح حسب أنواع منتجات AU-IBAR",
+  "browse.metadata.auibar-types.tree.description": "اختر نوع منتج لإضافته كمرشح بحث",
+  "menu.section.browse_global_by_auibar-types": "حسب نوع المنتج",
+  "vocabulary-treeview.tree.description.auibar-types": "أنواع منتجات المعرفة AU-IBAR",
 
 }

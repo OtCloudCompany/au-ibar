@@ -78,7 +78,7 @@
           let language of object.allMetadataValues(['dc.language.iso']);
           let last = last
         ">
-        {{ getLanguageName(language) }}<span *ngIf="!last">, </span>
+        {{ language | dsLanguageName }}<span *ngIf="!last">, </span>
       </ng-container>
 
     </span>
@@ -598,7 +598,7 @@
                       );
                     let last = last
                   ">
-                  {{ getLanguageName(language) }}<span *ngIf="!last">, </span>
+                  {{ language | dsLanguageName }}<span *ngIf="!last">, </span>
                 </ng-container>
 
               </span>
@@ -696,6 +696,128 @@
 
             </div>
 
+          </div>
+
+
+          <!-- AU-IBAR additions (24 Oct 2026): editor, country/region, pages, licence -->
+          <!-- Editor -->
+          <div
+            class="record-info-tile"
+            *ngIf="object.allMetadataValues(['dc.contributor.editor']).length">
+            <div class="record-info-icon">
+              <i class="fas fa-user-pen"></i>
+            </div>
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Editor
+              </span>
+              <span class="record-info-value">
+                <ng-container
+                  *ngFor="let editor of object.allMetadataValues(['dc.contributor.editor']); let last = last">
+                  <a
+                    class="record-info-link"
+                    [routerLink]="['/browse/author']"
+                    [queryParams]="{ value: editor }">
+                    {{ editor }}
+                  </a><span *ngIf="!last">; </span>
+                </ng-container>
+              </span>
+            </div>
+          </div>
+
+
+          <!-- Country / region -->
+          <div
+            class="record-info-tile"
+            *ngIf="object.allMetadataValues(['dc.coverage.spatial']).length">
+            <div class="record-info-icon">
+              <i class="fas fa-globe-africa"></i>
+            </div>
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Country / Region
+              </span>
+              <span class="record-info-value">
+                <ng-container
+                  *ngFor="let place of object.allMetadataValues(['dc.coverage.spatial']); let last = last">
+                  <a
+                    class="record-info-link"
+                    [routerLink]="['/search']"
+                    [queryParams]="{ 'f.country': place + ',equals' }">
+                    {{ place }}
+                  </a><span *ngIf="!last">, </span>
+                </ng-container>
+              </span>
+            </div>
+          </div>
+
+
+          <!-- Number of pages -->
+          <div
+            class="record-info-tile"
+            *ngIf="object.firstMetadataValue(['dc.format.extent']) as extent">
+            <div class="record-info-icon">
+              <i class="fas fa-file-lines"></i>
+            </div>
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Pages
+              </span>
+              <span class="record-info-value">
+                {{ extent }}
+              </span>
+            </div>
+          </div>
+
+
+          <!-- Licence -->
+          <div
+            class="record-info-tile"
+            *ngIf="object.firstMetadataValue(['dc.rights.uri']) as licence">
+            <div class="record-info-icon">
+              <i class="fab fa-creative-commons"></i>
+            </div>
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Licence
+              </span>
+              <span class="record-info-value">
+                <a
+                  class="record-info-link"
+                  [href]="licence"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {{ object.firstMetadataValue(['dc.rights']) || licence }}
+                </a>
+              </span>
+            </div>
+          </div>
+
+
+          <!-- AU-IBAR SUBJECT HEADINGS -->
+          <div
+            class="record-info-wide"
+            *ngIf="object.hasMetadata(['dc.subject.auibar'])">
+            <div class="record-info-wide-heading">
+              <div class="record-info-icon">
+                <i class="fas fa-sitemap"></i>
+              </div>
+              <span class="record-info-label">
+                AU-IBAR Subject Headings
+              </span>
+            </div>
+            <div class="modern-subject-list">
+              <ng-container
+                *ngFor="let heading of object.allMetadataValues(['dc.subject.auibar'])">
+                <a
+                  class="modern-subject-chip"
+                  [title]="heading.split('::').join(' › ')"
+                  [routerLink]="['/search']"
+                  [queryParams]="{ 'f.auibarsubject': heading.split('::').pop() + ',equals' }">
+                  {{ heading.split('::').pop() }}
+                </a>
+              </ng-container>
+            </div>
           </div>
 
 

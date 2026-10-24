@@ -1,0 +1,108 @@
+debug: false
+
+ui:
+  ssl: false
+  host: localhost
+  port: 4000
+  baseUrl: https://repository.otcloud.co.ke
+  nameSpace: /
+  useProxies: true
+
+rest:
+  ssl: true
+  host: repository.otcloud.co.ke
+  port: 443
+  nameSpace: /server
+  ssrBaseUrl: http://127.0.0.1:8080/server
+
+ssr:
+  inlineCriticalCss: false
+
+themes:
+  - name: papsdl
+    # AU-IBAR (2026-10-24): favicons, same as config.dev.yml
+    headTags:
+    - tagName: link
+      attributes:
+        rel: icon
+        href: assets/papsdl/images/favicons/favicon.ico
+        sizes: any
+    - tagName: link
+      attributes:
+        rel: icon
+        href: assets/papsdl/images/favicons/favicon.svg
+        type: image/svg+xml
+    - tagName: link
+      attributes:
+        rel: apple-touch-icon
+        href: assets/papsdl/images/favicons/apple-touch-icon.png
+    - tagName: link
+      attributes:
+        rel: manifest
+        href: assets/papsdl/images/favicons/manifest.webmanifest
+
+
+# Whether to enable media viewer for image and/or video Bitstreams (i.e. Bitstreams whose MIME type starts with 'image' or 'video').
+# For images, this enables a gallery viewer where you can zoom or page through images.
+# For videos, this enables embedded video streaming
+mediaViewer:
+  image: true
+  video: true
+
+# Whether the end user agreement is required before users use the repository.
+# If enabled, the user will be required to accept the agreement before they can use the repository.
+# And whether the privacy statement/COAR notify support page should exist or not.
+info:
+  enableEndUserAgreement: true
+  enablePrivacyStatement: true
+  enableCOARNotifySupport: true
+  # Whether to show the cookie consent popup and the cookie settings footer link or not.
+  enableCookieConsentPopup: true
+
+# Whether to enable Markdown (https://commonmark.org/) and MathJax (https://www.mathjax.org/)
+# display in supported metadata fields. By default, only dc.description.abstract is supported.
+markdown:
+  enabled: true
+  mathjax: true
+
+# ---------------------------------------------------------------------
+# AU-IBAR enhancements (2026-10-24) - see changes-2026-10-24/CHANGES.md
+# ---------------------------------------------------------------------
+
+# Speed: serve cached server-side-rendered pages to bots and anonymous visitors
+cache:
+  serverSide:
+    debug: false
+    botCache:
+      max: 1000            # pages kept for crawlers
+      timeToLive: 86400000 # 1 day
+      allowStale: true
+    anonymousCache:
+      max: 100             # 0 disables; 100 most-visited pages kept for anonymous users
+      timeToLive: 10000    # 10 seconds, so new content still appears quickly
+      allowStale: true
+
+# Language switcher: the four AU working languages supported by DSpace
+languages:
+  - code: en
+    label: English
+    active: true
+  - code: fr
+    label: Français
+    active: true
+  - code: ar
+    label: العربية
+    active: true
+  - code: pt-PT
+    label: Português
+    active: true
+
+# SRSC (Swedish research subject categories) does not fit AU-IBAR content
+vocabularies:
+  - filter: 'subject'
+    vocabulary: 'srsc'
+    enabled: false
+  # AU-IBAR (2026-10-24): browse tree of the AU-IBAR subject headings (Browse menu > By Subject Heading)
+  - filter: 'auibarsubject'
+    vocabulary: 'auibar-subjects'
+    enabled: true

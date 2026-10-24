@@ -1,4 +1,6 @@
 {
+  // npm run merge-i18n -- -s src/themes/papsdl/assets/i18n
+
   "401.help": "You're not authorized to access this page. You can use the button below to get back to the home page.",
 
   "401.link.home-page": "Take me to the home page",
@@ -1420,8 +1422,6 @@
   "collection.form.submissionDefinition": "Submission definition",
 
   "collection.form.correctionSubmissionDefinition": "Submission definition for correction request",
-
-
 
   "collection.listelement.badge": "Collection",
 
@@ -3155,7 +3155,6 @@
 
   "item.page.relationships.RELATION.Project.researchoutputs": "Publications",
 
-
   "item.page.subject": "Keywords",
 
   "item.page.uri": "URI",
@@ -3636,7 +3635,7 @@
 
   "login.form.forgot-password": "Have you forgotten your password?",
 
-  "login.form.header": "Please log in to DSpace",
+  "login.form.header": "Please log in",
 
   "login.form.new-user": "New user? Click here to register.",
 
@@ -6250,7 +6249,7 @@
 
   "thumbnail.person.placeholder": "No Profile Picture Available",
 
-  "title": "DSpace",
+  title: "DSpace",
 
   "vocabulary-treeview.header": "Hierarchical tree view",
 
@@ -7887,4 +7886,60 @@
   "bitstream.related.isReplacedBy": "Is replaced by",
 
   "bitstream.related.deleted": "deleted",
+
+  "search.filters.filter.language.head": "Language",
+
+  "search.filters.filter.language.placeholder": "Language",
+
+  "search.filters.filter.language.label": "Search language",
+
+  "search.filters.filter.country.head": "Country / region",
+
+  "search.filters.filter.country.placeholder": "Country / region",
+
+  "search.filters.filter.country.label": "Search country or region",
+
+  "search.filters.applied.f.language": "Language",
+
+  "search.filters.applied.f.country": "Country / region",
+
+  "browse.comcol.by.type": "By Type",
+
+  "browse.metadata.type": "Type",
+
+  "browse.metadata.type.breadcrumbs": "Browse by Type",
+
+  "menu.section.browse_global_by_type": "By Type",
+
+  "search.filters.filter.auibarsubject.head": "Subject heading",
+
+  "search.filters.filter.auibarsubject.placeholder": "Subject heading",
+
+  "search.filters.filter.auibarsubject.label": "Search subject headings",
+
+  "search.filters.applied.f.auibarsubject": "Subject heading",
+
+  "browse.comcol.by.auibar-subjects": "By Subject Heading",
+
+  "browse.metadata.auibar-subjects": "Subject heading",
+
+  "browse.metadata.auibar-subjects.breadcrumbs": "Browse by AU-IBAR Subject Heading",
+
+  "browse.metadata.auibar-subjects.tree.description": "Select a subject heading to add as a search filter",
+
+  "menu.section.browse_global_by_auibar-subjects": "By Subject Heading",
+
+  "vocabulary-treeview.tree.description.auibar-subjects": "AU-IBAR subject headings",
+
+  "browse.comcol.by.auibar-types": "By Product Type",
+
+  "browse.metadata.auibar-types": "Product type",
+
+  "browse.metadata.auibar-types.breadcrumbs": "Browse by AU-IBAR Product Type",
+
+  "browse.metadata.auibar-types.tree.description": "Select a product type to add as a search filter",
+
+  "menu.section.browse_global_by_auibar-types": "By Product Type",
+
+  "vocabulary-treeview.tree.description.auibar-types": "AU-IBAR knowledge product types",
 }

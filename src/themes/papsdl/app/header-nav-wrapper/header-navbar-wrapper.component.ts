@@ -1,7 +1,3 @@
-import {
-  AsyncPipe,
-  NgClass,
-} from '@angular/common';
 import { Component } from '@angular/core';
 
 import { ThemedHeaderComponent } from '../../../../app/header/themed-header.component';
@@ -12,8 +8,6 @@ import { HeaderNavbarWrapperComponent as BaseComponent } from '../../../../app/h
   styleUrls: ['./header-navbar-wrapper.component.scss'],
   templateUrl: './header-navbar-wrapper.component.html',
   imports: [
-    AsyncPipe,
-    NgClass,
     ThemedHeaderComponent,
   ],
 })

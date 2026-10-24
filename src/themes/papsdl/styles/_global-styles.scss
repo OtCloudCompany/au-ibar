@@ -2,3 +2,28 @@
 
 // imports the base global style
 @import '../../../styles/_global-styles.scss';
+
+/* AU-IBAR (24 Oct 2026): show the keyword (tag) field in the submission form as a boxed
+   input like the other fields; stock DSpace draws it with only a faint bottom line. */
+ds-dynamic-tag ds-chips > div,
+ds-dynamic-tag ds-chips > div.border-light {
+  float: none !important;
+  display: block;
+  min-height: calc(1.5em + 0.75rem + 2 * var(--bs-border-width));
+  padding: 0.125rem 0.5rem;
+  background-color: var(--bs-body-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color) !important;
+  border-color: var(--bs-border-color) !important; /* beats Bootstrap .border-light */
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+ds-dynamic-tag ds-chips > div.border-light:focus-within,
+ds-dynamic-tag ds-chips > div:focus-within {
+  border-color: rgba(var(--bs-primary-rgb), 0.5) !important;
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+ds-dynamic-tag .tag-input {
+  padding-left: 0.25rem;
+}

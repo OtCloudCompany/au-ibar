@@ -1,7 +1,6 @@
 import {
   isPlatformBrowser,
   NgFor,
-  NgIf,
 } from '@angular/common';
 import {
   ChangeDetectorRef,
@@ -30,7 +29,6 @@ interface HeroSlide {
   styleUrls: ['./hero-slider.component.scss'],
   imports: [
     NgFor,
-    NgIf,
     RouterLink,
     ThematicAreasComponent,
   ],

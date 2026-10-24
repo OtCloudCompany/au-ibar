@@ -60,18 +60,13 @@
                 "bundleName": "custom-theme"
               },
               {
-                "input": "src/themes/dspace/styles/theme.scss",
-                "inject": false,
-                "bundleName": "dspace-theme"
-              },
-              "node_modules/leaflet/dist/leaflet.css",
-              "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css",
-              "node_modules/leaflet.markercluster/dist/MarkerCluster.css",
-              {
                 "input": "src/themes/papsdl/styles/theme.scss",
                 "inject": false,
                 "bundleName": "papsdl-theme"
-              }
+              },
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css",
+              "node_modules/leaflet.markercluster/dist/MarkerCluster.css"
             ],
             "scripts": [],
             "baseHref": "/"
@@ -107,7 +102,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "3mb",
-                  "maximumError": "5mb"
+                  "maximumError": "15mb"
                 },
                 {
                   "type": "anyComponentStyle",

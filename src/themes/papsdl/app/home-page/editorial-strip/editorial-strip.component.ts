@@ -9,7 +9,6 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import {
   forkJoin,
   Observable,
@@ -67,7 +66,6 @@ interface ThematicFeature {
     AsyncPipe,
     NgFor,
     NgIf,
-    RouterLink,
   ],
 })
 export class EditorialStripComponent implements OnInit, OnDestroy {

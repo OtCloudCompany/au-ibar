@@ -12327,5 +12327,36 @@
   // TODO New key - Add a translation
   "bitstream.related.deleted": "deleted",
 
+  // AU-IBAR (2026-10-24): labels for Language/Country facets and Browse by Type
+  "search.filters.filter.language.head": "Idioma",
+  "search.filters.filter.language.placeholder": "Idioma",
+  "search.filters.filter.language.label": "Pesquisar idioma",
+  "search.filters.filter.country.head": "País / região",
+  "search.filters.filter.country.placeholder": "País / região",
+  "search.filters.filter.country.label": "Pesquisar país ou região",
+  "search.filters.applied.f.language": "Idioma",
+  "search.filters.applied.f.country": "País / região",
+  "browse.comcol.by.type": "Por tipo",
+  "browse.metadata.type": "Tipo",
+  "browse.metadata.type.breadcrumbs": "Navegar por tipo",
+  "menu.section.browse_global_by_type": "Por tipo",
+
+  // AU-IBAR (2026-10-24): subject-heading facet, browse tree and vocabulary labels
+  "search.filters.filter.auibarsubject.head": "Cabeçalho de assunto",
+  "search.filters.filter.auibarsubject.placeholder": "Cabeçalho de assunto",
+  "search.filters.filter.auibarsubject.label": "Pesquisar cabeçalhos de assunto",
+  "search.filters.applied.f.auibarsubject": "Cabeçalho de assunto",
+  "browse.comcol.by.auibar-subjects": "Por cabeçalho de assunto",
+  "browse.metadata.auibar-subjects": "Cabeçalho de assunto",
+  "browse.metadata.auibar-subjects.breadcrumbs": "Navegar por cabeçalho de assunto AU-IBAR",
+  "browse.metadata.auibar-subjects.tree.description": "Selecione um cabeçalho de assunto para adicionar como filtro de pesquisa",
+  "menu.section.browse_global_by_auibar-subjects": "Por cabeçalho de assunto",
+  "vocabulary-treeview.tree.description.auibar-subjects": "Cabeçalhos de assunto AU-IBAR",
+  "browse.comcol.by.auibar-types": "Por tipo de produto",
+  "browse.metadata.auibar-types": "Tipo de produto",
+  "browse.metadata.auibar-types.breadcrumbs": "Navegar por tipo de produto AU-IBAR",
+  "browse.metadata.auibar-types.tree.description": "Selecione um tipo de produto para adicionar como filtro de pesquisa",
+  "menu.section.browse_global_by_auibar-types": "Por tipo de produto",
+  "vocabulary-treeview.tree.description.auibar-types": "Tipos de produtos de conhecimento AU-IBAR",
 
 }

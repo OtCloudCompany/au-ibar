@@ -18,7 +18,6 @@ import { PaginationService } from '../../../../../app/core/pagination/pagination
 import { TopLevelCommunityListComponent as BaseComponent } from '../../../../../app/home-page/top-level-community-list/top-level-community-list.component';
 import { ErrorComponent } from '../../../../../app/shared/error/error.component';
 import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed-loading.component';
-import { ObjectCollectionComponent } from '../../../../../app/shared/object-collection/object-collection.component';
 import { VarDirective } from '../../../../../app/shared/utils/var.directive';
 import { RouterLink } from '@angular/router';
 import {RemoteData} from "../../../../../app/core/data/remote-data";
@@ -37,7 +36,7 @@ interface FetchedCommunity {
   styleUrls: ['../../../../../app/home-page/top-level-community-list/top-level-community-list.component.scss'],
   templateUrl: './top-level-community-list.component.html',
   standalone: true,
-  imports: [VarDirective, NgIf, ObjectCollectionComponent, ErrorComponent, ThemedLoadingComponent, AsyncPipe, TranslateModule, RouterLink, NgForOf],
+  imports: [VarDirective, NgIf, ErrorComponent, ThemedLoadingComponent, AsyncPipe, TranslateModule, RouterLink, NgForOf],
 })
 
 export class TopLevelCommunityListComponent extends BaseComponent implements OnInit {

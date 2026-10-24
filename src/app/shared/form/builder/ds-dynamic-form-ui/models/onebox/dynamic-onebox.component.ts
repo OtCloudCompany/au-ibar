@@ -321,7 +321,13 @@ export class DsDynamicOneboxComponent extends DsDynamicVocabularyComponent imple
         if (result) {
           this.currentValue = result;
           this.previousValue = result;
-          this.dispatchUpdate(result);
+          // AU-IBAR: when the vocabulary does not store authorities (authority is empty),
+          // send only the value. Otherwise the form builder falls back to the tree entry id
+          // ("vocabulary:id") as the authority, which the REST API rejects for fields that
+          // are not authority-controlled.
+          this.dispatchUpdate(isEmpty(result.authority)
+            ? Object.assign(new VocabularyEntry(), { value: result.value, display: result.display })
+            : result);
         }
       }, () => {
         return;

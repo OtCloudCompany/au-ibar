@@ -2,9 +2,6 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import {
-  NgIf,
-} from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -27,7 +24,6 @@ import { SearchService } from '../../../../../app/shared/search/search.service';
   templateUrl: './repository-explore.component.html',
   styleUrls: ['./repository-explore.component.scss'],
   imports: [
-    NgIf,
     RouterLink,
   ],
 })
