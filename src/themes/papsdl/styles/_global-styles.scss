@@ -27,3 +27,148 @@ ds-dynamic-tag ds-chips > div:focus-within {
 ds-dynamic-tag .tag-input {
   padding-left: 0.25rem;
 }
+
+/* ------------------------------------------------------------------
+   AU-IBAR discovery filters (search sidebar), 24 Oct 2026
+   Theme colours: AU green #1A5632, AU maroon #9F2241, gold #B4A269.
+   Selectors are deliberately specific to outrank the encapsulated
+   styles of the core search-filter component.
+   ------------------------------------------------------------------ */
+:root {
+  --auibar-green: #1A5632;
+  --auibar-green-rgb: 26, 86, 50;
+  --auibar-maroon: #9F2241;
+  --auibar-gold: #B4A269;
+}
+
+/* Each filter as a card with a green accent */
+ds-search-filter div.facet-filter.d-block {
+  background-color: #fff;
+  border: 1px solid rgba(var(--auibar-green-rgb), 0.45) !important;
+  border-left: 4px solid var(--auibar-green) !important;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(var(--auibar-green-rgb), 0.12);
+  margin-bottom: 0.75rem !important;
+  padding: 0.75rem 1rem !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+ds-search-filter div.facet-filter.d-block:hover {
+  border-color: var(--auibar-green) !important;
+  box-shadow: 0 3px 10px rgba(var(--auibar-green-rgb), 0.18);
+}
+
+ds-search-filter div.facet-filter.d-block.focus {
+  box-shadow: 0 0 0 0.2rem rgba(var(--auibar-green-rgb), 0.25);
+}
+
+/* Header: title in green, +/- toggle in a gold circle */
+ds-search-filter div.facet-filter .filter-name {
+  align-items: center;
+}
+
+ds-search-filter div.facet-filter .filter-name .h4 {
+  color: var(--auibar-green) !important;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0 !important;
+}
+
+ds-search-filter div.facet-filter .filter-name .filter-toggle {
+  flex-grow: 0 !important;
+  margin-left: auto;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem !important;
+  text-align: center !important;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  color: var(--auibar-green);
+  background-color: rgba(180, 162, 105, 0.22);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+ds-search-filter div.facet-filter .filter-name:hover .filter-toggle {
+  background-color: var(--auibar-gold);
+  color: #fff;
+}
+
+/* Divider under the header when the filter is open */
+ds-search-filter div.facet-filter .filter-name[aria-expanded="true"] {
+  padding-bottom: 0.5rem !important;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(var(--auibar-green-rgb), 0.25) !important;
+}
+
+/* Filter values */
+ds-search-filter div.facet-filter ds-search-facet-option a,
+ds-search-filter div.facet-filter ds-search-facet-selected-option a {
+  border-radius: 0.375rem;
+  padding: 0.15rem 0.35rem;
+  margin: 0 -0.35rem;
+  color: var(--bs-body-color);
+  text-decoration: none;
+  transition: background-color 0.12s ease;
+}
+
+ds-search-filter div.facet-filter ds-search-facet-option a:hover,
+ds-search-filter div.facet-filter ds-search-facet-selected-option a:hover {
+  background-color: rgba(var(--auibar-green-rgb), 0.07);
+}
+
+ds-search-filter div.facet-filter ds-search-facet-selected-option a {
+  color: var(--auibar-green);
+  font-weight: 600;
+}
+
+ds-search-filter div.facet-filter .filter-checkbox {
+  accent-color: var(--auibar-green);
+}
+
+/* Counts: soft green pill instead of grey */
+ds-search-filter div.facet-filter .badge.bg-secondary {
+  background-color: rgba(var(--auibar-green-rgb), 0.1) !important;
+  color: var(--auibar-green) !important;
+  font-weight: 600;
+}
+
+/* "Show more" / "Collapse" links in maroon */
+ds-search-filter div.facet-filter .toggle-more-filters {
+  margin-top: 0.35rem;
+}
+
+ds-search-filter div.facet-filter .toggle-more-filters a {
+  color: var(--auibar-maroon);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+ds-search-filter div.facet-filter .toggle-more-filters a:hover {
+  color: var(--auibar-maroon);
+  text-decoration: underline;
+}
+
+/* Small "search" / "apply" buttons inside filters in theme green */
+ds-search-filter div.facet-filter .btn-primary {
+  background-color: var(--auibar-green);
+  border-color: var(--auibar-green);
+}
+
+ds-search-filter div.facet-filter .btn-primary:hover,
+ds-search-filter div.facet-filter .btn-primary:focus {
+  background-color: #0E591A;
+  border-color: #0E591A;
+}
+
+/* Text box for searching within a filter */
+ds-search-filter div.facet-filter input.form-control:focus {
+  border-color: rgba(var(--auibar-green-rgb), 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(var(--auibar-green-rgb), 0.18);
+}
+
+/* Applied-filter badges above the results, in theme green */
+ds-search-labels .badge.bg-primary {
+  background-color: var(--auibar-green) !important;
+}
