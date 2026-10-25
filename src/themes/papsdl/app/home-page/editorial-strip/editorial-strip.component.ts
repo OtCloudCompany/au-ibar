@@ -281,7 +281,7 @@ export class EditorialStripComponent implements OnInit, OnDestroy {
       new PaginatedSearchOptions({
         pagination: this.latestPaginationConfig,
         dsoTypes: [DSpaceObjectType.ITEM],
-        sort: new SortOptions('dc.date.accessioned', SortDirection.DESC),
+        sort: new SortOptions('dc.date.issued', SortDirection.DESC),
       }),
     ).pipe(
       toDSpaceObjectListRD(),

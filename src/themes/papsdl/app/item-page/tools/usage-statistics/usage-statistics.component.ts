@@ -20,6 +20,23 @@ import { take } from 'rxjs/operators';
 
 interface Row { indexNum: number; label: string; value: number; }
 
+/**
+ * African Union positions applied to the country statistics (table and map):
+ *  - Mayotte (YT) is counted under the Comoros: OAU Council of Ministers CM/Res.496 (XXVII), 1976, "an integral
+ *    part of the Independent Republic of Comoro";
+ *  - the Chagos Archipelago / British Indian Ocean Territory (IO) is counted under Mauritius (AU Assembly decisions
+ *    on the Chagos, ICJ advisory opinion of 25 Feb 2019);
+ *  - Western Sahara (EH) is shown as the Sahrawi Arab Democratic Republic, an AU member state since 1982;
+ *  - Somaliland has no country code of its own: GeoIP reports it as Somalia (SO), and the map shows Somalia whole.
+ */
+const AU_COUNTRY_MERGE: Record<string, string> = { YT: 'KM', IO: 'MU' };
+const AU_COUNTRY_LABEL: Record<string, string> = {
+  EH: 'Sahrawi Republic (Western Sahara)',
+  KM: 'Comoros',
+  MU: 'Mauritius',
+  SO: 'Somalia',
+};
+
 @Component({
   selector: 'ds-auibar-usage-statistics',
   imports: [DecimalPipe, TranslateModule, AuibarChartDirective],
@@ -70,19 +87,29 @@ export class UsageStatisticsComponent implements OnInit {
         this.months = points.map(p => p.label);
         this.monthViews = points.map(views);
       } else if (report.reportType === 'TopCountries') {
-        points.forEach((p, i) => {
-          if (p.id) {
-            this.countriesMapData.push([p.id.toLowerCase(), views(p)]);
+        // apply the AU positions (see AU_COUNTRY_MERGE), then keep the top ten for both the table and the map
+        const byCode = new Map<string, { label: string; value: number }>();
+        points.forEach(p => {
+          const raw = (p.id || p.label || '').toUpperCase();
+          const code = AU_COUNTRY_MERGE[raw] || raw;
+          const label = AU_COUNTRY_LABEL[code] || (code === raw ? p.label : code);
+          const row = byCode.get(code) || { label, value: 0 };
+          row.value += views(p);
+          if (code === raw && !AU_COUNTRY_LABEL[code]) {
+            row.label = p.label;
           }
-          if (this.countriesTableData.length < 10) {
-            this.countriesTableData.push({ indexNum: i + 1, label: p.label, value: views(p) });
+          byCode.set(code, row);
+        });
+        [...byCode.entries()].sort((a, b) => b[1].value - a[1].value).slice(0, 10).forEach(([code, row], i) => {
+          if (/^[A-Z]{2}$/.test(code)) {
+            this.countriesMapData.push([code.toLowerCase(), row.value]);
           }
+          this.countriesTableData.push({ indexNum: i + 1, label: row.label, value: row.value });
         });
       } else if (report.reportType === 'TopCities') {
-        points.forEach((p, i) => {
-          if (this.citiesTableData.length < 10) {
-            this.citiesTableData.push({ indexNum: i + 1, label: p.label, value: views(p) });
-          }
+        // top ten only, for both the table and the bar chart
+        [...points].sort((a, b) => views(b) - views(a)).slice(0, 10).forEach((p, i) => {
+          this.citiesTableData.push({ indexNum: i + 1, label: p.label, value: views(p) });
         });
       }
     });

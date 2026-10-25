@@ -241,8 +241,8 @@
   "item.page.usageStatistics": "إحصاءات الاستخدام",
   "item.page.usageMetrics": "المشاهدات والتنزيلات",
   "item.page.visitsByMonth": "المشاهدات شهريًا",
-  "item.page.topCountries": "أهم البلدان",
-  "item.page.topCities": "أهم المدن",
+  "item.page.topCountries": "أهم 10 بلدان",
+  "item.page.topCities": "أهم 10 مدن",
   "item.page.stats.country": "البلد",
   "item.page.city": "المدينة",
   "auibar.cite.kicker": "مرجع",
@@ -258,4 +258,12 @@
   "auibar.usage.kicker": "الاستخدام",
   "auibar.usage.views": "المشاهدات",
   "auibar.usage.downloads": "التنزيلات",
+
+  // AU-IBAR (25 Oct 2026): repository name in the page title, scope and browse menus
+  "repository.title": "مستودع المعرفة",
+  "repository.title.prefix": "مستودع المعرفة :: ",
+  "menu.section.browse_global": "المستودع بأكمله",
+  "nav.browse.header": "المستودع بأكمله",
+  "search.form.scope.all": "المستودع بأكمله",
+  "dso-selector.set-scope.community.button": "البحث في المستودع بأكمله",
 }

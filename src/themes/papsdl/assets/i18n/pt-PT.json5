@@ -241,8 +241,8 @@
   "item.page.usageStatistics": "Estatísticas de utilização",
   "item.page.usageMetrics": "Visualizações e transferências",
   "item.page.visitsByMonth": "Visualizações por mês",
-  "item.page.topCountries": "Principais países",
-  "item.page.topCities": "Principais cidades",
+  "item.page.topCountries": "Os 10 principais países",
+  "item.page.topCities": "As 10 principais cidades",
   "item.page.stats.country": "País",
   "item.page.city": "Cidade",
   "auibar.cite.kicker": "Referência",
@@ -258,4 +258,12 @@
   "auibar.usage.kicker": "Utilização",
   "auibar.usage.views": "Visualizações",
   "auibar.usage.downloads": "Transferências",
+
+  // AU-IBAR (25 Oct 2026): repository name in the page title, scope and browse menus
+  "repository.title": "Repositório de Conhecimento",
+  "repository.title.prefix": "Repositório de Conhecimento :: ",
+  "menu.section.browse_global": "Todo o repositório",
+  "nav.browse.header": "Todo o repositório",
+  "search.form.scope.all": "Todo o repositório",
+  "dso-selector.set-scope.community.button": "Pesquisar todo o repositório",
 }
