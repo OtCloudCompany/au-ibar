@@ -17,15 +17,16 @@ import { PersonComponent as BaseComponent } from '../../../../../../../app/entit
 import { ItemPageOrcidFieldComponent } from '../../../../../../../app/item-page/simple/field-components/specific-field/orcid/item-page-orcid-field.component';
 import { AuthorityRelatedEntitiesSearchComponent } from '../../../../../../../app/item-page/simple/related-entities/authority-related-entities-search/authority-related-entities-search.component';
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
+import { UsagePanelComponent } from '../../../../item-page/tools/usage-panel/usage-panel.component';
 
 @listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'papsdl')
 @Component({
   selector: 'ds-person',
   // styleUrls: ['./person.component.scss'],
   styleUrls: ['../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component.scss'],
-  // templateUrl: './person.component.html',
-  templateUrl: '../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component.html',
+  templateUrl: './person.component.html',
   imports: [
+    UsagePanelComponent,
     AsyncPipe,
     AuthorityRelatedEntitiesSearchComponent,
     DsoEditMenuComponent,

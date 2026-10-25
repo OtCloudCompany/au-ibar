@@ -1,0 +1,21 @@
+.auibar-usage-panel-card {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid #e3e6e8;
+  border-top: 3px solid #1A5632;
+  border-radius: .75rem;
+}
+.auibar-usage-panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1A5632;
+  margin-bottom: 1rem;
+}
+.auibar-usage-panel-grid {
+  display: grid;
+  grid-template-columns: minmax(150px, 200px) 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  @media (max-width: 767.98px) { grid-template-columns: 1fr; }
+}

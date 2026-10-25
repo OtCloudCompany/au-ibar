@@ -8349,4 +8349,50 @@
   "search.filters.filter.auibartheme.placeholder": "Domaine thématique",
 
   "item.page.relationships.auibarArticleIssue": "Publié dans le numéro",
+
+  "item.page.citeThisItem": "Citer ce document",
+
+  "item.page.bibliographicManagers": "Exporter vers un gestionnaire de références",
+
+  "item.page.selectFormat": "Style de citation",
+
+  "item.page.usageStatistics": "Statistiques d’utilisation",
+
+  "item.page.usageMetrics": "Consultations et téléchargements",
+
+  "item.page.visitsByMonth": "Consultations par mois",
+
+  "item.page.topCountries": "Principaux pays",
+
+  "item.page.topCities": "Principales villes",
+
+  "item.page.stats.country": "Pays",
+
+  "item.page.city": "Ville",
+
+  "auibar.cite.kicker": "Référence",
+
+  "auibar.cite.button": "Afficher la citation",
+
+  "auibar.cite.mendeley": "Importer dans Mendeley",
+
+  "auibar.cite.endnote": "Télécharger pour EndNote (RIS)",
+
+  "auibar.cite.zotero": "Télécharger pour Zotero (RIS)",
+
+  "auibar.cite.bibtex": "Télécharger en BibTeX",
+
+  "auibar.cite.csv": "Télécharger en CSV",
+
+  "auibar.cite.copy": "Copier",
+
+  "auibar.cite.copied": "Copié",
+
+  "auibar.cite.close": "Fermer",
+
+  "auibar.usage.kicker": "Utilisation",
+
+  "auibar.usage.views": "Consultations",
+
+  "auibar.usage.downloads": "Téléchargements",
 }

@@ -1,0 +1,9 @@
+<section class="auibar-usage-panel-card" [class.d-none]="!metrics.reportsLoaded && !stats.reportsLoaded">
+  <h2 class="auibar-usage-panel-title">
+    <i class="fas fa-chart-line me-2" aria-hidden="true"></i>{{ 'item.page.usageStatistics' | translate }}
+  </h2>
+  <div class="auibar-usage-panel-grid">
+    <ds-auibar-usage-metrics #metrics [item]="object" [showDownloads]="false"></ds-auibar-usage-metrics>
+    <ds-auibar-usage-statistics #stats [object]="object"></ds-auibar-usage-statistics>
+  </div>
+</section>

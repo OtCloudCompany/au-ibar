@@ -15,16 +15,19 @@ import { DsoEditMenuComponent } from '../../../../../../../app/shared/dso-page/d
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 
+import { UsagePanelComponent } from '../../../../item-page/tools/usage-panel/usage-panel.component';
 /**
  * AU-IBAR (25 Oct 2026): organisation page listing the publications the organisation authored,
  * edited or funded (relationships isAuthorOfPublication, isEditorOfPublication, isFunderOfPublication).
  */
+
 @listableObjectComponent('OrgUnit', ViewMode.StandalonePage, Context.Any, 'papsdl')
 @Component({
   selector: 'ds-themed-org-unit',
   styleUrls: ['./org-unit.component.scss'],
   templateUrl: './org-unit.component.html',
   imports: [
+    UsagePanelComponent,
     AsyncPipe,
     DsoEditMenuComponent,
     RouterLink,

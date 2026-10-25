@@ -1,0 +1,35 @@
+@if (citationsLoaded) {
+<button type="button" class="btn auibar-cite-button w-100 mb-3" (click)="modalOpen()">
+  <i class="fas fa-quote-left me-2" aria-hidden="true"></i>{{ 'auibar.cite.button' | translate }}
+</button>
+
+<h3 class="auibar-cite-subtitle">{{ 'item.page.bibliographicManagers' | translate }}</h3>
+<ul class="auibar-bib-managers list-unstyled mb-0">
+  <li>
+    <a [href]="'https://www.mendeley.com/import/?url=' + (handleIdentifier || '')" target="_blank" rel="noopener noreferrer"
+       [title]="'auibar.cite.mendeley' | translate">
+      <img src="assets/papsdl/images/bibliographic/mendeley.svg" alt="Mendeley">
+    </a>
+  </li>
+  <li>
+    <button type="button" (click)="downloadCitation('endnote')" [title]="'auibar.cite.endnote' | translate">
+      <img src="assets/papsdl/images/bibliographic/endnote.png" alt="EndNote">
+    </button>
+  </li>
+  <li>
+    <button type="button" (click)="downloadCitation('ris')" [title]="'auibar.cite.zotero' | translate">
+      <img src="assets/papsdl/images/bibliographic/zotero.png" alt="Zotero">
+    </button>
+  </li>
+  <li>
+    <button type="button" (click)="downloadCitation('bibtex')" [title]="'auibar.cite.bibtex' | translate">
+      <img src="assets/papsdl/images/bibliographic/bibtex.png" alt="BibTeX">
+    </button>
+  </li>
+  <li>
+    <button type="button" (click)="downloadCitation('csv')" [title]="'auibar.cite.csv' | translate">
+      <img src="assets/papsdl/images/bibliographic/csv.png" alt="CSV">
+    </button>
+  </li>
+</ul>
+}

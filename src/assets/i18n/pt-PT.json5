@@ -8345,4 +8345,50 @@
   "search.filters.filter.auibartheme.placeholder": "Área temática",
 
   "item.page.relationships.auibarArticleIssue": "Publicado no número",
+
+  "item.page.citeThisItem": "Citar este item",
+
+  "item.page.bibliographicManagers": "Exportar para um gestor de referências",
+
+  "item.page.selectFormat": "Estilo de citação",
+
+  "item.page.usageStatistics": "Estatísticas de utilização",
+
+  "item.page.usageMetrics": "Visualizações e transferências",
+
+  "item.page.visitsByMonth": "Visualizações por mês",
+
+  "item.page.topCountries": "Principais países",
+
+  "item.page.topCities": "Principais cidades",
+
+  "item.page.stats.country": "País",
+
+  "item.page.city": "Cidade",
+
+  "auibar.cite.kicker": "Referência",
+
+  "auibar.cite.button": "Mostrar citação",
+
+  "auibar.cite.mendeley": "Importar para o Mendeley",
+
+  "auibar.cite.endnote": "Transferir para o EndNote (RIS)",
+
+  "auibar.cite.zotero": "Transferir para o Zotero (RIS)",
+
+  "auibar.cite.bibtex": "Transferir BibTeX",
+
+  "auibar.cite.csv": "Transferir CSV",
+
+  "auibar.cite.copy": "Copiar",
+
+  "auibar.cite.copied": "Copiado",
+
+  "auibar.cite.close": "Fechar",
+
+  "auibar.usage.kicker": "Utilização",
+
+  "auibar.usage.views": "Visualizações",
+
+  "auibar.usage.downloads": "Transferências",
 }

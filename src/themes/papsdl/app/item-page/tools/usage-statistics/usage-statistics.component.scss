@@ -1,0 +1,20 @@
+.auibar-usage-stats .nav-tabs .nav-link {
+  color: #495057;
+  font-weight: 600;
+  &.active { color: #1A5632; border-bottom-color: transparent; border-top: 3px solid #B4A269; }
+}
+.auibar-usage-panel {
+  padding: 1rem 0 0;
+}
+.auibar-usage-split {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2fr;
+  gap: 1rem;
+  align-items: start;
+  @media (max-width: 767.98px) { grid-template-columns: 1fr; }
+}
+.auibar-chart {
+  display: block;
+  width: 100%;
+  height: 360px;
+}

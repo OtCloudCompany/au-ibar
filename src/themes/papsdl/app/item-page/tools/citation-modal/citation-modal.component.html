@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ 'item.page.citeThisItem' | translate }}</h4>
+  <button type="button" class="btn-close" [attr.aria-label]="'auibar.cite.close' | translate" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <p class="auibar-cite-title">{{ title }}</p>
+  <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+    <label for="citationSelect" class="mb-0 fw-semibold">{{ 'item.page.selectFormat' | translate }}</label>
+    <select class="form-select w-auto" id="citationSelect" [(ngModel)]="selectedCitation" (change)="updateCitation()">
+      <option value="APA">APA</option>
+      <option value="MLA">MLA</option>
+      <option value="Harvard">Harvard</option>
+      <option value="Vancouver">Vancouver</option>
+      <option value="Chicago">Chicago</option>
+      <option value="iso690-2">ISO 690</option>
+    </select>
+  </div>
+  <div class="auibar-cite-box">
+    <div [innerHTML]="currentCitation"></div>
+    <div class="d-flex justify-content-end mt-2">
+      <button type="button" class="btn btn-sm btn-outline-secondary" (click)="copyToClipboard()">
+        <i class="fas me-1" [ngClass]="copied ? 'fa-check text-success' : 'fa-copy'" aria-hidden="true"></i>
+        {{ (copied ? 'auibar.cite.copied' : 'auibar.cite.copy') | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">{{ 'auibar.cite.close' | translate }}</button>
+</div>

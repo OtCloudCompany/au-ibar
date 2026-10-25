@@ -15,15 +15,16 @@ import { MetadataFieldWrapperComponent } from '../../../../../../../app/shared/m
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
+import { UsagePanelComponent } from '../../../../item-page/tools/usage-panel/usage-panel.component';
 
 @listableObjectComponent('Journal', ViewMode.StandalonePage, Context.Any, 'papsdl')
 @Component({
   selector: 'ds-journal',
   // styleUrls: ['./journal.component.scss'],
   styleUrls: ['../../../../../../../app/entity-groups/journal-entities/item-pages/journal/journal.component.scss'],
-  // templateUrl: './journal.component.html',
-  templateUrl: '../../../../../../../app/entity-groups/journal-entities/item-pages/journal/journal.component.html',
+  templateUrl: './journal.component.html',
   imports: [
+    UsagePanelComponent,
     AsyncPipe,
     DsoEditMenuComponent,
     GenericItemPageFieldComponent,

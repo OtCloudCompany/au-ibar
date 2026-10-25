@@ -4802,3 +4802,22 @@ ds-paps-document-preview {
   color: #1A5632;
   font-weight: 600;
 }
+
+
+/* AU-IBAR (25 Oct 2026): the sidebar holds the files, citation and usage cards; it is not sticky and
+   does not scroll on its own, so every card takes the height it needs and scrolls with the page. */
+.modern-sidebar-sticky {
+  position: static;
+  max-height: none;
+  overflow: visible;
+}
+
+/* the files list grows with its content too (no inner scroll box) */
+.modern-file-section-wrapper {
+  max-height: none;
+  overflow: visible;
+}
+
+.modern-files-card .modern-side-card-header {
+  position: static;
+}

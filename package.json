@@ -85,6 +85,10 @@
     }
   },
   "dependencies": {
+    "@citation-js/core": "^0.7.21",
+    "@citation-js/plugin-bibtex": "^0.7.21",
+    "@citation-js/plugin-csl": "^0.7.22",
+    "@citation-js/plugin-ris": "^0.7.21",
     "@4science_ng-dynamic-forms/core": "^19.1.0",
     "@4science_ng-dynamic-forms/ui-ng-bootstrap": "^19.1.0",
     "@angular/animations": "^20.3.30",

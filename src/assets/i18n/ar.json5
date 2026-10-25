@@ -8349,4 +8349,50 @@
   "search.filters.filter.auibartheme.placeholder": "المجال المواضيعي",
 
   "item.page.relationships.auibarArticleIssue": "نُشر في العدد",
+
+  "item.page.citeThisItem": "اقتبس هذا العنصر",
+
+  "item.page.bibliographicManagers": "تصدير إلى برنامج إدارة المراجع",
+
+  "item.page.selectFormat": "نمط الاقتباس",
+
+  "item.page.usageStatistics": "إحصاءات الاستخدام",
+
+  "item.page.usageMetrics": "المشاهدات والتنزيلات",
+
+  "item.page.visitsByMonth": "المشاهدات شهريًا",
+
+  "item.page.topCountries": "أهم البلدان",
+
+  "item.page.topCities": "أهم المدن",
+
+  "item.page.stats.country": "البلد",
+
+  "item.page.city": "المدينة",
+
+  "auibar.cite.kicker": "مرجع",
+
+  "auibar.cite.button": "عرض الاقتباس",
+
+  "auibar.cite.mendeley": "استيراد إلى Mendeley",
+
+  "auibar.cite.endnote": "تنزيل لـ EndNote (RIS)",
+
+  "auibar.cite.zotero": "تنزيل لـ Zotero (RIS)",
+
+  "auibar.cite.bibtex": "تنزيل BibTeX",
+
+  "auibar.cite.csv": "تنزيل CSV",
+
+  "auibar.cite.copy": "نسخ",
+
+  "auibar.cite.copied": "تم النسخ",
+
+  "auibar.cite.close": "إغلاق",
+
+  "auibar.usage.kicker": "الاستخدام",
+
+  "auibar.usage.views": "المشاهدات",
+
+  "auibar.usage.downloads": "التنزيلات",
 }

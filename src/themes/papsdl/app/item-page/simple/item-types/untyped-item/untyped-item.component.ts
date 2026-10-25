@@ -31,6 +31,9 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { DocumentPreviewComponent } from '../publication/document-preview/document-preview.component';
 import { RelatedItemsComponent } from '../../../../../../../app/item-page/simple/related-items/related-items-component';
+import { CitationGeneratorComponent } from '../../../tools/citation-generator/citation-generator.component';
+import { UsageMetricsComponent } from '../../../tools/usage-metrics/usage-metrics.component';
+import { UsageStatisticsComponent } from '../../../tools/usage-statistics/usage-statistics.component';
 
 @listableObjectComponent(
   Item,
@@ -44,6 +47,9 @@ import { RelatedItemsComponent } from '../../../../../../../app/item-page/simple
   styleUrls: ['../publication/publication.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    CitationGeneratorComponent,
+    UsageMetricsComponent,
+    UsageStatisticsComponent,
     RelatedItemsComponent,
     LanguageNamePipe,
     AsyncPipe,

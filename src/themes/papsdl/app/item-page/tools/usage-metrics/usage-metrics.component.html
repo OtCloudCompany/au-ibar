@@ -1,0 +1,14 @@
+@if (reportsLoaded) {
+<div class="auibar-metrics" role="group" [attr.aria-label]="'item.page.usageMetrics' | translate">
+  <div class="auibar-metric">
+    <span class="auibar-metric-count">{{ totalViews | number }}</span>
+    <span class="auibar-metric-name">{{ 'auibar.usage.views' | translate }}</span>
+  </div>
+  @if (showDownloads && totalDownloads !== null) {
+  <div class="auibar-metric">
+    <span class="auibar-metric-count">{{ totalDownloads | number }}</span>
+    <span class="auibar-metric-name">{{ 'auibar.usage.downloads' | translate }}</span>
+  </div>
+  }
+</div>
+}
