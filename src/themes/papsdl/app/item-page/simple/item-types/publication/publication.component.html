@@ -699,6 +699,46 @@
           </div>
 
 
+          <!-- AU-IBAR entities (25 Oct 2026): funders and journal -->
+          <!-- Funders -->
+          <div
+            class="record-info-tile"
+            *ngIf="object.allMetadataValues(['dc.description.sponsorship']).length">
+            <div class="record-info-icon">
+              <i class="fas fa-hand-holding-dollar"></i>
+            </div>
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Funders
+              </span>
+              <span class="record-info-value">
+                <ng-container
+                  *ngFor="let funder of object.allMetadataValues(['dc.description.sponsorship']); let last = last">
+                  {{ funder }}<span *ngIf="!last">; </span>
+                </ng-container>
+              </span>
+            </div>
+          </div>
+
+
+          <!-- Journal (Bulletin issues and Yearbook volumes) -->
+          <div
+            class="record-info-tile"
+            *ngIf="object.firstMetadataValue(['journal.title', 'oaire.citation.title']) as journalTitle">
+            <div class="record-info-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <div class="record-info-content">
+              <span class="record-info-label">
+                Journal
+              </span>
+              <span class="record-info-value">
+                <em>{{ journalTitle }}</em><ng-container *ngIf="object.firstMetadataValue(['publicationvolume.volumeNumber', 'oaire.citation.volume']) as vol">, Vol. {{ vol }}</ng-container><ng-container *ngIf="object.firstMetadataValue(['publicationissue.issueNumber', 'oaire.citation.issue']) as iss">, Issue {{ iss }}</ng-container><ng-container *ngIf="object.firstMetadataValue(['oaire.citation.startPage']) as sp">, pp. {{ sp }}<ng-container *ngIf="object.firstMetadataValue(['oaire.citation.endPage']) as ep">–{{ ep }}</ng-container></ng-container><ng-container *ngIf="object.firstMetadataValue(['creativeworkseries.issn']) as issn"> (ISSN {{ issn }})</ng-container>
+              </span>
+            </div>
+          </div>
+
+
           <!-- AU-IBAR additions (24 Oct 2026): editor, country/region, pages, licence -->
           <!-- Editor -->
           <div
@@ -867,6 +907,32 @@
 
 
     
+    <!-- AU-IBAR entities (25 Oct 2026): links to organisation and journal records -->
+    <section
+      class="record-linked-records"
+      *ngIf="object.hasMetadata(['relation.isAuthorOfPublication', 'relation.isEditorOfPublication', 'relation.isFunderOfPublication', 'relation.isJournalVolumeOfIssue', 'relation.isJournalOfVolume', 'relation.isIssueOfJournalVolume', 'relation.isPublicationOfJournalIssue', 'relation.isJournalIssueOfPublication'])">
+      <h2 class="record-linked-title">Linked records</h2>
+      <ds-related-items *ngIf="object.hasMetadata('relation.isAuthorOfPublication')"
+        [parentItem]="object" [relationType]="'isAuthorOfPublication'" [label]="'Authors'"></ds-related-items>
+      <ds-related-items *ngIf="object.hasMetadata('relation.isEditorOfPublication')"
+        [parentItem]="object" [relationType]="'isEditorOfPublication'" [label]="'Editors'"></ds-related-items>
+      <ds-related-items *ngIf="object.hasMetadata('relation.isFunderOfPublication')"
+        [parentItem]="object" [relationType]="'isFunderOfPublication'" [label]="'Funders'"></ds-related-items>
+      <ds-related-items *ngIf="object.hasMetadata('relation.isJournalIssueOfPublication')"
+        [parentItem]="object" [relationType]="'isJournalIssueOfPublication'" [label]="'item.page.relationships.auibarArticleIssue' | translate"></ds-related-items>
+      <ds-related-items *ngIf="object.hasMetadata('relation.isJournalVolumeOfIssue')"
+        [parentItem]="object" [relationType]="'isJournalVolumeOfIssue'" [label]="'Journal volume'"></ds-related-items>
+      <ds-related-items *ngIf="object.hasMetadata('relation.isJournalOfVolume')"
+        [parentItem]="object" [relationType]="'isJournalOfVolume'" [label]="'Journal'"></ds-related-items>
+      <ds-related-items *ngIf="object.hasMetadata('relation.isIssueOfJournalVolume')"
+        [parentItem]="object" [relationType]="'isIssueOfJournalVolume'" [incrementBy]="10"
+        [label]="'item.page.relationships.auibarVolumeIssues' | translate"></ds-related-items>
+      <ds-related-items *ngIf="object.hasMetadata('relation.isPublicationOfJournalIssue')"
+        [parentItem]="object" [relationType]="'isPublicationOfJournalIssue'" [incrementBy]="10"
+        [label]="'item.page.relationships.auibarIssueArticles' | translate"></ds-related-items>
+    </section>
+
+
     <!-- COLLECTIONS + PERMANENT LINK -->
     <div class="record-bottom-meta-grid">
 

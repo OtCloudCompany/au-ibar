@@ -1,0 +1,39 @@
+@if (showBackButton$ | async) {
+  <ds-results-back-button [back]="back"></ds-results-back-button>
+}
+<div class="d-flex flex-row">
+  <ds-item-page-title-field [item]="object" class="me-auto">
+  </ds-item-page-title-field>
+  <ds-dso-edit-menu></ds-dso-edit-menu>
+</div>
+
+<div class="auibar-org-summary">
+  <div class="auibar-org-icon" aria-hidden="true"><i class="fas fa-building-columns"></i></div>
+  <dl class="auibar-org-facts">
+    @if (object.allMetadataValues(['organization.alternateName']).length) {
+      <div><dt>{{ 'auibar.orgunit.page.alternatename' | translate }}</dt>
+        <dd>{{ object.allMetadataValues(['organization.alternateName']).join(' · ') }}</dd></div>
+    }
+    @if (object.firstMetadataValue(['organization.parentOrganization']); as parent) {
+      <div><dt>{{ 'auibar.orgunit.page.parent' | translate }}</dt><dd>{{ parent }}</dd></div>
+    }
+    @if (object.firstMetadataValue(['organization.address.addressCountry']); as country) {
+      <div><dt>{{ 'orgunit.page.country' | translate }}</dt><dd>{{ country }}</dd></div>
+    }
+    @if (object.firstMetadataValue(['organization.url']); as url) {
+      <div><dt>{{ 'auibar.orgunit.page.website' | translate }}</dt>
+        <dd><a [href]="url" target="_blank" rel="noopener noreferrer">{{ url }}</a></dd></div>
+    }
+    @if (object.firstMetadataValue(['dc.description']); as desc) {
+      <div><dt>{{ 'orgunit.page.description' | translate }}</dt><dd>{{ desc }}</dd></div>
+    }
+  </dl>
+  <a class="btn btn-outline-primary btn-sm align-self-start" [routerLink]="[itemPageRoute + '/full']" role="button">
+    {{ 'item.page.link.full' | translate }}
+  </a>
+</div>
+
+<div class="mt-4 w-100 px-0">
+  <ds-tabbed-related-entities-search [item]="object" [relationTypes]="tabs">
+  </ds-tabbed-related-entities-search>
+</div>

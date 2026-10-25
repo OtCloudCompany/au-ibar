@@ -14,7 +14,7 @@ import { Context } from '@dspace/core/shared/context.model';
 import { Item } from '@dspace/core/shared/item.model';
 import { ViewMode } from '@dspace/core/shared/view-mode.model';
 import { TranslateModule } from '@ngx-translate/core';
-import { LanguageNamePipe } from '../../../../../../../app/shared/utils/language-name.pipe';
+import { LanguageNamePipe } from '../../../../shared/utils/language-name.pipe';
 
 
 
@@ -30,6 +30,7 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { DocumentPreviewComponent } from '../publication/document-preview/document-preview.component';
+import { RelatedItemsComponent } from '../../../../../../../app/item-page/simple/related-items/related-items-component';
 
 @listableObjectComponent(
   Item,
@@ -43,6 +44,7 @@ import { DocumentPreviewComponent } from '../publication/document-preview/docume
   styleUrls: ['../publication/publication.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    RelatedItemsComponent,
     LanguageNamePipe,
     AsyncPipe,
     CollectionsComponent,

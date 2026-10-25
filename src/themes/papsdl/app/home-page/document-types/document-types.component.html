@@ -3,11 +3,9 @@
   <div class="auibar-document-types-container">
 
     <div class="auibar-document-types-heading">
-
       <h2 id="auibar-document-types-title">
         Explore by Resource Type
       </h2>
-
       <p>
         Find the evidence, guidance and learning materials
         relevant to your work.
@@ -18,7 +16,8 @@
       <a *ngFor="let type of types"
          class="auibar-document-type"
          routerLink="/search"
-         [queryParams]="{ query: type.query }">
+         [queryParams]="type.params"
+         [attr.aria-label]="'Explore ' + type.count + ' ' + type.label">
 
         <span class="auibar-document-type-icon">
           <i class="fa-solid" [class]="type.icon"
@@ -26,12 +25,21 @@
         </span>
 
         <span class="auibar-document-type-content">
-          <strong>{{ type.title }}</strong>
-          <small>{{ type.description }}</small>
+          <strong>{{ type.label }}</strong>
+          <small *ngIf="type.note">{{ type.note }}</small>
         </span>
 
-        <span class="auibar-document-type-arrow"
-              aria-hidden="true">→</span>
+        <span class="auibar-count-pill">{{ type.count | number }}</span>
+      </a>
+
+      <ng-container *ngIf="!loaded">
+        <span *ngFor="let i of [1, 2, 3, 4, 5, 6]" class="auibar-document-type auibar-card-loading" aria-hidden="true"></span>
+      </ng-container>
+    </div>
+
+    <div class="auibar-document-types-footer" *ngIf="allRoute">
+      <a class="auibar-document-types-all" [routerLink]="allRoute">
+        Explore all resource groups <span aria-hidden="true">→</span>
       </a>
     </div>
 

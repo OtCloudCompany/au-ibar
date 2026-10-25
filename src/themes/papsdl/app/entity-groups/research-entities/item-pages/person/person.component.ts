@@ -18,7 +18,7 @@ import { ItemPageOrcidFieldComponent } from '../../../../../../../app/item-page/
 import { AuthorityRelatedEntitiesSearchComponent } from '../../../../../../../app/item-page/simple/related-entities/authority-related-entities-search/authority-related-entities-search.component';
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 
-@listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'custom')
+@listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'papsdl')
 @Component({
   selector: 'ds-person',
   // styleUrls: ['./person.component.scss'],

@@ -14,10 +14,6 @@ import { currentPath } from '@dspace/core/router/utils/route.utils';
 import { AppliedFilter } from '@dspace/core/shared/search/models/applied-filter.model';
 import { SearchFilterConfig } from '@dspace/core/shared/search/models/search-filter-config.model';
 import { TranslateModule } from '@ngx-translate/core';
-import {
-  LANGUAGE_FILTERS,
-  LanguageNamePipe,
-} from '../../../../../utils/language-name.pipe';
 import { Observable } from 'rxjs';
 
 import { SearchService } from '../../../../search.service';
@@ -30,7 +26,6 @@ import { SearchFilterService } from '../../../search-filter.service';
   templateUrl: './search-facet-selected-option.component.html',
   imports: [
     AsyncPipe,
-    LanguageNamePipe,
     RouterLink,
     TranslateModule,
   ],
@@ -40,11 +35,6 @@ import { SearchFilterService } from '../../../search-filter.service';
  * Represents a single selected option in a filter facet
  */
 export class SearchFacetSelectedOptionComponent implements OnInit {
-  /** AU-IBAR: values of this filter are ISO language codes, shown as language names */
-  get isLanguageFilter(): boolean {
-    return LANGUAGE_FILTERS.includes(this.filterConfig?.name);
-  }
-
   /**
    * The value for this component
    */

@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router';
 import { Context } from '@dspace/core/shared/context.model';
 import { ViewMode } from '@dspace/core/shared/view-mode.model';
 import { TranslateModule } from '@ngx-translate/core';
-import { LanguageNamePipe } from '../../../../../../../app/shared/utils/language-name.pipe';
+import { LanguageNamePipe } from '../../../../shared/utils/language-name.pipe';
 
 import {
   defer,
@@ -37,6 +37,7 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { DocumentPreviewComponent } from './document-preview/document-preview.component';
+import { RelatedItemsComponent } from '../../../../../../../app/item-page/simple/related-items/related-items-component';
 
 @listableObjectComponent(
   'Publication',
@@ -44,12 +45,16 @@ import { DocumentPreviewComponent } from './document-preview/document-preview.co
   Context.Any,
   'papsdl',
 )
+// AU-IBAR: Bulletin issues (JournalIssue) and Yearbook volumes (JournalVolume) keep the same item page
+@listableObjectComponent('JournalIssue', ViewMode.StandalonePage, Context.Any, 'papsdl')
+@listableObjectComponent('JournalVolume', ViewMode.StandalonePage, Context.Any, 'papsdl')
 @Component({
   selector: 'ds-publication',
   templateUrl: './publication.component.html',
   styleUrls: ['./publication.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    RelatedItemsComponent,
     LanguageNamePipe,
     AsyncPipe,
     CollectionsComponent,

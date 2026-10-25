@@ -1,6 +1,7 @@
 import { JournalComponent } from './app/entity-groups/journal-entities/item-pages/journal/journal.component';
 import { JournalIssueComponent } from './app/entity-groups/journal-entities/item-pages/journal-issue/journal-issue.component';
 import { JournalVolumeComponent } from './app/entity-groups/journal-entities/item-pages/journal-volume/journal-volume.component';
+import { OrgUnitComponent } from './app/entity-groups/research-entities/item-pages/org-unit/org-unit.component';
 import { PersonComponent } from './app/entity-groups/research-entities/item-pages/person/person.component';
 import { PublicationComponent } from './app/item-page/simple/item-types/publication/publication.component';
 import { UntypedItemComponent } from './app/item-page/simple/item-types/untyped-item/untyped-item.component';
@@ -18,6 +19,7 @@ export const LISTABLE_COMPONENTS = [
   JournalComponent,
   JournalIssueComponent,
   JournalVolumeComponent,
+  OrgUnitComponent,
   PersonComponent,
   PublicationComponent,
   UntypedItemComponent,

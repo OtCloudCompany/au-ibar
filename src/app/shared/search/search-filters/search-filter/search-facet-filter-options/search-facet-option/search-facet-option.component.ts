@@ -17,10 +17,6 @@ import {
   TranslateModule,
   TranslateService,
 } from '@ngx-translate/core';
-import {
-  LANGUAGE_FILTERS,
-  LanguageNamePipe,
-} from '../../../../../utils/language-name.pipe';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -37,7 +33,6 @@ import { SearchFilterService } from '../../../search-filter.service';
   templateUrl: './search-facet-option.component.html',
   imports: [
     AsyncPipe,
-    LanguageNamePipe,
     RouterLink,
     ShortNumberPipe,
     TranslateModule,
@@ -48,11 +43,6 @@ import { SearchFilterService } from '../../../search-filter.service';
  * Represents a single option in a filter facet
  */
 export class SearchFacetOptionComponent implements OnInit {
-  /** AU-IBAR: values of this filter are ISO language codes, shown as language names */
-  get isLanguageFilter(): boolean {
-    return LANGUAGE_FILTERS.includes(this.filterConfig?.name);
-  }
-
   /**
    * A single value for this component
    */

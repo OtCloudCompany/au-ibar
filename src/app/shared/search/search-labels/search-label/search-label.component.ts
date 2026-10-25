@@ -13,10 +13,6 @@ import { PaginationService } from '@dspace/core/pagination/pagination.service';
 import { currentPath } from '@dspace/core/router/utils/route.utils';
 import { AppliedFilter } from '@dspace/core/shared/search/models/applied-filter.model';
 import { TranslateModule } from '@ngx-translate/core';
-import {
-  LANGUAGE_FILTERS,
-  LanguageNamePipe,
-} from '../../../utils/language-name.pipe';
 import { Observable } from 'rxjs';
 
 import { SearchService } from '../../search.service';
@@ -32,17 +28,11 @@ import { SearchFilterService } from '../../search-filters/search-filter.service'
   styleUrls: ['./search-label.component.scss'],
   imports: [
     AsyncPipe,
-    LanguageNamePipe,
     RouterLink,
     TranslateModule,
   ],
 })
 export class SearchLabelComponent implements OnInit {
-  /** AU-IBAR: values of this filter are ISO language codes, shown as language names */
-  get isLanguageFilter(): boolean {
-    return LANGUAGE_FILTERS.includes(this.appliedFilter?.filter);
-  }
-
   @Input() inPlaceSearch: boolean;
   @Input() appliedFilter: AppliedFilter;
   searchLink: string;

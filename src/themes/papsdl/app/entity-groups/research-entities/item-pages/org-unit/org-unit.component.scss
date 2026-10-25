@@ -1,0 +1,50 @@
+/* AU-IBAR organisation page (25 Oct 2026) */
+.auibar-org-summary {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  margin: 1rem 0 0.5rem;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border: 1px solid rgba(26, 86, 50, 0.25);
+  border-left: 4px solid #1A5632;
+  border-radius: 0.75rem;
+}
+
+.auibar-org-icon {
+  flex: 0 0 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1A5632;
+  background: rgba(180, 162, 105, 0.22);
+  font-size: 1.25rem;
+}
+
+.auibar-org-facts {
+  flex: 1 1 auto;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.75rem 1.5rem;
+
+  dt {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #58595B;
+  }
+
+  dd {
+    margin: 0.15rem 0 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .auibar-org-summary {
+    flex-direction: column;
+  }
+}

@@ -1,5 +1,4 @@
 {
-  // npm run merge-i18n -- -s src/themes/papsdl/assets/i18n
 
   "401.help": "You're not authorized to access this page. You can use the button below to get back to the home page.",
 
@@ -7942,4 +7941,412 @@
   "menu.section.browse_global_by_auibar-types": "By Product Type",
 
   "vocabulary-treeview.tree.description.auibar-types": "AU-IBAR knowledge product types",
+
+  "item.page.relationships.auibarOrgAuthored": "Authored publications",
+
+  "item.page.relationships.auibarOrgEdited": "Edited publications",
+
+  "item.page.relationships.auibarOrgFunded": "Funded publications",
+
+  "search.filters.language.und": "Not specified",
+
+  "search.filters.language.aa": "Afar",
+
+  "search.filters.language.ab": "Abkhazian",
+
+  "search.filters.language.ae": "Avestan",
+
+  "search.filters.language.af": "Afrikaans",
+
+  "search.filters.language.ak": "Akan",
+
+  "search.filters.language.am": "Amharic",
+
+  "search.filters.language.an": "Aragonese",
+
+  "search.filters.language.ar": "Arabic",
+
+  "search.filters.language.as": "Assamese",
+
+  "search.filters.language.av": "Avaric",
+
+  "search.filters.language.ay": "Aymara",
+
+  "search.filters.language.az": "Azerbaijani",
+
+  "search.filters.language.ba": "Bashkir",
+
+  "search.filters.language.be": "Belarusian",
+
+  "search.filters.language.bg": "Bulgarian",
+
+  "search.filters.language.bh": "Bhojpuri",
+
+  "search.filters.language.bi": "Bislama",
+
+  "search.filters.language.bm": "Bambara",
+
+  "search.filters.language.bn": "Bangla",
+
+  "search.filters.language.bo": "Tibetan",
+
+  "search.filters.language.br": "Breton",
+
+  "search.filters.language.bs": "Bosnian",
+
+  "search.filters.language.ca": "Catalan",
+
+  "search.filters.language.ce": "Chechen",
+
+  "search.filters.language.ch": "Chamorro",
+
+  "search.filters.language.co": "Corsican",
+
+  "search.filters.language.cr": "Cree",
+
+  "search.filters.language.cs": "Czech",
+
+  "search.filters.language.cu": "Church Slavic",
+
+  "search.filters.language.cv": "Chuvash",
+
+  "search.filters.language.cy": "Welsh",
+
+  "search.filters.language.da": "Danish",
+
+  "search.filters.language.de": "German",
+
+  "search.filters.language.dv": "Divehi",
+
+  "search.filters.language.dz": "Dzongkha",
+
+  "search.filters.language.ee": "Ewe",
+
+  "search.filters.language.el": "Greek",
+
+  "search.filters.language.en": "English",
+
+  "search.filters.language.eo": "Esperanto",
+
+  "search.filters.language.es": "Spanish",
+
+  "search.filters.language.et": "Estonian",
+
+  "search.filters.language.eu": "Basque",
+
+  "search.filters.language.fa": "Persian",
+
+  "search.filters.language.ff": "Fula",
+
+  "search.filters.language.fi": "Finnish",
+
+  "search.filters.language.fj": "Fijian",
+
+  "search.filters.language.fo": "Faroese",
+
+  "search.filters.language.fr": "French",
+
+  "search.filters.language.fy": "Western Frisian",
+
+  "search.filters.language.ga": "Irish",
+
+  "search.filters.language.gd": "Scottish Gaelic",
+
+  "search.filters.language.gl": "Galician",
+
+  "search.filters.language.gn": "Guarani",
+
+  "search.filters.language.gu": "Gujarati",
+
+  "search.filters.language.gv": "Manx",
+
+  "search.filters.language.ha": "Hausa",
+
+  "search.filters.language.he": "Hebrew",
+
+  "search.filters.language.hi": "Hindi",
+
+  "search.filters.language.ho": "Hiri Motu",
+
+  "search.filters.language.hr": "Croatian",
+
+  "search.filters.language.ht": "Haitian Creole",
+
+  "search.filters.language.hu": "Hungarian",
+
+  "search.filters.language.hy": "Armenian",
+
+  "search.filters.language.hz": "Herero",
+
+  "search.filters.language.ia": "Interlingua",
+
+  "search.filters.language.id": "Indonesian",
+
+  "search.filters.language.ie": "Interlingue",
+
+  "search.filters.language.ig": "Igbo",
+
+  "search.filters.language.ii": "Sichuan Yi",
+
+  "search.filters.language.ik": "Inupiaq",
+
+  "search.filters.language.io": "Ido",
+
+  "search.filters.language.is": "Icelandic",
+
+  "search.filters.language.it": "Italian",
+
+  "search.filters.language.iu": "Inuktitut",
+
+  "search.filters.language.ja": "Japanese",
+
+  "search.filters.language.jv": "Javanese",
+
+  "search.filters.language.ka": "Georgian",
+
+  "search.filters.language.kg": "Kongo",
+
+  "search.filters.language.ki": "Kikuyu",
+
+  "search.filters.language.kj": "Kuanyama",
+
+  "search.filters.language.kk": "Kazakh",
+
+  "search.filters.language.kl": "Kalaallisut",
+
+  "search.filters.language.km": "Khmer",
+
+  "search.filters.language.kn": "Kannada",
+
+  "search.filters.language.ko": "Korean",
+
+  "search.filters.language.kr": "Kanuri",
+
+  "search.filters.language.ks": "Kashmiri",
+
+  "search.filters.language.ku": "Kurdish",
+
+  "search.filters.language.kv": "Komi",
+
+  "search.filters.language.kw": "Cornish",
+
+  "search.filters.language.ky": "Kyrgyz",
+
+  "search.filters.language.la": "Latin",
+
+  "search.filters.language.lb": "Luxembourgish",
+
+  "search.filters.language.lg": "Ganda",
+
+  "search.filters.language.li": "Limburgish",
+
+  "search.filters.language.ln": "Lingala",
+
+  "search.filters.language.lo": "Lao",
+
+  "search.filters.language.lt": "Lithuanian",
+
+  "search.filters.language.lu": "Luba-Katanga",
+
+  "search.filters.language.lv": "Latvian",
+
+  "search.filters.language.mg": "Malagasy",
+
+  "search.filters.language.mh": "Marshallese",
+
+  "search.filters.language.mi": "Māori",
+
+  "search.filters.language.mk": "Macedonian",
+
+  "search.filters.language.ml": "Malayalam",
+
+  "search.filters.language.mn": "Mongolian",
+
+  "search.filters.language.mr": "Marathi",
+
+  "search.filters.language.ms": "Malay",
+
+  "search.filters.language.mt": "Maltese",
+
+  "search.filters.language.my": "Burmese",
+
+  "search.filters.language.na": "Nauru",
+
+  "search.filters.language.nb": "Norwegian Bokmål",
+
+  "search.filters.language.nd": "North Ndebele",
+
+  "search.filters.language.ne": "Nepali",
+
+  "search.filters.language.ng": "Ndonga",
+
+  "search.filters.language.nl": "Dutch",
+
+  "search.filters.language.nn": "Norwegian Nynorsk",
+
+  "search.filters.language.no": "Norwegian",
+
+  "search.filters.language.nr": "South Ndebele",
+
+  "search.filters.language.nv": "Navajo",
+
+  "search.filters.language.ny": "Nyanja",
+
+  "search.filters.language.oc": "Occitan",
+
+  "search.filters.language.oj": "Ojibwa",
+
+  "search.filters.language.om": "Oromo",
+
+  "search.filters.language.or": "Odia",
+
+  "search.filters.language.os": "Ossetic",
+
+  "search.filters.language.pa": "Punjabi",
+
+  "search.filters.language.pi": "Pali",
+
+  "search.filters.language.pl": "Polish",
+
+  "search.filters.language.ps": "Pashto",
+
+  "search.filters.language.pt": "Portuguese",
+
+  "search.filters.language.qu": "Quechua",
+
+  "search.filters.language.rm": "Romansh",
+
+  "search.filters.language.rn": "Rundi",
+
+  "search.filters.language.ro": "Romanian",
+
+  "search.filters.language.ru": "Russian",
+
+  "search.filters.language.rw": "Kinyarwanda",
+
+  "search.filters.language.sa": "Sanskrit",
+
+  "search.filters.language.sc": "Sardinian",
+
+  "search.filters.language.sd": "Sindhi",
+
+  "search.filters.language.se": "Northern Sami",
+
+  "search.filters.language.sg": "Sango",
+
+  "search.filters.language.si": "Sinhala",
+
+  "search.filters.language.sk": "Slovak",
+
+  "search.filters.language.sl": "Slovenian",
+
+  "search.filters.language.sm": "Samoan",
+
+  "search.filters.language.sn": "Shona",
+
+  "search.filters.language.so": "Somali",
+
+  "search.filters.language.sq": "Albanian",
+
+  "search.filters.language.sr": "Serbian",
+
+  "search.filters.language.ss": "Swati",
+
+  "search.filters.language.st": "Southern Sotho",
+
+  "search.filters.language.su": "Sundanese",
+
+  "search.filters.language.sv": "Swedish",
+
+  "search.filters.language.sw": "Swahili",
+
+  "search.filters.language.ta": "Tamil",
+
+  "search.filters.language.te": "Telugu",
+
+  "search.filters.language.tg": "Tajik",
+
+  "search.filters.language.th": "Thai",
+
+  "search.filters.language.ti": "Tigrinya",
+
+  "search.filters.language.tk": "Turkmen",
+
+  "search.filters.language.tl": "Filipino",
+
+  "search.filters.language.tn": "Tswana",
+
+  "search.filters.language.to": "Tongan",
+
+  "search.filters.language.tr": "Turkish",
+
+  "search.filters.language.ts": "Tsonga",
+
+  "search.filters.language.tt": "Tatar",
+
+  "search.filters.language.tw": "Akan",
+
+  "search.filters.language.ty": "Tahitian",
+
+  "search.filters.language.ug": "Uyghur",
+
+  "search.filters.language.uk": "Ukrainian",
+
+  "search.filters.language.ur": "Urdu",
+
+  "search.filters.language.uz": "Uzbek",
+
+  "search.filters.language.ve": "Venda",
+
+  "search.filters.language.vi": "Vietnamese",
+
+  "search.filters.language.vo": "Volapük",
+
+  "search.filters.language.wa": "Walloon",
+
+  "search.filters.language.wo": "Wolof",
+
+  "search.filters.language.xh": "Xhosa",
+
+  "search.filters.language.yi": "Yiddish",
+
+  "search.filters.language.yo": "Yoruba",
+
+  "search.filters.language.za": "Zhuang",
+
+  "search.filters.language.zh": "Chinese",
+
+  "search.filters.language.zu": "Zulu",
+
+  "search.filters.language.en_US": "American English",
+
+  "search.filters.language.fr_FR": "French (France)",
+
+  "search.filters.language.pt_BR": "Brazilian Portuguese",
+
+  "search.filters.language.pt_PT": "European Portuguese",
+
+  "search.filters.language.es_ES": "European Spanish",
+
+  "search.filters.language.ar_SA": "Arabic (Saudi Arabia)",
+
+  "auibar.orgunit.page.alternatename": "Also known as",
+
+  "auibar.orgunit.page.parent": "Part of",
+
+  "auibar.orgunit.page.website": "Website",
+
+  "item.page.relationships.auibarVolumeIssues": "Issues in this volume",
+
+  "item.page.relationships.auibarIssueArticles": "Articles in this issue",
+
+  "search.filters.applied.f.auibartheme": "Thematic area",
+
+  "search.filters.filter.auibartheme.head": "Thematic area",
+
+  "search.filters.filter.auibartheme.label": "Thematic area",
+
+  "search.filters.filter.auibartheme.placeholder": "Thematic area",
+
+  "item.page.relationships.auibarArticleIssue": "Published in issue",
 }

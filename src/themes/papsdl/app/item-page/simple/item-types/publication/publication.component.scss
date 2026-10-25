@@ -4770,3 +4770,35 @@ ds-paps-document-preview {
     height: 350px !important;
   }
 }
+
+/* AU-IBAR entities (25 Oct 2026): links to organisation and journal records */
+.record-linked-records {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border: 1px solid rgba(26, 86, 50, 0.25);
+  border-left: 4px solid #1A5632;
+  border-radius: 0.75rem;
+}
+
+.record-linked-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1A5632;
+  margin-bottom: 0.75rem;
+}
+
+.record-linked-records ::ng-deep ds-metadata-field-wrapper h2,
+.record-linked-records ::ng-deep ds-metadata-field-wrapper h5 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #58595B;
+  margin-top: 0.75rem;
+}
+
+.record-linked-records ::ng-deep ds-listable-object-component-loader a {
+  color: #1A5632;
+  font-weight: 600;
+}

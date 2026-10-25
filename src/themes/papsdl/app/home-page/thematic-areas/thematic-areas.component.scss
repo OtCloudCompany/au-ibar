@@ -165,3 +165,60 @@
     max-width: 240px;
   }
 }
+
+/* AU-IBAR (25 Oct 2026): counts, "explore all" link below the cards, loading placeholders */
+.auibar-themes-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.auibar-themes-main .auibar-themes-grid {
+  flex: none;
+}
+
+.auibar-count-pill {
+  display: inline-block;
+  min-width: 2.2rem;
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: rgba(221, 197, 139, 0.2);
+  border: 1px solid rgba(221, 197, 139, 0.55);
+  color: #f3e3b5;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.auibar-theme-card:hover .auibar-count-pill,
+.auibar-theme-card:focus-visible .auibar-count-pill {
+  background: #ddc58b;
+  color: #0c3122;
+}
+
+.auibar-themes-all {
+  align-self: flex-end;
+  margin-top: 6px;
+  color: #dcc78f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auibar-themes-all:hover,
+.auibar-themes-all:focus-visible {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.auibar-card-loading {
+  min-height: 92px;
+  background: rgba(255, 255, 255, 0.06) !important;
+  animation: auibar-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes auibar-pulse {
+  50% { opacity: 0.4; }
+}

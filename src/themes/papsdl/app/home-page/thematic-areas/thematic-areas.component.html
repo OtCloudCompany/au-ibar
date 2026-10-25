@@ -3,11 +3,9 @@
 
     <header class="auibar-themes-header">
       <div>
-
         <h2 id="auibar-themes-heading">
           Browse by Thematic Areas
         </h2>
-
         <p>
           Discover research, publications and institutional knowledge
           across AU-IBAR's thematic priorities.
@@ -15,30 +13,37 @@
       </div>
     </header>
 
-    <div class="auibar-themes-grid">
+    <div class="auibar-themes-main">
+      <div class="auibar-themes-grid">
 
-      <a
-        *ngFor="let theme of themes"
-        class="auibar-theme-card"
-        routerLink="/search"
-        [queryParams]="{ query: theme.query }"
-        [attr.aria-label]="'Explore ' + theme.title + ' resources'">
+        <a
+          *ngFor="let theme of themes"
+          class="auibar-theme-card"
+          routerLink="/search"
+          [queryParams]="theme.params"
+          [attr.aria-label]="'Explore ' + theme.count + ' ' + theme.label + ' resources'">
 
-        <span class="auibar-theme-icon" aria-hidden="true">
-          <i class="fa-solid" [class]="theme.icon"></i>
-        </span>
+          <span class="auibar-theme-icon" aria-hidden="true">
+            <i class="fa-solid" [class]="theme.icon"></i>
+          </span>
 
-        <span class="auibar-theme-content">
-          <strong>{{ theme.title }}</strong>
-          <small>{{ theme.description }}</small>
-        </span>
+          <span class="auibar-theme-content">
+            <strong>{{ theme.label }}</strong>
+          </span>
 
-        <span class="auibar-theme-arrow" aria-hidden="true">
-          <i class="fa-solid fa-arrow-up-right"></i>
-        </span>
+          <span class="auibar-count-pill">{{ theme.count | number }}</span>
 
+        </a>
+
+        <ng-container *ngIf="!loaded">
+          <span *ngFor="let i of [1, 2, 3, 4, 5, 6]" class="auibar-theme-card auibar-card-loading" aria-hidden="true"></span>
+        </ng-container>
+
+      </div>
+
+      <a *ngIf="allRoute" class="auibar-themes-all" [routerLink]="allRoute">
+        Explore all thematic areas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
       </a>
-
     </div>
 
   </div>

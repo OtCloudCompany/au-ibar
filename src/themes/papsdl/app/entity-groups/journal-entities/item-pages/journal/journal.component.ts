@@ -16,7 +16,7 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 
-@listableObjectComponent('Journal', ViewMode.StandalonePage, Context.Any, 'custom')
+@listableObjectComponent('Journal', ViewMode.StandalonePage, Context.Any, 'papsdl')
 @Component({
   selector: 'ds-journal',
   // styleUrls: ['./journal.component.scss'],
