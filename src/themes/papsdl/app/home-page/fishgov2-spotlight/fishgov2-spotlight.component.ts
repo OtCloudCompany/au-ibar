@@ -1,8 +1,8 @@
 import { isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import {
-  Component, Inject, OnInit, OnDestroy, PLATFORM_ID,
+  ChangeDetectorRef, Component, Inject, OnInit, OnDestroy, PLATFORM_ID,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   APP_CONFIG,
   AppConfig,
@@ -31,9 +31,11 @@ export class Fishgov2SpotlightComponent implements OnInit, OnDestroy {
   // The community is found by name at runtime, because it has a different UUID on the
   // test and production servers. Until it is found (or if the lookup fails) the button
   // falls back to the old keyword search, so it always works.
+  // The click handler resolves the destination itself, so a link that was not
+  // redrawn yet (seen intermittently on phones during hydration) still goes to the community.
   private static readonly fishgovCommunityName = '(FishGov2)';
-  fishgovLink: any[] = ['/search'];
-  fishgovParams: { [k: string]: string } | null = { query: 'FishGov2' };
+  fishgovUrl = '/search?query=FishGov2';
+  private fishgovResolved = false;
 
   // AU-IBAR (2026-10-24): use the configured REST URL instead of a hard-coded
   // relative '/server/api', which fails on localhost:4000 and on any host where
@@ -79,6 +81,8 @@ export class Fishgov2SpotlightComponent implements OnInit, OnDestroy {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     @Inject(APP_CONFIG) private appConfig: AppConfig,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -105,12 +109,25 @@ export class Fishgov2SpotlightComponent implements OnInit, OnDestroy {
         .map((o: any) => o?._embedded?.indexableObject)
         .find((c: any) => String(c?.name || '').includes(Fishgov2SpotlightComponent.fishgovCommunityName));
       if (community?.uuid) {
-        this.fishgovLink = ['/communities', community.uuid];
-        this.fishgovParams = null;
+        this.fishgovUrl = `/communities/${community.uuid}`;
+        this.fishgovResolved = true;
+        this.cdr.markForCheck();
       }
     } catch {
       // keep the search fallback
     }
+  }
+
+  async openFishgov(event: MouseEvent): Promise<void> {
+    // let the browser handle new-tab / new-window clicks with the current href
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    event.preventDefault();
+    if (!this.fishgovResolved) {
+      await this.findFishgovCommunity();
+    }
+    void this.router.navigateByUrl(this.fishgovUrl);
   }
 
   ngOnDestroy(): void {

@@ -14,8 +14,8 @@
       </div>
 
       <a class="fishgov-explore"
-         [routerLink]="fishgovLink"
-         [queryParams]="fishgovParams">
+         [attr.href]="fishgovUrl"
+         (click)="openFishgov($event)">
         Explore FishGov2 Knowledge
         <span aria-hidden="true">→</span>
       </a>
