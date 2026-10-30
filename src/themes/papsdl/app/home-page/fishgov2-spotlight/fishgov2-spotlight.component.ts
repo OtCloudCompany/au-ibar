@@ -27,7 +27,13 @@ interface FishGovResource {
 })
 export class Fishgov2SpotlightComponent implements OnInit, OnDestroy {
 
-  readonly fishgovSearch = { query: 'FishGov2' };
+  // AU-IBAR (2026-10-30): the button opens the FishGov2 community (its landing page).
+  // The community is found by name at runtime, because it has a different UUID on the
+  // test and production servers. Until it is found (or if the lookup fails) the button
+  // falls back to the old keyword search, so it always works.
+  private static readonly fishgovCommunityName = '(FishGov2)';
+  fishgovLink: any[] = ['/search'];
+  fishgovParams: { [k: string]: string } | null = { query: 'FishGov2' };
 
   // AU-IBAR (2026-10-24): use the configured REST URL instead of a hard-coded
   // relative '/server/api', which fails on localhost:4000 and on any host where
@@ -78,7 +84,32 @@ export class Fishgov2SpotlightComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.controller = new AbortController();
+      void this.findFishgovCommunity();
       void this.loadResources();
+    }
+  }
+
+  private async findFishgovCommunity(): Promise<void> {
+    try {
+      const params = new URLSearchParams({ dsoType: 'COMMUNITY', query: 'FishGov2', size: '10' });
+      const response = await fetch(`${this.base}/discover/search/objects?${params}`, {
+        headers: { Accept: 'application/json' },
+        signal: this.controller?.signal,
+      });
+      if (!response.ok) {
+        return;
+      }
+      const data = await response.json();
+      const objects = data?._embedded?.searchResult?._embedded?.objects || [];
+      const community = objects
+        .map((o: any) => o?._embedded?.indexableObject)
+        .find((c: any) => String(c?.name || '').includes(Fishgov2SpotlightComponent.fishgovCommunityName));
+      if (community?.uuid) {
+        this.fishgovLink = ['/communities', community.uuid];
+        this.fishgovParams = null;
+      }
+    } catch {
+      // keep the search fallback
     }
   }
 

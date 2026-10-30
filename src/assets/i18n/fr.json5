@@ -1890,7 +1890,7 @@
 
   "dso-selector.set-scope.community.head": "Sélectionner un champ de recherche",
 
-  "dso-selector.set-scope.community.button": "Chercher dans toutes les collections",
+  "dso-selector.set-scope.community.button": "Rechercher dans tout le dépôt",
 
   "dso-selector.set-scope.community.or-divider": "ou",
 
@@ -3696,7 +3696,7 @@
 
   "menu.section.browse_community_by_title": "Titre",
 
-  "menu.section.browse_global": "Tout DSpace",
+  "menu.section.browse_global": "Tout le dépôt",
 
   "menu.section.browse_global_by_author": "Auteur",
 
@@ -3944,7 +3944,7 @@
 
   "notification.suggestion.please": "S'il vous plaît",
 
-  "nav.browse.header": "Tout Dspace",
+  "nav.browse.header": "Tout le dépôt",
 
   "nav.community-browse.header": "Par communauté",
 
@@ -4686,9 +4686,9 @@
 
   "repository.image.logo": "Logo du dépôt",
 
-  "repository.title": "Dépôt DSpace",
+  "repository.title": "Dépôt de connaissances",
 
-  "repository.title.prefix": "Dépôt DSpace :: ",
+  "repository.title.prefix": "Dépôt de connaissances :: ",
 
   "resource-policies.add.button": "Ajouter",
 
@@ -5152,7 +5152,7 @@
 
   "search.form.search_dspace": "Recherche dans DSpace",
 
-  "search.form.scope.all": "Tout le dépôt DSpace",
+  "search.form.scope.all": "Tout le dépôt",
 
   "search.results.head": "Résultats de recherche",
 
@@ -8362,9 +8362,9 @@
 
   "item.page.visitsByMonth": "Consultations par mois",
 
-  "item.page.topCountries": "Principaux pays",
+  "item.page.topCountries": "Les 10 premiers pays",
 
-  "item.page.topCities": "Principales villes",
+  "item.page.topCities": "Les 10 premières villes",
 
   "item.page.stats.country": "Pays",
 

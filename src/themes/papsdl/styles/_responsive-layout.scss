@@ -1,0 +1,134 @@
+/* ==================================================================
+   AU-IBAR responsive layout layer (30 Oct 2026)
+
+   Feedback: "the homepage is overstretched" on large screens.
+   Cause: each home-page band had its own width (header, hero and
+   thematic bar unlimited, latest resources ~full width, spotlight and
+   resource types 1700px, footer 1440px), and on phones the header row
+   was 29px wider than the screen.
+
+   Rule applied here: one content width for the whole site (1440px,
+   the footer's existing value, gutter included), centred. Backgrounds
+   and the hero photo still run edge to edge.
+
+   Selectors start with ":root body" so they outrank the components'
+   encapsulated styles without editing each component. Delete the
+   import in theme.scss to roll this file back.
+   ================================================================== */
+
+:root {
+  --auibar-content-max: 1440px;
+  --auibar-gutter: clamp(16px, 4vw, 40px);
+  /* left/right padding that lines full-bleed bands up with the content column */
+  --auibar-band-inline: max(var(--auibar-gutter), calc((100% - var(--auibar-content-max)) / 2 + var(--auibar-gutter)));
+}
+
+/* ---------- Shared content column ---------- */
+:root body .paps-header-inner,
+:root body .auibar-themes-container,
+:root body .fishgov-container,
+:root body .editorial-container,
+:root body .auibar-document-types-container,
+:root body .auibar-footer-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--auibar-content-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: var(--auibar-gutter) !important;
+  padding-right: var(--auibar-gutter) !important;
+}
+
+/* Outer bands keep their background but no longer add their own side padding */
+:root body .auibar-themes,
+:root body .editorial-strip {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* ---------- Header ---------- */
+/* actions (language, log in, menu) sit at the right edge of the column */
+:root body .paps-header-actions {
+  margin-left: auto;
+}
+
+@media (max-width: 575.98px) {
+  :root body .paps-header-inner {
+    gap: 10px;
+  }
+  /* the brand may shrink so the row fits a 320-375px phone */
+  :root body .paps-brand {
+    flex-shrink: 1;
+    min-width: 0;
+    gap: 7px;
+  }
+  :root body .paps-brand img {
+    height: auto !important;
+    max-height: 38px;
+    max-width: 118px !important;
+  }
+  :root body .paps-brand-secondary {
+    font-size: 0.55rem !important;
+  }
+  :root body .paps-header-actions {
+    gap: 2px;
+  }
+  :root body .paps-menu-button {
+    padding: 6px 4px;
+  }
+}
+
+@media (max-width: 359.98px) {
+  /* very small phones: the logo already names the bureau */
+  :root body .paps-brand-text {
+    display: none;
+  }
+}
+
+/* ---------- Hero ---------- */
+/* photo stays full width; text lines up with the content column */
+:root body .paps-hero-content {
+  padding-left: var(--auibar-band-inline) !important;
+  padding-right: var(--auibar-band-inline) !important;
+}
+
+/* ---------- Latest Knowledge Resources (phones) ---------- */
+@media (max-width: 650px) {
+  /* fixed small cover so the title gets the width, instead of a 145px column */
+  :root body .editorial-resource-item {
+    grid-template-columns: 72px minmax(0, 1fr) !important;
+    column-gap: 12px !important;
+    min-height: 0 !important;
+  }
+  /* the showcase wrapper's own side padding left the card ~240px wide on a phone */
+  :root body .latest-showcase {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  :root body .editorial-resource-track {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+}
+
+/* ---------- Search and browse pages ---------- */
+/* Browse tabs on community/collection pages wrap instead of running off the screen */
+:root body ds-comcol-page-browse-by .list-group-horizontal,
+:root body ds-themed-comcol-page-browse-by .list-group-horizontal {
+  flex-wrap: wrap;
+}
+:root body ds-comcol-page-browse-by .list-group-horizontal > .list-group-item,
+:root body ds-themed-comcol-page-browse-by .list-group-horizontal > .list-group-item {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+/* Filter boxes: clip values while a filter animates open or shut,
+   so they never spill over the filters below during page load */
+:root body ds-search-filter .search-filter-wrapper {
+  overflow: hidden;
+}
+/* long author/organisation names wrap inside the box */
+:root body ds-search-filter div.facet-filter {
+  overflow-wrap: anywhere;
+}

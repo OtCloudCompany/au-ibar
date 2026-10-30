@@ -38,7 +38,8 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
   slides: HeroSlide[] = [
     {
       eyebrow: 'AFRICAN UNION · AU-IBAR',
-      title: "Knowledge for Africa's Animal and Aquatic Resources",
+      // AU-IBAR feedback 30 Oct 2026: banner wording
+      title: "Knowledge on Africa's Animal Resources",
       description:
         "Explore research, policies and institutional knowledge supporting food security, sustainable fisheries, aquaculture and Africa's Blue Economy.",
       background: 'linear-gradient(115deg, #103E28 0%, #1A5632 55%, #348F41 100%)',
@@ -47,7 +48,8 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
       eyebrow: 'FISHGOV2 · KNOWLEDGE AND POLICY',
       title: 'Strengthening Fisheries Governance in Africa',
       description:
-        'Discover FishGov2 knowledge products supporting evidence-based policy, sustainable resource management and regional cooperation.',
+        // AU-IBAR feedback 30 Oct 2026: section description
+        'Discover knowledge products that support evidence-based policy, sustainable resource management, and regional cooperation on fisheries governance, aquaculture and the blue economy.',
       background: 'linear-gradient(115deg, #163F34 0%, #256746 55%, #348F41 100%)',
     },
     {

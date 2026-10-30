@@ -3692,7 +3692,7 @@
 
   "menu.section.browse_community_by_title": "Por título",
 
-  "menu.section.browse_global": "Percorrer repositório",
+  "menu.section.browse_global": "Todo o repositório",
 
   "menu.section.browse_global_by_author": "Por autor",
 
@@ -3940,7 +3940,7 @@
 
   "notification.suggestion.please": "Por favor",
 
-  "nav.browse.header": "Tudo no repositório",
+  "nav.browse.header": "Todo o repositório",
 
   "nav.community-browse.header": "Por comunidade",
 
@@ -4682,9 +4682,9 @@
 
   "repository.image.logo": "Logótipo do repositório",
 
-  "repository.title": "Repositório ::",
+  "repository.title": "Repositório de Conhecimento",
 
-  "repository.title.prefix": "Repositório :: ",
+  "repository.title.prefix": "Repositório de Conhecimento :: ",
 
   "resource-policies.add.button": "Adicionar",
 
@@ -5148,7 +5148,7 @@
 
   "search.form.search_dspace": "Pesquisar todo o repositório",
 
-  "search.form.scope.all": "Pesquisar todo o repositório",
+  "search.form.scope.all": "Todo o repositório",
 
   "search.results.head": "Resultados da pesquisa",
 
@@ -8358,9 +8358,9 @@
 
   "item.page.visitsByMonth": "Visualizações por mês",
 
-  "item.page.topCountries": "Principais países",
+  "item.page.topCountries": "Os 10 principais países",
 
-  "item.page.topCities": "Principais cidades",
+  "item.page.topCities": "As 10 principais cidades",
 
   "item.page.stats.country": "País",
 
